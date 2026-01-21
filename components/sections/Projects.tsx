@@ -135,22 +135,21 @@ export function Projects() {
 
                             {/* 'View All' Box (30%) */}
                             <Link href="/projetos" className="w-[30%] bg-slate-200 dark:bg-slate-800 rounded-3xl flex flex-col items-center justify-center p-2 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors group cursor-pointer text-center">
-                                <div className="w-10 h-10 rounded-full bg-white dark:bg-slate-900 flex items-center justify-center mb-2 group-hover:scale-110 transition-transform text-foreground">
-                                    <ArrowRight className="w-5 h-5" />
+                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:scale-110 transition-all">
+                                    <ArrowRight className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
                                 </div>
-                                <span className="text-[10px] md:text-xs font-bold text-foreground uppercase tracking-wider leading-tight">Ver<br />Todos</span>
+                                <span className="font-mono text-xs font-bold text-primary uppercase tracking-wider">
+                                    Ver Todos
+                                </span>
+                                <span className="text-sm text-muted-foreground mt-1">
+                                    {projects.length} projetos
+                                </span>
                             </Link>
                         </div>
 
                     </div>
                 </div>
 
-                {/* Mobile 'View All' Button */}
-                <div className="mt-12 text-center md:hidden">
-                    <Link href="/projetos" className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 uppercase tracking-wider">
-                        Ver Todos os Projetos <ArrowRight className="w-4 h-4" />
-                    </Link>
-                </div>
 
             </div>
         </section>

@@ -31,7 +31,7 @@ export function Team() {
                 <div className="mb-12 space-y-2">
                     {/* Linha 1: Label + Link */}
                     <div className="flex justify-between items-center">
-                        <span className="font-mono text-xs font-bold text-primary uppercase">Depto: CAPITAL_HUMANO</span>
+                        <span className="font-mono text-xs font-bold text-primary uppercase">CAPITAL HUMANO</span>
                     </div>
                     {/* Linha 2: Título */}
 

@@ -60,7 +60,7 @@ export function About() {
                                 {
                                     icon: Globe,
                                     title: "Contexto Regional",
-                                    desc: "Soluções desenhadas especificamente para os desafios climáticos e logísticos da Amazônia."
+                                    desc: "Soluções desenhadas para os desafios climáticos e logísticos da Amazônia."
                                 }
                             ].map((item, i) => (
                                 <motion.div

@@ -2,6 +2,7 @@ import { Hero } from "@/components/sections/Hero";
 import { About } from "@/components/sections/About";
 import { Research } from "@/components/sections/Research";
 import { Projects } from "@/components/sections/Projects";
+import { Publications } from "@/components/sections/Publications";
 import { Team } from "@/components/sections/Team";
 
 export default function Home() {
@@ -11,6 +12,7 @@ export default function Home() {
       <About />
       <Research />
       <Projects />
+      <Publications />
       <Team />
     </div>
   );

@@ -47,7 +47,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
                         </div>
 
                         {/* Hero Image (Right Side) */}
-                        <div className="w-full md:w-1/3 aspect-video bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden shadow-2xl rotate-1 hover:rotate-0 transition-transform duration-500">
+                        <div className="w-full md:w-1/3 aspect-video bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden shadow-2xl rotate-0 hover:rotate-1 transition-transform duration-500">
                             {project.image && <img src={project.image} alt={project.title} className="w-full h-full object-cover" />}
                         </div>
                     </div>
