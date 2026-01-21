@@ -19,28 +19,34 @@ export function Footer() {
 
                         {/* CNPq Logo */}
                         <div className="relative w-32 h-16 opacity-30 dark:opacity-50">
-                            <img
+                            <Image
                                 src="/images/cnpq-logo.png"
                                 alt="CNPq"
-                                className="w-full h-full object-contain invert dark:invert-0"
+                                fill
+                                className="object-contain invert dark:invert-0"
+                                sizes="128px"
                             />
                         </div>
 
                         {/* CAPES Logo - Adjusted gray */}
                         <div className="relative w-28 h-12 opacity-70 grayscale dark:opacity-100">
-                            <img
+                            <Image
                                 src="/images/capes-logo.png"
                                 alt="CAPES"
-                                className="w-full h-full object-contain invert dark:invert-0"
+                                fill
+                                className="object-contain invert dark:invert-0"
+                                sizes="112px"
                             />
                         </div>
 
                         {/* Governo Federal Logo - Invert in Dark Mode to make text white */}
                         <div className="relative w-40 h-16 opacity-70 grayscale dark:invert dark:opacity-50">
-                            <img
+                            <Image
                                 src="/images/governo-logo.png"
                                 alt="Governo Federal"
-                                className="w-full h-full object-contain"
+                                fill
+                                className="object-contain"
+                                sizes="160px"
                             />
                         </div>
 
