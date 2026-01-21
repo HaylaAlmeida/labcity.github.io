@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
+import { getAssetPath } from '@/lib/utils';
 
 export function Footer() {
     return (
@@ -20,7 +21,7 @@ export function Footer() {
                         {/* CNPq Logo */}
                         <div className="relative w-32 h-16 opacity-30 dark:opacity-50">
                             <Image
-                                src="/images/cnpq-logo.png"
+                                src={getAssetPath('/images/cnpq-logo.png')}
                                 alt="CNPq"
                                 fill
                                 className="object-contain invert dark:invert-0"
@@ -31,7 +32,7 @@ export function Footer() {
                         {/* CAPES Logo - Adjusted gray */}
                         <div className="relative w-28 h-12 opacity-70 grayscale dark:opacity-100">
                             <Image
-                                src="/images/capes-logo.png"
+                                src={getAssetPath('/images/capes-logo.png')}
                                 alt="CAPES"
                                 fill
                                 className="object-contain invert dark:invert-0"
@@ -42,7 +43,7 @@ export function Footer() {
                         {/* Governo Federal Logo - Invert in Dark Mode to make text white */}
                         <div className="relative w-40 h-16 opacity-70 grayscale dark:invert dark:opacity-50">
                             <Image
-                                src="/images/governo-logo.png"
+                                src={getAssetPath('/images/governo-logo.png')}
                                 alt="Governo Federal"
                                 fill
                                 className="object-contain"

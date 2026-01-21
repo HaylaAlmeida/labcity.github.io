@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { projects } from '@/lib/content';
 import { ArrowLeft, CheckCircle2, Users, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
+import { getAssetPath } from '@/lib/utils';
 
 // Generate static params for all known projects so they can be statically optimized
 export function generateStaticParams() {
@@ -48,7 +49,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
 
                         {/* Hero Image (Right Side) */}
                         <div className="w-full md:w-1/3 aspect-video bg-slate-200 dark:bg-slate-800 rounded-xl overflow-hidden shadow-2xl rotate-0 hover:rotate-1 transition-transform duration-500">
-                            {project.image && <img src={project.image} alt={project.title} className="w-full h-full object-cover" />}
+                            {project.image && <img src={getAssetPath(project.image)} alt={project.title} className="w-full h-full object-cover" />}
                         </div>
                     </div>
                 </div>

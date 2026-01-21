@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { ArrowRight, ArrowLeft, Layers } from 'lucide-react';
 import Link from 'next/link';
 import { projects } from '@/lib/content';
+import { getAssetPath } from '@/lib/utils';
 
 export default function ProjectsPage() {
     return (
@@ -37,7 +38,7 @@ export default function ProjectsPage() {
                             <div className="h-48 bg-slate-200 dark:bg-slate-800 relative overflow-hidden">
                                 {/* Image Placeholder or Actual Image */}
                                 {project.image ? (
-                                    <img src={project.image} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+                                    <img src={getAssetPath(project.image)} alt={project.title} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center text-slate-400">
                                         <Layers className="w-12 h-12 opacity-50" />

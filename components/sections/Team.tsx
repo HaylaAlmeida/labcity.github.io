@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import Image from 'next/image';
 import { coordinators, doctors, masters, undergraduates } from '@/lib/content';
+import { getAssetPath } from '@/lib/utils';
 
 export function Team() {
     // Combine all members for the carousel (or select highlights)
@@ -56,7 +57,7 @@ export function Team() {
                             <div className="w-20 h-20 mb-4 bg-slate-100 dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-800 shrink-0 overflow-hidden relative">
                                 {coord.image ? (
                                     <Image
-                                        src={coord.image}
+                                        src={getAssetPath(coord.image)}
                                         className="object-cover"
                                         alt={coord.name}
                                         fill
@@ -99,7 +100,7 @@ export function Team() {
                                     <div className="w-20 h-20 mb-4 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shrink-0 relative">
                                         {member.image && member.image !== "/images/team/avatar-placeholder.jpg" ? (
                                             <Image
-                                                src={member.image}
+                                                src={getAssetPath(member.image)}
                                                 alt={member.name}
                                                 className="object-cover"
                                                 fill

@@ -5,6 +5,7 @@ import { ArrowUpRight, ArrowRight, LayoutGrid, ChevronRight } from 'lucide-react
 import Link from 'next/link';
 import Image from 'next/image';
 import { projects } from '@/lib/content';
+import { getAssetPath } from '@/lib/utils';
 
 export function Projects() {
     // Mapping the array from lib/content to the specific layout slots
@@ -46,7 +47,7 @@ export function Projects() {
                         className="lg:col-span-7 h-[500px] lg:h-full relative rounded-3xl overflow-hidden group border border-slate-200 dark:border-slate-800 bg-slate-950"
                     >
                         <Image
-                            src={inct.image || ""}
+                            src={getAssetPath(inct.image || "")}
                             alt={inct.title}
                             fill
                             className="object-cover opacity-50 group-hover:opacity-30 transition-opacity duration-500"
@@ -81,7 +82,7 @@ export function Projects() {
                             className="flex-1 relative rounded-3xl overflow-hidden group border border-slate-200 dark:border-slate-800 h-[300px] lg:h-auto bg-slate-950"
                         >
                             <Image
-                                src={brasil.image || ""}
+                                src={getAssetPath(brasil.image || "")}
                                 alt={brasil.title}
                                 fill
                                 className="object-cover opacity-50 group-hover:opacity-30 transition-opacity duration-500"
@@ -112,7 +113,7 @@ export function Projects() {
                                 className="flex-1 relative rounded-3xl overflow-hidden group border border-slate-200 dark:border-slate-800 bg-slate-950 w-[70%]"
                             >
                                 <Image
-                                    src={mina.image || ""}
+                                    src={getAssetPath(mina.image || "")}
                                     alt={mina.title}
                                     fill
                                     className="object-cover opacity-50 group-hover:opacity-30 transition-opacity duration-500"

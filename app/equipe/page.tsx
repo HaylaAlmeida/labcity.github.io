@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { User, Award, GraduationCap, FileText, ArrowLeft } from 'lucide-react';
 import Link from 'next/link';
 import { coordinators, doctors, masters, undergraduates } from '@/lib/content';
+import { getAssetPath } from '@/lib/utils';
 
 export default function TeamPage() {
     return (
@@ -42,7 +43,7 @@ export default function TeamPage() {
                                         {/* Image or Fallback */}
                                         <div className="w-full h-full flex items-center justify-center bg-slate-200 dark:bg-slate-800 text-slate-400">
                                             {coord.image ? (
-                                                <img src={coord.image} alt={coord.name} className="w-full h-full object-cover" />
+                                                <img src={getAssetPath(coord.image)} alt={coord.name} className="w-full h-full object-cover" />
                                             ) : (
                                                 <User className="w-16 h-16" />
                                             )}
@@ -95,7 +96,7 @@ export default function TeamPage() {
                                     >
                                         <div className="w-24 h-24 mb-6 rounded-full bg-slate-100 dark:bg-slate-800 border-2 border-slate-50 dark:border-slate-950 overflow-hidden shrink-0 relative shadow-sm group-hover:shadow-md transition-shadow">
                                             {member.image && member.image !== "/images/team/avatar-placeholder.jpg" ? (
-                                                <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                                                <img src={getAssetPath(member.image)} alt={member.name} className="w-full h-full object-cover" />
                                             ) : (
                                                 <div className="w-full h-full flex items-center justify-center text-slate-300">
                                                     <User className="w-10 h-10" />
