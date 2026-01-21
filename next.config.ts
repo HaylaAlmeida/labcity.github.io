@@ -2,7 +2,10 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   output: 'export',
-  // No basePath needed for labcity.github.io (root domain deployment)
+  // basePath required because repo name (labcity.github.io) != username (HaylaAlmeida)
+  // This is treated as a Project Page, served at /labcity.github.io/
+  basePath: process.env.NODE_ENV === 'production' ? '/labcity.github.io' : '',
+  assetPrefix: process.env.NODE_ENV === 'production' ? '/labcity.github.io/' : '',
   // trailingSlash required for proper subpage routing on GitHub Pages
   trailingSlash: true,
   images: {
