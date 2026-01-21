@@ -5,6 +5,7 @@ import Autoplay from 'embla-carousel-autoplay';
 import { User, ChevronRight, FileText, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { useCallback } from 'react';
+import Image from 'next/image';
 import { coordinators, doctors, masters, undergraduates } from '@/lib/content';
 
 export function Team() {
@@ -52,9 +53,15 @@ export function Team() {
                             className="group bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-6 rounded-lg relative overflow-hidden hover:border-primary/50 transition-colors flex flex-col items-center text-center"
                         >
                             {/* Avatar */}
-                            <div className="w-20 h-20 mb-4 bg-slate-100 dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-800 shrink-0 overflow-hidden">
+                            <div className="w-20 h-20 mb-4 bg-slate-100 dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-800 shrink-0 overflow-hidden relative">
                                 {coord.image ? (
-                                    <img src={coord.image} className="w-full h-full object-cover" alt={coord.name} />
+                                    <Image
+                                        src={coord.image}
+                                        className="object-cover"
+                                        alt={coord.name}
+                                        fill
+                                        sizes="80px"
+                                    />
                                 ) : (
                                     <div className="w-full h-full flex items-center justify-center text-slate-300">
                                         <User className="w-8 h-8" />
@@ -89,9 +96,15 @@ export function Team() {
                         {allMembers.map((member: any) => (
                             <div key={member.id} className="flex-[0_0_280px] min-w-0 pl-6"> {/* Padding for spacing */}
                                 <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-6 flex flex-col items-center text-center h-full rounded-lg hover:border-primary/50 transition-colors group">
-                                    <div className="w-20 h-20 mb-4 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shrink-0">
+                                    <div className="w-20 h-20 mb-4 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shrink-0 relative">
                                         {member.image && member.image !== "/images/team/avatar-placeholder.jpg" ? (
-                                            <img src={member.image} alt={member.name} className="w-full h-full object-cover" />
+                                            <Image
+                                                src={member.image}
+                                                alt={member.name}
+                                                className="object-cover"
+                                                fill
+                                                sizes="80px"
+                                            />
                                         ) : (
                                             <div className="w-full h-full flex items-center justify-center text-slate-300">
                                                 <User className="w-8 h-8" />
