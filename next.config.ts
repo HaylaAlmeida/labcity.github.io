@@ -5,6 +5,8 @@ const nextConfig: NextConfig = {
   // basePath required for GitHub Pages subdirectory deployment
   // Remove this line if you add a custom domain
   basePath: process.env.NODE_ENV === 'production' ? '/labcity-website' : '',
+  // trailingSlash required for proper subpage routing on GitHub Pages
+  trailingSlash: true,
   images: {
     unoptimized: true,
   },
