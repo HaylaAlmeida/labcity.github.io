@@ -76,8 +76,7 @@ export function Hero() {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light"
                 >
-                    Laboratório de pesquisa aplicada. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para
-                    monitoramento e gestão urbana na Amazônia.
+                    Laboratório de pesquisa aplicada. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para monitoramento e gestão urbana na Amazônia.
                 </motion.p>
 
                 {/* Buttons - Reference Style */}
