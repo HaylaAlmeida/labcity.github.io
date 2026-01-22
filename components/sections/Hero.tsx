@@ -6,11 +6,13 @@ import Link from 'next/link';
 
 export function Hero() {
     return (
-        <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
+        <section
+            className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
 
             {/* Background - Technical Grid (PRESERVED) */}
             <div className="absolute inset-0 z-0">
-                <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
+                <div
+                    className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
 
                 {/* Animated Data Nodes (PRESERVED) */}
@@ -35,7 +37,8 @@ export function Hero() {
                 </motion.div>
             </div>
 
-            <div className="container relative z-20 px-4 md:px-6 flex flex-col items-start text-left max-w-5xl pt-32 md:pt-40">
+            <div
+                className="container relative z-20 px-4 md:px-6 flex flex-col items-start text-left max-w-5xl pt-32 md:pt-40">
 
                 {/* Badge Node */}
                 <motion.div
@@ -61,7 +64,7 @@ export function Hero() {
                 >
                     Inteligência Artificial<br />
                     para {" "}
-                    <span className="bg-gradient-to-r from-primary to-blue-300 bg-clip-text text-transparent [-webkit-background-clip:text] [-webkit-text-fill-color:transparent] selection:bg-blue-500/30">
+                    <span className="text-blue-400 md:bg-gradient-to-r md:from-primary md:to-blue-300 md:bg-clip-text md:text-transparent selection:bg-blue-500/30">
                         Cidades Inteligentes
                     </span>
                 </motion.h1>
@@ -73,7 +76,8 @@ export function Hero() {
                     transition={{ duration: 0.6, delay: 0.4 }}
                     className="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light"
                 >
-                    Laboratório de pesquisa aplicada. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para monitoramento e gestão urbana na Amazônia.
+                    Laboratório de pesquisa aplicada. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para
+                    monitoramento e gestão urbana na Amazônia.
                 </motion.p>
 
                 {/* Buttons - Reference Style */}
@@ -108,7 +112,8 @@ export function Hero() {
                     {/* Removed 10+ Projects */}
 
                     {/* Added glowing dot to decoration */}
-                    <div className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_2px_rgba(59,130,246,0.5)] animate-pulse" />
+                    <div
+                        className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_2px_rgba(59,130,246,0.5)] animate-pulse" />
                 </motion.div>
 
             </div>
