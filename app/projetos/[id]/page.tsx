@@ -104,13 +104,13 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
                             </div>
                         )}
 
-                        {/* Call to Action (Mockup) */}
-                        <div className="p-6 bg-primary/5 border border-primary/20 rounded-xl">
-                            <h3 className="font-bold text-primary mb-2">Interessado nos resultados?</h3>
-                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
+                        {/* Call to Action */}
+                        <div className="p-6 bg-primary border border-primary/20 rounded-xl">
+                            <h3 className="font-bold text-white mb-2">Interessado nos resultados?</h3>
+                            <p className="text-sm text-blue-50 dark:text-blue-100/90 mb-4">
                                 Acesse os relatórios públicos ou entre em contato com nossa equipe.
                             </p>
-                            <button className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
+                            <button className="w-full py-3 bg-white text-primary rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
                                 Entrar em Contato <ExternalLink className="w-4 h-4" />
                             </button>
                         </div>

@@ -39,14 +39,14 @@ export default async function PublicationDetailsPage({ params }: { params: Promi
                     <div className="max-w-4xl">
                         {/* Badges */}
                         <div className="flex items-center gap-3 mb-4 flex-wrap">
-                            <span className="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            <span className="bg-primary/10 text-primary whitespace-nowrap text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                                 {publication.year}
                             </span>
                             <span className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider ${publication.type === 'journal'
-                                    ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400'
-                                    : publication.type === 'conference'
-                                        ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
-                                        : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400'
+                                ? 'bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-400'
+                                : publication.type === 'conference'
+                                    ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400'
+                                    : 'bg-purple-100 dark:bg-purple-900/30 text-purple-700 dark:text-purple-400'
                                 }`}>
                                 {typeLabels[publication.type]}
                             </span>
@@ -141,9 +141,9 @@ export default async function PublicationDetailsPage({ params }: { params: Promi
                         </div>
 
                         {/* CTA */}
-                        <div className="p-6 bg-primary/5 border border-primary/20 rounded-xl">
-                            <h3 className="font-bold text-primary mb-2">Acessar Publicação</h3>
-                            <p className="text-sm text-muted-foreground mb-4">
+                        <div className="p-6 bg-primary border border-primary/20 rounded-xl">
+                            <h3 className="font-bold text-white mb-2">Acessar Publicação</h3>
+                            <p className="text-sm text-blue-50 dark:text-blue-100/90 mb-4">
                                 Leia o artigo completo no site do periódico ou conferência.
                             </p>
                             <a
@@ -155,7 +155,6 @@ export default async function PublicationDetailsPage({ params }: { params: Promi
                                 Acessar DOI <ExternalLink className="w-4 h-4" />
                             </a>
                         </div>
-
                     </div>
 
                 </div>
