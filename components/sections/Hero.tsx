@@ -60,7 +60,7 @@ export function Hero() {
                     className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 text-white leading-[1.1] max-w-4xl"
                 >
                     Inteligência Artificial<br />
-                    para <span className="text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-300">Cidades Inteligentes</span>
+                    para <span className="inline-block text-transparent bg-clip-text bg-gradient-to-r from-primary to-blue-300 decoration-clone" style={{ WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>Cidades Inteligentes</span>
                 </motion.h1>
 
                 {/* Description */}

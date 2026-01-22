@@ -13,7 +13,11 @@ export function ThemeToggle({ className }: { className?: string }) {
     }, [])
 
     if (!mounted) {
-        return <div className="w-9 h-9" /> // Placeholer to avoid layout shift
+        return (
+            <div className={cn("w-10 h-10 rounded-md border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 flex items-center justify-center", className)}>
+                <Sun className="h-[1.2rem] w-[1.2rem] text-slate-400 opacity-50" />
+            </div>
+        );
     }
 
     return (
