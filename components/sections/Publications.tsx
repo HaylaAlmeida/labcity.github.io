@@ -63,7 +63,7 @@ export function Publications() {
                                     <span className="font-mono text-xs font-bold text-primary">
                                         {pub.year}
                                     </span>
-                                    <span className="font-mono text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase">
+                                    <span className="font-mono text-[10px] font-bold text-white bg-primary px-2 py-0.5 rounded-full uppercase">
                                         {typeLabels[pub.type]}
                                     </span>
                                 </div>
@@ -79,7 +79,7 @@ export function Publications() {
                                 </p>
 
                                 {/* Venue */}
-                                <p className="font-mono text-[10px] text-primary/70 uppercase tracking-wide mb-4">
+                                <p className="font-mono text-[10px] text-slate-600 dark:text-slate-400 uppercase tracking-wide mb-4">
                                     {pub.venue}
                                 </p>
 
