@@ -5,13 +5,14 @@ import Image from 'next/image';
 import { Mail, MapPin, Phone } from 'lucide-react';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
 import { getAssetPath } from '@/lib/utils';
+import { contactInfo } from '@/lib/content';
 
 export function Footer() {
     return (
         <footer className="bg-slate-100 dark:bg-slate-950/50 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
             <div className="container mx-auto px-4 md:px-6">
 
-                {/* Institutional Supporters Bar - MOVED TO TOP */}
+                {/* Institutional Supporters Bar */}
                 <div className="border-b border-slate-200 dark:border-slate-800 pb-12 mb-12">
                     <h5 className="text-center font-mono text-xs font-bold text-muted-foreground/60 uppercase tracking-widest mb-8">
                         Apoio & Fomento
@@ -92,17 +93,17 @@ export function Footer() {
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-primary shrink-0" />
                                 <span className="text-sm">
-                                    PCT Guamá - Av. Perimetral, 2651<br />
-                                    Belém - PA, 66077-830
+                                    {contactInfo.address.street}<br />
+                                    {contactInfo.address.city} - {contactInfo.address.state}, {contactInfo.address.zipCode}
                                 </span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Mail className="w-5 h-5 text-primary shrink-0" />
-                                <span>contato@labcity.ufpa.br</span>
+                                <span>{contactInfo.email}</span>
                             </li>
                             <li className="flex items-center gap-3">
                                 <Phone className="w-5 h-5 text-primary shrink-0" />
-                                <span>+55 (91) 3201-1234</span>
+                                <span>{contactInfo.phone}</span>
                             </li>
                         </ul>
                     </div>

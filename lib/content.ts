@@ -207,3 +207,24 @@ export const publications: Publication[] = [
         tags: ["Telecomunicações", "Conectividade Rural", "Infraestrutura"]
     }
 ];
+
+// --- Contact Information ---
+export const contactInfo = {
+    address: {
+        street: "PCT Guamá - Av. Perimetral, 2651",
+        city: "Belém",
+        state: "PA",
+        zipCode: "66077-830",
+        full: "PCT Guamá - Av. Perimetral, 2651, Belém - PA, 66077-830"
+    },
+    email: "labcity@ufpa.br",
+    phone: "+55 (91) 3201-1234",
+    description: "Laboratório de pesquisas avançadas em Inteligência Artificial, Cidades Inteligentes e Internet das Coisas da Universidade Federal do Pará."
+};
+
+// --- Social Links ---
+export const socialLinks = {
+    instagram: "https://www.instagram.com/ccad_ia/",
+    linkedin: "https://linkedin.com/company/labcity-ufpa",
+    github: "https://github.com/labcity-ufpa"
+};

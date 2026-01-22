@@ -8,6 +8,7 @@ import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
+import { socialLinks } from '@/lib/content';
 
 const navItems = [
     { name: 'Sobre', href: '#sobre' },
@@ -81,7 +82,7 @@ export function Header() {
                 <div className="flex items-center gap-1">
                     {/* Social Media Icons */}
                     <a
-                        href="https://instagram.com/labcity.ufpa"
+                        href={socialLinks.instagram}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cn(
@@ -95,7 +96,7 @@ export function Header() {
                         <Instagram className="w-4 h-4" />
                     </a>
                     <a
-                        href="https://linkedin.com/company/labcity-ufpa"
+                        href={socialLinks.linkedin}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cn(
@@ -109,7 +110,7 @@ export function Header() {
                         <Linkedin className="w-4 h-4" />
                     </a>
                     <a
-                        href="https://github.com/labcity-ufpa"
+                        href={socialLinks.github}
                         target="_blank"
                         rel="noopener noreferrer"
                         className={cn(

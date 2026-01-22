@@ -1,5 +1,5 @@
 import { notFound } from 'next/navigation';
-import { projects } from '@/lib/content';
+import { projects, contactInfo } from '@/lib/content';
 import { ArrowLeft, CheckCircle2, Users, ExternalLink } from 'lucide-react';
 import Link from 'next/link';
 import { getAssetPath } from '@/lib/utils';
@@ -111,7 +111,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
                                 Acesse os relatórios públicos ou entre em contato com nossa equipe.
                             </p>
                             <a
-                                href="mailto:contato@labcity.ufpa.br"
+                                href={`mailto:${contactInfo.email}`}
                                 className="w-full py-3 bg-white text-primary rounded-lg font-bold text-sm hover:bg-slate-100 active:bg-slate-200 transition-colors flex items-center justify-center gap-2"
                             >
                                 Entrar em Contato <ExternalLink className="w-4 h-4" />
