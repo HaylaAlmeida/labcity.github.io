@@ -75,7 +75,7 @@ export function Team() {
 
                             {/* Info */}
                             <h4 className="font-bold text-sm text-foreground line-clamp-1 w-full" title={coord.name}>{coord.name}</h4>
-                            <p className="font-mono text-[10px] text-slate-600 dark:text-slate-400 uppercase tracking-wide mt-1 mb-4">{coord.focus}</p>
+                            <p className="font-mono text-[10px] text-blue-600 dark:text-blue-400 uppercase tracking-wide mt-1 mb-4">{coord.focus}</p>
 
                             {/* Lattes link */}
                             {coord.lattes && (
@@ -113,7 +113,7 @@ export function Team() {
                                         )}
                                     </div>
                                     <h4 className="font-bold text-sm text-foreground line-clamp-1 w-full" title={member.name}>{member.name}</h4>
-                                    <p className="font-mono text-[10px] text-primary/70 uppercase tracking-wide mt-1 mb-4">{member.focus}</p>
+                                    <p className="font-mono text-[10px] text-blue-600 dark:text-blue-400 uppercase tracking-wide mt-1 mb-4">{member.focus}</p>
 
                                     <Link href={member.lattes} target="_blank" className="mt-auto inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-primary uppercase tracking-wider transition-colors">
                                         Lattes <FileText className="w-3 h-3" />

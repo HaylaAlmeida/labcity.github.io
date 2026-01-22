@@ -90,7 +90,7 @@ export default function PublicacoesPage() {
                                             <div className="flex items-center gap-2 text-sm text-muted-foreground">
                                                 <span className="font-medium text-foreground/80">{pub.venue}</span>
                                                 <span>•</span>
-                                                <span className="text-primary/70">{typeLabels[pub.type]}</span>
+                                                <span className="text-blue-600 dark:text-blue-400 font-bold">{typeLabels[pub.type]}</span>
                                             </div>
                                         </div>
 

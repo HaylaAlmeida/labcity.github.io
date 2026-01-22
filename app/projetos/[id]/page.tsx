@@ -96,7 +96,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
                                 </h3>
                                 <div className="flex flex-wrap gap-2">
                                     {project.partners.map((partner) => (
-                                        <span key={partner} className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-600 dark:text-slate-300 rounded-full">
+                                        <span key={partner} className="px-3 py-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-xs font-bold text-slate-700 dark:text-slate-100 rounded-full shadow-sm">
                                             {partner}
                                         </span>
                                     ))}
@@ -107,7 +107,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
                         {/* Call to Action (Mockup) */}
                         <div className="p-6 bg-primary/5 border border-primary/20 rounded-xl">
                             <h3 className="font-bold text-primary mb-2">Interessado nos resultados?</h3>
-                            <p className="text-sm text-muted-foreground mb-4">
+                            <p className="text-sm text-slate-600 dark:text-slate-300 mb-4">
                                 Acesse os relatórios públicos ou entre em contato com nossa equipe.
                             </p>
                             <button className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2">
