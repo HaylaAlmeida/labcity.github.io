@@ -103,7 +103,7 @@ export function Publications() {
                             href="/publicacoes"
                             className="flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 p-6 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group h-full min-h-[200px]"
                         >
-                            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-all shadow-lg shadow-primary/20">
+                            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-all shadow-xs shadow-primary/20">
                                 <ArrowRight className="w-6 h-6 text-white" />
                             </div>
                             <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">

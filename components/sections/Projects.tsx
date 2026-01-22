@@ -136,7 +136,7 @@ export function Projects() {
 
                             {/* 'View All' Box (30%) */}
                             <Link href="/projetos" className="w-[30%] bg-slate-200 dark:bg-slate-800 rounded-3xl flex flex-col items-center justify-center p-2 hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors group cursor-pointer text-center">
-                                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-all shadow-lg shadow-primary/20">
+                                <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-all shadow-xs shadow-primary/20">
                                     <ArrowRight className="w-6 h-6 text-white" />
                                 </div>
                                 <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
