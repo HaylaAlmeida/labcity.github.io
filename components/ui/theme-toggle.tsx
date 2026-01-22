@@ -14,8 +14,11 @@ export function ThemeToggle({ className }: { className?: string }) {
 
     if (!mounted) {
         return (
-            <div className={cn("w-10 h-10 rounded-md border border-slate-200 dark:border-slate-800 bg-slate-100 dark:bg-slate-950 flex items-center justify-center", className)}>
-                <Sun className="h-[1.2rem] w-[1.2rem] text-slate-400 opacity-50" />
+            <div className={cn(
+                "w-10 h-10 rounded-md flex items-center justify-center text-slate-400 bg-transparent",
+                className
+            )}>
+                <Sun className="h-[1.2rem] w-[1.2rem] opacity-50" />
             </div>
         );
     }
@@ -49,7 +52,7 @@ export function ThemeToggle({ className }: { className?: string }) {
                 transition={{ duration: 0.2 }}
                 className="absolute inset-0 flex items-center justify-center"
             >
-                <Moon className="h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-slate-300" />
+                <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100 text-slate-300" />
             </motion.div>
             <span className="sr-only">Alternar tema</span>
         </button>
