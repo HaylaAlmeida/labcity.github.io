@@ -6,13 +6,10 @@ export function cn(...inputs: ClassValue[]) {
 }
 
 /**
- * Retorna o caminho correto para assets estáticos,
- * considerando o basePath para GitHub Pages em produção.
- * Usa NEXT_PUBLIC_BASE_PATH que é definido em tempo de build.
+ * Retorna o caminho para assets estáticos.
+ * O basePath é injetado automaticamente pelo GitHub Actions durante o build.
  */
 export function getAssetPath(path: string): string {
-  const basePath = process.env.NEXT_PUBLIC_BASE_PATH || '';
-  // Remove leading slash if present to avoid double slashes
-  const cleanPath = path.startsWith('/') ? path : `/${path}`;
-  return `${basePath}${cleanPath}`;
+  // Apenas garante que o path começa com /
+  return path.startsWith('/') ? path : `/${path}`;
 }
