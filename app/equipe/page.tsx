@@ -51,7 +51,7 @@ export default function TeamPage() {
                                     </div>
                                     <div className="text-center sm:text-left flex-1">
                                         <div className="flex items-center justify-center sm:justify-start gap-3 mb-3">
-                                            <span className="font-mono text-xs bg-primary/10 text-primary px-3 py-1 rounded-full">{coord.id}</span>
+                                            <span className="font-mono text-xs bg-primary text-white px-3 py-1 rounded-full">{coord.id}</span>
                                             <span className="font-mono text-xs text-muted-foreground uppercase tracking-wide">{coord.role}</span>
                                         </div>
                                         <h2 className="text-2xl font-bold text-foreground mb-2">{coord.name}</h2>

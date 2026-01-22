@@ -39,7 +39,7 @@ export default async function PublicationDetailsPage({ params }: { params: Promi
                     <div className="max-w-4xl">
                         {/* Badges */}
                         <div className="flex items-center gap-3 mb-4 flex-wrap">
-                            <span className="bg-primary/10 text-primary whitespace-nowrap text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                            <span className="text-white bg-primary whitespace-nowrap text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                                 {publication.year}
                             </span>
                             <span className={`text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider ${publication.type === 'journal'
@@ -150,13 +150,12 @@ export default async function PublicationDetailsPage({ params }: { params: Promi
                                 href={publication.doi}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full py-3 bg-primary text-primary-foreground rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+                                className="w-full py-3 bg-white text-primary rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
                             >
                                 Acessar DOI <ExternalLink className="w-4 h-4" />
                             </a>
                         </div>
                     </div>
-
                 </div>
             </div>
         </main>

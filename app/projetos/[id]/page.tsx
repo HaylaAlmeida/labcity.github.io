@@ -32,7 +32,7 @@ export default async function ProjectDetailsPage({ params }: { params: Promise<{
                     <div className="flex flex-col md:flex-row gap-12 items-start">
                         <div className="flex-1">
                             <div className="flex items-center gap-3 mb-4">
-                                <span className="bg-primary/10 text-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                                <span className="text-white bg-primary text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
                                     {project.category}
                                 </span>
                                 <span className="bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
