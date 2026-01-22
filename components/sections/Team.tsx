@@ -71,11 +71,11 @@ export function Team() {
                             </div>
 
                             {/* Badge */}
-                            <span className="font-mono text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full mb-2">COORDENAÇÃO</span>
+                            <span className="font-mono text-[10px] font-bold text-white bg-primary px-2 py-0.5 rounded-full mb-2">COORDENAÇÃO</span>
 
                             {/* Info */}
                             <h4 className="font-bold text-sm text-foreground line-clamp-1 w-full" title={coord.name}>{coord.name}</h4>
-                            <p className="font-mono text-[10px] text-primary/70 uppercase tracking-wide mt-1 mb-4">{coord.focus}</p>
+                            <p className="font-mono text-[10px] text-slate-600 dark:text-slate-400 uppercase tracking-wide mt-1 mb-4">{coord.focus}</p>
 
                             {/* Lattes link */}
                             {coord.lattes && (

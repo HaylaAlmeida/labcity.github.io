@@ -103,11 +103,11 @@ export function Publications() {
                             href="/publicacoes"
                             className="flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 p-6 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group h-full min-h-[200px]"
                         >
-                            <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary group-hover:scale-110 transition-all">
-                                <ArrowRight className="w-5 h-5 text-primary group-hover:text-white transition-colors" />
+                            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-all shadow-lg shadow-primary/20">
+                                <ArrowRight className="w-6 h-6 text-white" />
                             </div>
-                            <span className="font-mono text-xs font-bold text-primary uppercase tracking-wider">
-                                Ver Todas
+                            <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                                Ver Todos
                             </span>
                             <span className="text-sm text-muted-foreground mt-1">
                                 {publications.length} publicações
@@ -116,7 +116,7 @@ export function Publications() {
                     </motion.div>
                 </div>
 
-                {/* Mobile CTA */}
+                {/* Mobile CTA
                 <div className="mt-8 text-center md:hidden">
                     <Link
                         href="/publicacoes"
@@ -124,7 +124,7 @@ export function Publications() {
                     >
                         Ver Todas as Publicações <ArrowRight className="w-4 h-4" />
                     </Link>
-                </div>
+                </div> */}
 
             </div>
         </section>
