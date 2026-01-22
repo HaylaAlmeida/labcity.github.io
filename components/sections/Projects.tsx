@@ -19,7 +19,7 @@ export function Projects() {
             <div className="container mx-auto px-4 md:px-6">
 
                 {/* Header */}
-                <div className="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
                             Portfólio de Inovação
@@ -31,7 +31,7 @@ export function Projects() {
                             Conheça as iniciativas que estão transformando a Amazônia e o Brasil através da Inteligência Artificial e IoT.
                         </p>
                     </div>
-                    <Link href="/projetos" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider ml-4">
+                    <Link href="/projetos" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
                         [ Ver Todos os Projetos ] <ChevronRight className="w-4 h-4" />
                     </Link>
                 </div>

@@ -28,22 +28,21 @@ export function Team() {
         <section id="equipe" className="py-16 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
             <div className="container mx-auto px-4 md:px-6">
 
-                {/* Header */}
-                <div className="mb-12 space-y-2">
-                    {/* Linha 1: Label + Link */}
-                    <div className="flex justify-between items-center">
-                        <span className="font-mono text-xs font-bold text-primary uppercase">CAPITAL HUMANO</span>
-                    </div>
-                    {/* Linha 2: Título */}
-
-                    <div className="flex justify-between items-center">
-                        <h2 className="text-3xl md:text-4xl font-bold text-foreground tracking-tight">
+                <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
+                    <div className="max-w-2xl">
+                        <span className="font-mono  text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
+                            CAPITAL HUMANO
+                        </span>
+                        <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
                             Nossa Equipe
                         </h2>
-                        <Link href="/equipe" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
-                            [ Ver Todos os Integrantes ] <ChevronRight className="w-4 h-4" />
-                        </Link>
+                        <p className="text-lg text-muted-foreground leading-relaxed">
+                            Conheça os membros que compõem a equipe do LabCity.
+                        </p>
                     </div>
+                    <Link href="/equipe" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
+                        [ Ver Todos os Integrantes ] <ChevronRight className="w-4 h-4" />
+                    </Link>
                 </div>
 
                 {/* Coordinators Grid */}
