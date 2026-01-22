@@ -146,11 +146,12 @@ export default async function PublicationDetailsPage({ params }: { params: Promi
                             <p className="text-sm text-blue-50 dark:text-blue-100/90 mb-4">
                                 Leia o artigo completo no site do periódico ou conferência.
                             </p>
+
                             <a
                                 href={publication.doi}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="w-full py-3 bg-white text-primary rounded-lg font-bold text-sm hover:bg-primary/90 transition-colors flex items-center justify-center gap-2"
+                                className="w-full py-3 bg-white text-primary rounded-lg font-bold text-sm hover:bg-slate-100 active:bg-slate-200 transition-colors flex items-center justify-center gap-2"
                             >
                                 Acessar DOI <ExternalLink className="w-4 h-4" />
                             </a>

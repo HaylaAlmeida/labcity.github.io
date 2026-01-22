@@ -1,6 +1,5 @@
 import { Leaf, Activity, GraduationCap, Wifi } from 'lucide-react';
 
-// Base path para GitHub Pages - será aplicado em tempo de build
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
 export const researchAreas = [
@@ -42,8 +41,8 @@ export const coordinators = [
         image: `${BASE_PATH}/images/team/renato.png`
     },
     {
-        name: "Profa. Dra. Evelin Helena Silva Cardoso",
-        role: "Coordenador",
+        name: "Profa. Dra. Evelin Helena Cardoso Gomes",
+        role: "Coordenadora",
         id: "COORD-02",
         focus: "IA & Cidades Inteligentes",
         lattes: "http://lattes.cnpq.br/5388902706205997",
@@ -53,7 +52,7 @@ export const coordinators = [
 
 export const doctors = [
     { name: "Profa. Dra. Jasmine Priscyla Leite de Araújo", id: "DOC-01", focus: "Internet do Futuro", lattes: "http://lattes.cnpq.br/4001747699670004", image: `${BASE_PATH}/images/team/jasmine.png` },
-    { name: "Dr. Carlos André de Mattos Teixeira", id: "DOC-02", focus: "IA & Machine Learning", lattes: "http://lattes.cnpq.br/5642339206700236", image: `${BASE_PATH}/images/team/carlosandre.png` },
+    { name: "Dr. Carlos André de Mattos Teixeira", id: "DOC-02", focus: "IA & Machine Learning", lattes: "http://lattes.cnpq.br/5642339206700236", image: `${BASE_PATH}/images/team/carlos-andre.png` },
 ];
 
 // --- Level 3: Masters ---

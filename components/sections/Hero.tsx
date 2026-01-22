@@ -108,9 +108,6 @@ export function Hero() {
                     transition={{ delay: 0.8, duration: 1 }}
                     className="mt-20 pt-8 border-t border-slate-800/50 w-full flex items-center gap-12"
                 >
-                    {/* Removed 10+ Projects */}
-
-                    {/* Added glowing dot to decoration */}
                     <div
                         className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_2px_rgba(59,130,246,0.5)] animate-pulse" />
                 </motion.div>
