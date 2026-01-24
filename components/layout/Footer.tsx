@@ -20,7 +20,7 @@ export function Footer() {
                     <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
 
                         {/* CNPq Logo */}
-                        <div className="relative w-32 h-16 opacity-30 dark:opacity-50">
+                        <div className="relative w-32 h-16 opacity-45 dark:opacity-60">
                             <Image
                                 src={getAssetPath('/images/cnpq-logo.png')}
                                 alt="CNPq"
@@ -31,7 +31,7 @@ export function Footer() {
                         </div>
 
                         {/* CAPES Logo - Adjusted gray */}
-                        <div className="relative w-28 h-12 opacity-70 grayscale dark:opacity-100">
+                        <div className="relative w-28 h-12 opacity-100 grayscale dark:opacity-100">
                             <Image
                                 src={getAssetPath('/images/capes-logo.png')}
                                 alt="CAPES"
@@ -42,9 +42,18 @@ export function Footer() {
                         </div>
 
                         {/* Governo Federal Logo - Invert in Dark Mode to make text white */}
-                        <div className="relative w-40 h-16 opacity-70 grayscale dark:invert dark:opacity-50">
+                        <div className="relative w-40 h-16 opacity-70 grayscale dark:invert dark:opacity-70">
                             <Image
                                 src={getAssetPath('/images/governo-logo.png')}
+                                alt="Governo Federal"
+                                fill
+                                className="object-contain"
+                                sizes="160px"
+                            />
+                        </div>
+                        <div className="relative w-40 h-16 opacity-75 grayscale dark:invert dark:opacity-70">
+                            <Image
+                                src={getAssetPath('/images/Logo-PMCC-Horizontal.png')}
                                 alt="Governo Federal"
                                 fill
                                 className="object-contain"
@@ -80,9 +89,9 @@ export function Footer() {
                     <div>
                         <h4 className="font-bold text-foreground mb-4">Links Úteis</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="#" className="hover:text-primary transition-colors">Portal da Transparência</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Acesso à Informação</Link></li>
-                            <li><Link href="#" className="hover:text-primary transition-colors">Editais Abertos</Link></li>
+                            <li><Link href="https://portaldatransparencia.gov.br/" className="hover:text-primary transition-colors">Portal da Transparência</Link></li>
+                            <li><Link href="https://www.gov.br/acessoainformacao/pt-br" className="hover:text-primary transition-colors">Acesso à Informação</Link></li>
+                            {/*<li><Link href="#" className="hover:text-primary transition-colors">Editais Abertos</Link></li>*/}
                             <li><Link href="http://lattes.cnpq.br/" target="_blank" className="hover:text-primary transition-colors">Plataforma Lattes</Link></li>
                         </ul>
                     </div>

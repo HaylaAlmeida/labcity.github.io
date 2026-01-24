@@ -33,7 +33,7 @@ export const researchAreas = [
 export const coordinators = [
     {
         name: "Prof. Dr. Carlos Renato Lisboa Francês",
-        role: "Coordenador Geral",
+        role: "Coordenador",
         id: "COORD-01",
         focus: "IA & Cidades Inteligentes",
         lattes: "http://lattes.cnpq.br/7458287841862567",
@@ -41,34 +41,70 @@ export const coordinators = [
         image: `${BASE_PATH}/images/team/renato.png`
     },
     {
-        name: "Profa. Dra. Evelin Helena Cardoso Gomes",
+        name: "Profa. Dra. Jasmine Priscyla Leite de Araújo",
         role: "Coordenadora",
         id: "COORD-02",
+        focus: "Internet do Futuro",
+        lattes: "http://lattes.cnpq.br/4001747699670004",
+        image: `${BASE_PATH}/images/team/jasmine.png`
+    },
+    {
+        name: "Profa. Dra. Evelin Helena Cardoso Gomes",
+        role: "Coordenadora",
+        id: "COORD-03",
         focus: "IA & Cidades Inteligentes",
         lattes: "http://lattes.cnpq.br/5388902706205997",
         image: `${BASE_PATH}/images/team/evelin.png`
-    }
+    },
 ];
 
 export const doctors = [
-    { name: "Profa. Dra. Jasmine Priscyla Leite de Araújo", id: "DOC-01", focus: "Internet do Futuro", lattes: "http://lattes.cnpq.br/4001747699670004", image: `${BASE_PATH}/images/team/jasmine.png` },
-    { name: "Dr. Carlos André de Mattos Teixeira", id: "DOC-02", focus: "IA & Machine Learning", lattes: "http://lattes.cnpq.br/5642339206700236", image: `${BASE_PATH}/images/team/carlos-andre.png` },
+
+    {
+        name: "Dr. Carlos André de Mattos Teixeira",
+        id: "DOC-01", focus: "IA & Machine Learning",
+        lattes: "http://lattes.cnpq.br/5642339206700236",
+        image: `${BASE_PATH}/images/team/carlos-andre.png`
+    },
 ];
 
 // --- Level 3: Masters ---
 export const masters = [
-    { name: "Pesquisador Mestrando A", id: "MSC-01", focus: "Ciência de Dados", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` },
-    { name: "Pesquisador Mestrando B", id: "MSC-02", focus: "Visão Computacional", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` },
-    { name: "Pesquisador Mestrando C", id: "MSC-03", focus: "Analítica Urbana", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` },
+    { name: "MSc. Sidnir Carlos Baia Ferreira", id: "MSC-01", focus: "Machine Learning", lattes: "http://lattes.cnpq.br/6370943872854143", image: `${BASE_PATH}/images/team/sidnir.png` },
+    { name: "MSc. Romário da Costa Silva", id: "MSC-02", focus: "Visão Computacional", lattes: "http://lattes.cnpq.br/0524066960662417", image: `${BASE_PATH}/images/team/romario.png` },
+    { name: "MSc. Thalita Ayass de Souza", id: "MSC-03", focus: "Visão Computacional", lattes: "http://lattes.cnpq.br/6909436473995750", image: `${BASE_PATH}/images/team/thalita.png` },
     { name: "Pesquisador Mestrando D", id: "MSC-04", focus: "Sistemas Embarcados", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` }
 ];
 
 // --- Level 4: Scientific Initiation (IC / Graduação) ---
 export const undergraduates = [
-    { name: "Hayla Luiza da Costa Almeida", id: "IC-01", focus: "Fullstack", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` },
-    { name: "Gabriel Xavier ", id: "IC-02", focus: "Frontend & DevOps", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` },
-    { name: "Gabriel Ribeiro", id: "IC-03", focus: "DevOps & Cloud", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` },
-    { name: "Aluno de Iniciação D", id: "IC-04", focus: "IA & Modelos", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` }
+    {
+        name: "Hayla Luiza da Costa Almeida",
+        id: "IC-01",
+        focus: "Full Stack",
+        lattes: "http://lattes.cnpq.br/2925803687849450",
+        image: `${BASE_PATH}/images/team/hayla.png`
+    },
+    {
+        name: "Gabriel Xavier Vieira do Nascimento",
+        id: "IC-02",
+        focus: "Full Cycle",
+        lattes: "http://lattes.cnpq.br/0320888918838455",
+        image: `${BASE_PATH}/images/team/xavier.png` },
+    {
+        name: "Gabriel Ribeiro",
+        id: "IC-03",
+        focus: "Frontend",
+        lattes: "#",
+        image: `${BASE_PATH}/images/team/avatar-placeholder.jpg`
+    },
+    {
+        name: "Aluno de Iniciação D",
+        id: "IC-04",
+        focus: "IA & Modelos",
+        lattes: "#",
+        image: `${BASE_PATH}/images/team/avatar-placeholder.jpg`
+    }
 ];
 
 // --- Projects (Projects.tsx) ---
@@ -211,14 +247,14 @@ export const publications: Publication[] = [
 // --- Contact Information ---
 export const contactInfo = {
     address: {
-        street: "PCT Guamá - Av. Perimetral, 2651",
+        street: "Centro de Computação de Alto Desempenho e Inteligência Artificial - Universitário",
         city: "Belém",
         state: "PA",
         zipCode: "66077-830",
-        full: "PCT Guamá - Av. Perimetral, 2651, Belém - PA, 66077-830"
+        full: "R. Bettina Ferro de Souza (Portão 4) – Universitário, Belém – PA, 66075-110"
     },
     email: "labcity@ufpa.br",
-    phone: "+55 (91) 3201-1234",
+    phone: "+55 (91) 3201-7651",
     description: "Laboratório de pesquisas avançadas em Inteligência Artificial, Cidades Inteligentes e Internet das Coisas da Universidade Federal do Pará."
 };
 

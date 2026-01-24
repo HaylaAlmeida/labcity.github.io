@@ -167,12 +167,6 @@ export const publications: Publication[] = [
 | Imagens de projetos | **JPG** ou **WebP** | Bom equilíbrio qualidade/tamanho |
 | Logos e ícones | **SVG** ou **PNG** | Vetorial = escalável sem perda |
 
-### Dimensões Recomendadas
-
-- **Fotos da equipe:** `400x400px` (quadrada, 1:1)
-- **Imagens de projetos:** `800x450px` (widescreen, 16:9)
-- **Imagens grandes:** máximo `1200px` de largura
-
 ### Otimização (Importante!)
 
 Antes de adicionar imagens, **sempre otimize** para reduzir o tempo de carregamento:
@@ -185,11 +179,6 @@ Antes de adicionar imagens, **sempre otimize** para reduzir o tempo de carregame
    - Fotos da equipe: **< 100KB**
    - Imagens de projetos: **< 200KB**
 
-3. **Conversão para WebP** (opcional, mas recomendado):
-   ```bash
-   # Se tiver o cwebp instalado
-   cwebp -q 80 imagem.jpg -o imagem.webp
-   ```
 
 ### Onde Colocar as Imagens
 
