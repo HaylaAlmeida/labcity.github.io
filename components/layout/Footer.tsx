@@ -31,12 +31,12 @@ export function Footer() {
                         </div>
 
                         {/* CAPES Logo - Adjusted gray */}
-                        <div className="relative w-28 h-12 opacity-100 grayscale dark:opacity-100">
+                        <div className="relative w-28 h-12 opacity-80 grayscale dark:opacity-90">
                             <Image
                                 src={getAssetPath('/images/capes-logo.png')}
                                 alt="CAPES"
                                 fill
-                                className="object-contain invert dark:invert-0"
+                                className="object-contain dark:invert-0"
                                 sizes="112px"
                             />
                         </div>

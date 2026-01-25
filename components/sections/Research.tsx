@@ -38,9 +38,9 @@ export function Research() {
                                 {area.description}
                             </p>
 
-                            <div className="flex items-center text-primary text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">
-                                Ver detalhes <span className="ml-1">&rarr;</span>
-                            </div>
+                            {/*<div className="flex items-center text-primary text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">*/}
+                            {/*    Ver detalhes <span className="ml-1">&rarr;</span>*/}
+                            {/*</div>*/}
                         </motion.div>
                     ))}
                 </div>
