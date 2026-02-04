@@ -93,7 +93,7 @@ export function ResearchDetailed({ researchAreas, projects }: ResearchDetailedPr
                                                 <Link
                                                     key={project.id}
                                                     href={`/projetos/${project.slug}`}
-                                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 hover:border-primary/50 hover:bg-primary/5 hover:text-primary transition-all duration-300"
+                                                    className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-700/50 rounded-lg text-xs font-bold text-slate-600 dark:text-slate-400 hover:border-primary/50 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-primary transition-all duration-300"
                                                 >
                                                     {project.title}
                                                 </Link>
@@ -106,6 +106,6 @@ export function ResearchDetailed({ researchAreas, projects }: ResearchDetailedPr
                     );
                 })}
             </motion.div>
-        </section>
+        </section >
     );
 }
