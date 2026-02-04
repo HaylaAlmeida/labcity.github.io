@@ -1,4 +1,4 @@
-import { Leaf, Activity, GraduationCap, Wifi } from 'lucide-react';
+// import { Leaf, Activity, GraduationCap, Wifi } from 'lucide-react'; // Icons are now referenced by string name
 
 const BASE_PATH = process.env.NEXT_PUBLIC_BASE_PATH || '';
 
@@ -6,25 +6,25 @@ export const researchAreas = [
     {
         title: "Monitoramento Ambiental",
         description: "Sistemas de IoT e IA para preservação da biodiversidade e regulação climática na Amazônia.",
-        icon: Leaf,
+        icon: "Leaf",
         code: "RES-AMB"
     },
     {
         title: "Saúde Pública & IA",
         description: "Diagnóstico assistido por Deep Learning e gestão de dados epidemiológicos (Saúde 4.0).",
-        icon: Activity,
+        icon: "Activity",
         code: "RES-SAU"
     },
     {
         title: "Educação & Letramento",
         description: "Ferramentas digitais para inclusão tecnológica e transformação do ensino na região.",
-        icon: GraduationCap,
+        icon: "GraduationCap",
         code: "RES-EDU"
     },
     {
         title: "Infraestrutura & Nuvem",
         description: "Computação de alto desempenho, redes de telecomunicações e conectividade rural.",
-        icon: Wifi,
+        icon: "Wifi",
         code: "RES-INF"
     }
 ];
