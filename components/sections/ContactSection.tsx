@@ -23,7 +23,7 @@ export function ContactSection() {
 
                         <div className="space-y-8">
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center shrink-0">
                                     <MapPin className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
@@ -36,7 +36,7 @@ export function ContactSection() {
                             </div>
 
                             <div className="flex items-start gap-4">
-                                <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                                <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/40 flex items-center justify-center shrink-0">
                                     <Mail className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
