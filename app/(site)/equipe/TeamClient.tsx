@@ -4,20 +4,9 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { User, FileText, ArrowLeft, Mail, Linkedin } from 'lucide-react';
 import Link from 'next/link';
-import type { TeamData } from '@/lib/data/team';
+import type { TeamData, TeamMember } from '@/lib/data/team';
 import { getAssetPath } from '@/lib/utils';
-import { cn } from '@/lib/utils'; // Assuming cn exists, if not I'll standard class string
-
-type TeamMember = {
-  id: string;
-  name: string;
-  focus: string;
-  lattes: string;
-  email?: string;
-  linkedin?: string;
-  image: string;
-  role?: string;
-};
+import { cn } from '@/lib/utils';
 
 export default function TeamClient({ team }: { team: TeamData }) {
   const [activeTab, setActiveTab] = useState('all');
