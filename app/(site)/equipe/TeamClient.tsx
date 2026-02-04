@@ -111,7 +111,7 @@ export default function TeamClient({ team }: { team: TeamData }) {
                         <Link
                           href={coord.lattes}
                           target="_blank"
-                          className="inline-flex items-center gap-2 px-4 py-2 bg-primary/10 text-primary hover:bg-primary hover:text-primary-foreground rounded-lg font-bold text-sm transition-colors"
+                          className="inline-flex items-center gap-2 px-4 py-2 bg-blue-100 dark:bg-blue-900/40 text-primary hover:bg-primary hover:text-primary-foreground rounded-lg font-bold text-sm transition-colors"
                         >
                           <FileText className="w-4 h-4" /> Lattes
                         </Link>

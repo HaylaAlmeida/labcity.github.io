@@ -122,7 +122,7 @@ export default async function ResearchLinePage({ params }: { params: Promise<{ s
                                             className="block p-4 bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary/50 transition-colors group"
                                         >
                                             <div className="flex items-center justify-between mb-2">
-                                                <span className="text-[10px] font-bold text-primary bg-primary/10 px-2 py-0.5 rounded-full uppercase">
+                                                <span className="text-[10px] font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40 px-2 py-0.5 rounded-full uppercase">
                                                     {publication.year}
                                                 </span>
                                                 <span className="text-[10px] text-muted-foreground uppercase tracking-wider truncate max-w-[100px]">
