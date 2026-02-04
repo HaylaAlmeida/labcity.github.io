@@ -72,7 +72,7 @@ export function ContactSection() {
                             allowFullScreen
                             loading="lazy"
                             referrerPolicy="no-referrer-when-downgrade"
-                            className="absolute inset-0 transition-all duration-500"
+                            className="absolute inset-0 transition-all duration-500 dark:invert-[0.9] dark:hue-rotate-180 dark:contrast-[1.1] dark:brightness-[0.8] dark:saturate-[0.3]"
                         />
                     </div>
 
