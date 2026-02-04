@@ -7,14 +7,7 @@ import Link from 'next/link';
 import { useCallback } from 'react';
 import Image from 'next/image';
 import { getAssetPath } from '@/lib/utils';
-
-export type TeamMember = {
-    id: string;
-    name: string;
-    focus: string;
-    lattes: string;
-    image?: string;
-};
+import { TeamMember } from '@/lib/data/team';
 
 export type Coordinator = TeamMember & {
     role: string;

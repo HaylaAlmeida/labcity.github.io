@@ -7,15 +7,27 @@ import {
   undergraduates as localUndergraduates,
 } from '@/lib/content';
 
-export type TeamMember = (typeof localCoordinators)[number] | (typeof localDoctors)[number];
+export interface TeamMember {
+  id: string;
+  name: string;
+  role?: string;
+  focus: string;
+  lattes: string;
+  email?: string;
+  linkedin?: string;
+  image?: string;
+}
+
+export interface Coordinator extends TeamMember {
+  role: string;
+}
 
 export type TeamData = {
-  coordinators: typeof localCoordinators;
-  doctors: typeof localDoctors;
-  masters: typeof localMasters;
-
-  bachelors: typeof localBachelors;
-  undergraduates: typeof localUndergraduates;
+  coordinators: Coordinator[];
+  doctors: TeamMember[];
+  masters: TeamMember[];
+  bachelors: TeamMember[];
+  undergraduates: TeamMember[];
 };
 
 const TAG = 'sanity:team';
@@ -24,10 +36,9 @@ export async function getTeam(): Promise<TeamData> {
   console.log('[Sanity] Check Enabled:', isSanityEnabled());
   if (!isSanityEnabled()) {
     return {
-      coordinators: localCoordinators,
+      coordinators: localCoordinators as Coordinator[],
       doctors: localDoctors,
       masters: localMasters,
-
       bachelors: localBachelors,
       undergraduates: localUndergraduates,
     };
@@ -67,7 +78,6 @@ export async function getTeam(): Promise<TeamData> {
       coordinators: localCoordinators,
       doctors: localDoctors,
       masters: localMasters,
-
       bachelors: localBachelors,
       undergraduates: localUndergraduates,
     };
@@ -78,13 +88,12 @@ export async function getTeam(): Promise<TeamData> {
       coordinators: localCoordinators,
       doctors: localDoctors,
       masters: localMasters,
-
       bachelors: localBachelors,
       undergraduates: localUndergraduates,
     };
   }
 
-  const coordinators = people
+  const coordinators: Coordinator[] = people
     .filter((p) => p.level === 'coordinator')
     .map((p) => ({
       id: p.id,
@@ -97,7 +106,7 @@ export async function getTeam(): Promise<TeamData> {
       image: p.image || '/images/team/avatar-placeholder.jpg',
     }));
 
-  const doctors = people
+  const doctors: TeamMember[] = people
     .filter((p) => p.level === 'doctor')
     .map((p) => ({
       id: p.id,
@@ -109,7 +118,7 @@ export async function getTeam(): Promise<TeamData> {
       image: p.image || '/images/team/avatar-placeholder.jpg',
     }));
 
-  const masters = people
+  const masters: TeamMember[] = people
     .filter((p) => p.level === 'master')
     .map((p) => ({
       id: p.id,
@@ -123,7 +132,7 @@ export async function getTeam(): Promise<TeamData> {
 
 
 
-  const bachelors = people
+  const bachelors: TeamMember[] = people
     .filter((p) => p.level === 'bachelor')
     .map((p) => ({
       id: p.id,
@@ -137,7 +146,7 @@ export async function getTeam(): Promise<TeamData> {
 
 
 
-  const undergraduates = people
+  const undergraduates: TeamMember[] = people
     .filter((p) => p.level === 'undergraduate')
     .map((p) => ({
       id: p.id,

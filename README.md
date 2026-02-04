@@ -42,11 +42,15 @@ O site utiliza **Sanity CMS** para gerenciamento de conteúdo dinâmico. Isso pe
 
 ### 1. Acessando o Painel Administrativo
 
-1. Inicie o projeto localmente:
-   ```bash
-   npm run dev
-   ```
+Você pode acessar o painel tanto localmente quanto na produção (Vercel).
+
+**Local:**
+1. Inicie o projeto `npm run dev`
 2. Acesse: [http://localhost:3000/studio](http://localhost:3000/studio)
+
+**Produção (Online):**
+- Acesse: `https://seu-site.vercel.app/studio`
+- (No seu caso: [https://labcity-github-io.vercel.app/studio](https://labcity-github-io.vercel.app/studio))
 
 Você verá o painel do Sanity (Sanity Studio). Faça login com sua conta configurada.
 
