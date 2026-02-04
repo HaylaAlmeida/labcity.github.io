@@ -3,8 +3,44 @@
 import { motion } from 'framer-motion';
 import { ArrowRight, Cpu } from 'lucide-react';
 import Link from 'next/link';
+import { useId, useMemo } from 'react';
+
+type DataNode = {
+    top: string;
+    left: string;
+    duration: number;
+};
+
+function hashStringToUint32(input: string): number {
+    let h = 2166136261;
+    for (let i = 0; i < input.length; i++) {
+        h ^= input.charCodeAt(i);
+        h = Math.imul(h, 16777619);
+    }
+    return h >>> 0;
+}
+
+function mulberry32(seed: number) {
+    return function rand() {
+        let t = (seed += 0x6D2B79F5);
+        t = Math.imul(t ^ (t >>> 15), t | 1);
+        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
+        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+    };
+}
 
 export function Hero() {
+    const seedId = useId();
+    const nodes = useMemo<DataNode[]>(() => {
+        const seed = hashStringToUint32(seedId);
+        const rand = mulberry32(seed);
+        return Array.from({ length: 6 }, () => ({
+            top: `${rand() * 80 + 10}%`,
+            left: `${rand() * 80 + 10}%`,
+            duration: 3 + rand() * 2,
+        }));
+    }, [seedId]);
+
     return (
         <section
             className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
@@ -22,16 +58,16 @@ export function Hero() {
                     transition={{ duration: 2 }}
                     className="absolute inset-0"
                 >
-                    {[...Array(6)].map((_, i) => (
+                    {nodes.map((node, i) => (
                         <motion.div
                             key={i}
                             className="absolute w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_2px_rgba(59,130,246,0.5)]"
                             style={{
-                                top: `${Math.random() * 80 + 10}%`,
-                                left: `${Math.random() * 80 + 10}%`
+                                top: node.top,
+                                left: node.left
                             }}
                             animate={{ opacity: [0.2, 1, 0.2] }}
-                            transition={{ duration: 3 + Math.random() * 2, repeat: Infinity }}
+                            transition={{ duration: node.duration, repeat: Infinity }}
                         />
                     ))}
                 </motion.div>
@@ -87,14 +123,14 @@ export function Hero() {
                     className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
                 >
                     <Link
-                        href="#projetos"
+                        href="/projetos"
                         className="inline-flex items-center justify-center h-14 px-8 rounded bg-blue-500 hover:bg-blue-600 text-white font-extrabold transition-all shadow-lg hover:shadow-blue-500/25 text-sm tracking-wider uppercase"
                     >
                         Ver Projetos
                         <ArrowRight className="ml-2 w-4 h-4 stroke-[3]" />
                     </Link>
                     <Link
-                        href="#sobre"
+                        href="/sobre"
                         className="inline-flex items-center justify-center h-14 px-8 rounded border border-slate-700 hover:border-slate-600 bg-slate-900/50 hover:bg-slate-800 text-slate-300 hover:text-white transition-all text-sm tracking-wider uppercase font-bold"
                     >
                         Sobre Labcity

@@ -37,6 +37,8 @@ export const coordinators = [
         id: "COORD-01",
         focus: "IA & Cidades Inteligentes",
         lattes: "http://lattes.cnpq.br/7458287841862567",
+        email: "rfranc@ufpa.br",
+        linkedin: "https://www.linkedin.com/in/carlos-renato-lisboa-francês-1b6b3b21/",
         // specs: ["Bolsista CNPq 1-C", "Doutor (USP)"],
         image: `${BASE_PATH}/images/team/renato.png`
     },
@@ -46,6 +48,8 @@ export const coordinators = [
         id: "COORD-02",
         focus: "Internet do Futuro",
         lattes: "http://lattes.cnpq.br/4001747699670004",
+        email: "jasmine@ufpa.br",
+        linkedin: "#",
         image: `${BASE_PATH}/images/team/jasmine.png`
     },
     {
@@ -54,6 +58,8 @@ export const coordinators = [
         id: "COORD-03",
         focus: "IA & Cidades Inteligentes",
         lattes: "http://lattes.cnpq.br/5388902706205997",
+        email: "evelin@ufpa.br",
+        linkedin: "#",
         image: `${BASE_PATH}/images/team/evelin.png`
     },
 ];
@@ -64,17 +70,25 @@ export const doctors = [
         name: "Dr. Carlos André de Mattos Teixeira",
         id: "DOC-01", focus: "IA & Machine Learning",
         lattes: "http://lattes.cnpq.br/5642339206700236",
+        email: "carlos.teixeira@ufpa.br",
+        linkedin: "#",
         image: `${BASE_PATH}/images/team/carlos-andre.png`
     },
 ];
 
 // --- Level 3: Masters ---
 export const masters = [
-    { name: "MSc. Sidnir Carlos Baia Ferreira", id: "MSC-01", focus: "Machine Learning", lattes: "http://lattes.cnpq.br/6370943872854143", image: `${BASE_PATH}/images/team/sidnir.png` },
-    { name: "MSc. Romário da Costa Silva", id: "MSC-02", focus: "Visão Computacional", lattes: "http://lattes.cnpq.br/0524066960662417", image: `${BASE_PATH}/images/team/romario.png` },
-    { name: "MSc. Thalita Ayass de Souza", id: "MSC-03", focus: "Visão Computacional", lattes: "http://lattes.cnpq.br/6909436473995750", image: `${BASE_PATH}/images/team/thalita.png` },
-    { name: "Pesquisador Mestrando D", id: "MSC-04", focus: "Sistemas Embarcados", lattes: "#", image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` }
+    { name: "MSc. Sidnir Carlos Baia Ferreira", id: "MSC-01", focus: "Machine Learning", lattes: "http://lattes.cnpq.br/6370943872854143", email: "sidnir@example.com", linkedin: "#", image: `${BASE_PATH}/images/team/sidnir.png` },
+    { name: "MSc. Romário da Costa Silva", id: "MSC-02", focus: "Visão Computacional", lattes: "http://lattes.cnpq.br/0524066960662417", email: "romario@example.com", linkedin: "#", image: `${BASE_PATH}/images/team/romario.png` },
+    { name: "MSc. Thalita Ayass de Souza", id: "MSC-03", focus: "Visão Computacional", lattes: "http://lattes.cnpq.br/6909436473995750", email: "thalita@example.com", linkedin: "#", image: `${BASE_PATH}/images/team/thalita.png` },
 ];
+
+
+
+export const bachelors = [
+];
+
+
 
 // --- Level 4: Scientific Initiation (IC / Graduação) ---
 export const undergraduates = [
@@ -83,6 +97,8 @@ export const undergraduates = [
         id: "IC-01",
         focus: "Full Stack",
         lattes: "http://lattes.cnpq.br/2925803687849450",
+        email: "hayla@example.com",
+        linkedin: "#",
         image: `${BASE_PATH}/images/team/hayla.png`
     },
     {
@@ -90,20 +106,9 @@ export const undergraduates = [
         id: "IC-02",
         focus: "Full Cycle",
         lattes: "http://lattes.cnpq.br/0320888918838455",
-        image: `${BASE_PATH}/images/team/xavier.png` },
-    {
-        name: "Gabriel Ribeiro",
-        id: "IC-03",
-        focus: "Frontend",
-        lattes: "#",
-        image: `${BASE_PATH}/images/team/avatar-placeholder.jpg`
-    },
-    {
-        name: "Aluno de Iniciação D",
-        id: "IC-04",
-        focus: "IA & Modelos",
-        lattes: "#",
-        image: `${BASE_PATH}/images/team/avatar-placeholder.jpg`
+        email: "gabriel.k@example.com",
+        linkedin: "#",
+        image: `${BASE_PATH}/images/team/xavier.png`
     }
 ];
 

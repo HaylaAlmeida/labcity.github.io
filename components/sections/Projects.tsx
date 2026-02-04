@@ -1,18 +1,26 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowUpRight, ArrowRight, LayoutGrid, ChevronRight } from 'lucide-react';
+import { ArrowUpRight, ArrowRight, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { projects } from '@/lib/content';
 import { getAssetPath } from '@/lib/utils';
 
-export function Projects() {
-    // Mapping the array from lib/content to the specific layout slots
-    // [0] = INCT (Large item)
-    // [1] = Brasil++ (Small item 1)
-    // [2] = Mina do Futuro (Small item 2)
+export type Project = {
+    id: string;
+    slug: string;
+    title: string;
+    category: string;
+    description: string;
+    image?: string;
+};
+
+export function Projects({ projects }: { projects: Project[] }) {
     const [inct, brasil, mina] = projects;
+
+    if (!inct || !brasil || !mina) {
+        return null;
+    }
 
     return (
         <section id="projetos" className="py-24 bg-slate-50 dark:bg-slate-900 overflow-hidden">

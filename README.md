@@ -36,124 +36,64 @@ Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
 ---
 
-## 📝 Como Adicionar Conteúdo
+## 📝 Como Adicionar Conteúdo (CMS)
 
-Todo o conteúdo do site (equipe, projetos, publicações) está centralizado em um único arquivo:
+O site utiliza **Sanity CMS** para gerenciamento de conteúdo dinâmico. Isso permite que você edite textos, imagens e dados sem precisar alterar o código.
 
-📁 **`lib/content.ts`**
+### 1. Acessando o Painel Administrativo
 
-### 👥 Adicionar Membros da Equipe
+1. Inicie o projeto localmente:
+   ```bash
+   npm run dev
+   ```
+2. Acesse: [http://localhost:3000/studio](http://localhost:3000/studio)
 
-O arquivo contém 4 arrays para diferentes níveis da equipe:
-
-#### Coordenadores (`coordinators`)
-
-```typescript
-export const coordinators = [
-    {
-        name: "Nome Completo com Título",
-        role: "Coordenador / Coordenadora",
-        id: "COORD-XX",
-        focus: "Área de Atuação",
-        lattes: "http://lattes.cnpq.br/...",
-        image: `${BASE_PATH}/images/team/nome-arquivo.png`
-    },
-    // ... adicione novos coordenadores aqui
-];
-```
-
-#### Doutores (`doctors`)
-
-```typescript
-export const doctors = [
-    { 
-        name: "Nome Completo", 
-        id: "DOC-XX", 
-        focus: "Área", 
-        lattes: "http://lattes.cnpq.br/...", 
-        image: `${BASE_PATH}/images/team/nome.png` 
-    },
-];
-```
-
-#### Mestrandos (`masters`)
-
-```typescript
-export const masters = [
-    { 
-        name: "Nome", 
-        id: "MSC-XX", 
-        focus: "Área", 
-        lattes: "#", 
-        image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` 
-    },
-];
-```
-
-#### Graduação / IC (`undergraduates`)
-
-```typescript
-export const undergraduates = [
-    { 
-        name: "Nome", 
-        id: "IC-XX", 
-        focus: "Área", 
-        lattes: "#", 
-        image: `${BASE_PATH}/images/team/avatar-placeholder.jpg` 
-    },
-];
-```
-
-> **📸 Imagens:** Coloque as fotos em `public/images/team/` (formato PNG ou JPG).
+Você verá o painel do Sanity (Sanity Studio). Faça login com sua conta configurada.
 
 ---
 
-### 📂 Adicionar Projetos
+### 2. Gerenciando Seções
 
-```typescript
-export const projects = [
-    {
-        id: "id-do-projeto",           // Identificador único
-        slug: "url-do-projeto",        // Usado na URL: /projetos/url-do-projeto
-        title: "Nome do Projeto",
-        category: "Categoria",         // Ex: "Saúde Pública", "Cidades Inteligentes"
-        description: "Descrição curta para o card",
-        longDescription: "Descrição completa para a página do projeto...",
-        image: `${BASE_PATH}/images/nome-imagem.jpg`,
-        status: "Em Andamento",        // ou "Concluído", "Fase de Testes"
-        partners: ["Parceiro 1", "Parceiro 2"],
-        features: [                    // Opcional
-            "Funcionalidade 1",
-            "Funcionalidade 2"
-        ]
-    },
-    // ... adicione novos projetos aqui
-];
-```
+#### 🏙️ Projetos
+- No menu lateral, clique em **Projects**.
+- Preencha: Título, Slug (URL), Imagem de Capa, Descrição Curta (Card) e Longa.
+- **Destaque:** Marque "Featured" para aparecer na Home.
+- **Relacionamentos:**
+  - *Research Areas:* Vincule às linhas de pesquisa.
+  - *Partners:* Vincule aos parceiros envolvidos.
 
-> **📸 Imagens:** Coloque as imagens dos projetos em `public/images/`.
+#### 📚 Publicações
+- Clique em **Publications**.
+- **Tipo:** Selecione corretamente (ex: *Artigo Científico* para aparecer a pílula azul).
+- **Autores:** Você pode criar referências a pessoas cadastradas ou digitar os nomes manualmente.
+- **Vínculos:** Vincule a *Projetos* e *Linhas de Pesquisa* para que ela apareça automaticamente nas páginas detalhadas correspondentes.
+
+#### 🖼️ Galeria "O que é o LabCity"
+- Clique em **Sobre (O que é o LabCity?)**.
+- Este é um documento único.
+- Adicione/remova imagens na **Galeria de Fotos**. Use o campo "Legenda" para descrições.
+- As imagens aparecerão no slider da página `/sobre`.
+
+#### 🤝 Parceiros
+- Clique em **Partners**.
+- Cadastre o parceiro com Logo e Website.
+- **Categoria:** Escolha o tipo (Acadêmico, Governamental, Privado, etc.) para que sejam agrupados corretamente na página de parcerias.
+
+#### 👥 Equipe
+- Clique em **People**.
+- Adicione membros com Foto, Cargo, Lattes/LinkedIn.
+- Defina o nível (Coordenador, Pesquisador, Aluno) para organização na página `/equipe`.
 
 ---
 
-### 📄 Adicionar Publicações
+## ⚠️ Conteúdo Estático (Legado)
 
-```typescript
-export const publications: Publication[] = [
-    {
-        id: "pub-XXX",
-        slug: "titulo-da-publicacao",   // Usado na URL: /publicacoes/titulo-da-publicacao
-        title: "Título Completo do Artigo",
-        authors: ["Autor 1", "Autor 2", "Autor 3"],
-        venue: "Nome do Periódico ou Conferência",
-        year: 2025,
-        type: "journal",                // "journal" | "conference" | "book" | "thesis"
-        doi: "https://doi.org/10.xxxx/xxxxx",
-        abstract: "Resumo do artigo...",
-        tags: ["Tag 1", "Tag 2", "Tag 3"]
-    },
-    // ... adicione novas publicações aqui
-];
-```
+Caso o CMS não esteja configurado ou para dados muito específicos, o site usa arquivos locais como fallback:
+
+- `lib/content.ts`: Dados estáticos gerais.
+- `app/`: Textos fixos das páginas.
+
+Para alterar textos fixos (como títulos de seções), edite diretamente os arquivos `.tsx` em `app/(site)/`.
 
 ---
 
@@ -210,37 +150,18 @@ public/
 
 ## 🌐 Deploy na Vercel
 
-O site é hospedado na **Vercel** com deploy automático. Para atualizar o site:
+O site é hospedado na **Vercel** com deploy automático.
 
-### 1. Faça suas alterações localmente
+1. Faça suas alterações (no código ou no Sanity).
+2. Se alterou código:
+   ```bash
+   git add .
+   git commit -m "feat: melhoria na galeria"
+   git push origin main
+   ```
+3. A Vercel detectará o push e fará o deploy.
 
-Edite o arquivo `lib/content.ts` ou outros arquivos necessários.
-
-### 2. Commit e Push
-
-```bash
-# Verifique as alterações
-git status
-
-# Adicione os arquivos modificados
-git add .
-
-# Faça o commit com uma mensagem descritiva
-git commit -m "Adiciona novo projeto X" 
-
-# Envie para o GitHub
-git push origin main
-```
-
-### 3. Deploy Automático
-
-Após o push, a **Vercel** irá automaticamente:
-1. Detectar as mudanças no repositório
-2. Fazer o build do projeto
-3. Publicar a nova versão
-
-⏱️ O processo leva aproximadamente **1-2 minutos**. Você pode acompanhar em:
-**[Vercel Dashboard](https://vercel.com/dashboard)** → Seu projeto → Deployments
+**Nota sobre o Sanity:** Alterações feitas no **Sanity Studio** (publicar posts, projetos) aparecem no site de produção automaticamente após alguns minutos (graças à revalidação ISR) ou imediatamente em um novo deploy.
 
 ---
 
@@ -279,7 +200,7 @@ labcity/
 
 ---
 
-## 📧 Contato
+## 📧 Contato / Suporte
 
-**Email:** haylaluiza_almeida@hotmail.com  
-**Website:** [https://labcity-github-io.vercel.app/](https://labcity-github-io.vercel.app/)
+**Email:** haylaluiza_almeida@hotmail.com
+**Repositório:** [GitHub](https://github.com/HaylaAlmeida/labcity.github.io)

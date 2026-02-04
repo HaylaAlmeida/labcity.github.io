@@ -16,7 +16,7 @@ export function About() {
                     {/* Header Block */}
                     <div className="lg:col-span-4">
                         <span className="font-mono text-xs font-bold text-primary mb-4 block uppercase tracking-widest">
-              // Manifesto_Labcity
+                            {'// '}Manifesto_Labcity
                         </span>
                         <h2 className="text-3xl font-bold mb-6 text-foreground tracking-tight leading-tight">
                             Ciência de Dados aplicada à <br />

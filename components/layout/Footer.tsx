@@ -31,7 +31,7 @@ export function Footer() {
                         </div>
 
                         {/* CAPES Logo - Adjusted gray */}
-                        <div className="relative w-28 h-12 opacity-80 grayscale dark:opacity-90">
+                        <div className="relative w-28 h-12 opacity-80 grayscale dark:invert dark:opacity-90">
                             <Image
                                 src={getAssetPath('/images/capes-logo.png')}
                                 alt="CAPES"
@@ -79,10 +79,10 @@ export function Footer() {
                     <div>
                         <h4 className="font-bold text-foreground mb-4">Navegação</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="#sobre" className="hover:text-primary transition-colors">Sobre</Link></li>
-                            <li><Link href="#pesquisa" className="hover:text-primary transition-colors">Pesquisa</Link></li>
-                            <li><Link href="#projetos" className="hover:text-primary transition-colors">Projetos</Link></li>
-                            <li><Link href="#equipe" className="hover:text-primary transition-colors">Equipe</Link></li>
+                            <li><Link href="/sobre" className="hover:text-primary transition-colors">Sobre</Link></li>
+                            <li><Link href="/pesquisa/linhas-de-pesquisa" className="hover:text-primary transition-colors">Pesquisa</Link></li>
+                            <li><Link href="/projetos" className="hover:text-primary transition-colors">Projetos</Link></li>
+                            <li><Link href="/equipe" className="hover:text-primary transition-colors">Equipe</Link></li>
                         </ul>
                     </div>
 

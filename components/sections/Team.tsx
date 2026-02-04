@@ -6,13 +6,36 @@ import { User, ChevronRight, FileText, ChevronLeft } from 'lucide-react';
 import Link from 'next/link';
 import { useCallback } from 'react';
 import Image from 'next/image';
-import { coordinators, doctors, masters, undergraduates } from '@/lib/content';
 import { getAssetPath } from '@/lib/utils';
 
-export function Team() {
+export type TeamMember = {
+    id: string;
+    name: string;
+    focus: string;
+    lattes: string;
+    image?: string;
+};
+
+export type Coordinator = TeamMember & {
+    role: string;
+};
+
+export function Team({
+    coordinators,
+    doctors,
+    masters,
+    bachelors,
+    undergraduates
+}: {
+    coordinators: Coordinator[];
+    doctors: TeamMember[];
+    masters: TeamMember[];
+    bachelors: TeamMember[];
+    undergraduates: TeamMember[];
+}) {
     // Combine all members for the carousel (or select highlights)
     // We keep coordinators separate as 'Featured' and carousel the rest
-    const allMembers = [...doctors, ...masters, ...undergraduates];
+    const allMembers = [...doctors, ...masters, ...bachelors, ...undergraduates];
 
     const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true, align: 'start' }, [Autoplay({ delay: 4000, stopOnInteraction: false })]);
 
@@ -93,7 +116,7 @@ export function Team() {
                 {/* Team Carousel */}
                 <div className="overflow-hidden p-1 -m-1" ref={emblaRef}>
                     <div className="flex -ml-6"> {/* Negative margin to offset first item padding */}
-                        {allMembers.map((member: any) => (
+                        {allMembers.map((member) => (
                             <div key={member.id} className="flex-[0_0_280px] min-w-0 pl-6"> {/* Padding for spacing */}
                                 <div className="bg-white dark:bg-slate-950 border border-slate-200 dark:border-slate-800 p-6 flex flex-col items-center text-center h-full rounded-lg hover:border-primary/50 transition-colors group">
                                     <div className="w-20 h-20 mb-4 rounded-full bg-slate-100 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden shrink-0 relative">

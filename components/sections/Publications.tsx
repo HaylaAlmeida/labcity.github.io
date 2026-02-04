@@ -1,26 +1,40 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { BookOpen, ArrowRight, ChevronRight, Users } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
-import { publications } from '@/lib/content';
+
+export type Publication = {
+    id: string;
+    slug: string;
+    title: string;
+    authors: string[];
+    venue: string;
+    year: number;
+    type: 'journal' | 'conference' | 'book' | 'thesis';
+};
 
 // Helper para mapear tipo de publicação para label em português
 const typeLabels: Record<string, string> = {
     journal: 'Periódico',
+    article: 'Artigo Científico',
     conference: 'Conferência',
     book: 'Livro',
-    thesis: 'Tese'
+    thesis: 'Tese',
+    tcc: 'TCC',
+    masters_thesis: 'Mestrado',
+    doctoral_thesis: 'Doutorado',
+    software: 'Software',
+    patent: 'Patente'
 };
 
-export function Publications() {
-    // Pegar as 5 publicações mais recentes (ordenadas por ano decrescente)
+export function Publications({ publications }: { publications: Publication[] }) {
     const recentPublications = [...publications]
         .sort((a, b) => b.year - a.year)
         .slice(0, 5);
 
     return (
-        <section id="publicacoes" className="py-16 bg-white dark:bg-slate-950">
+        <section id="publicacoes" className="py-16 bg-white dark:bg-slate-950 border-t border-slate-200 dark:border-slate-800">
             <div className="container mx-auto px-4 md:px-6">
 
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">

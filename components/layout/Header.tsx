@@ -3,18 +3,44 @@
 import { useState, useEffect } from 'react';
 import { usePathname } from 'next/navigation';
 import Link from 'next/link';
-import { Menu, X, Instagram, Linkedin, Github } from 'lucide-react';
+import { Menu, X, Instagram, Linkedin, Github, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
 import { socialLinks } from '@/lib/content';
 
-const navItems = [
-    { name: 'Sobre', href: '#sobre' },
-    { name: 'Pesquisa', href: '#pesquisa' },
-    { name: 'Projetos', href: '#projetos' },
-    { name: 'Equipe', href: '#equipe' },
+type NavItem = {
+    name: string;
+    href?: string;
+    items?: { name: string; href: string }[];
+};
+
+const navItems: NavItem[] = [
+    {
+        name: 'Institucional',
+        items: [
+            { name: 'O que é o LABCITY?', href: '/sobre' },
+            { name: 'Colaborações e Parcerias', href: '/institucional/parcerias' },
+            { name: 'Contato / Mapa', href: '/contato' },
+        ]
+    },
+    {
+        name: 'Equipe',
+        href: '/equipe'
+    },
+    {
+        name: 'Pesquisa',
+        items: [
+            { name: 'Linhas de Pesquisa', href: '/pesquisa/linhas-de-pesquisa' },
+            { name: 'Projetos de Pesquisa', href: '/projetos' }, // Updated to likely page route
+            { name: 'Produção Científica', href: '/publicacoes' }, // Updated to likely page route
+        ]
+    },
+    {
+        name: 'Notícias',
+        href: '/noticias'
+    }
 ];
 
 export function Header() {
@@ -22,6 +48,10 @@ export function Header() {
     const isHome = pathname === '/';
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [hoveredNav, setHoveredNav] = useState<string | null>(null);
+
+    // Mobile accordion state
+    const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
 
     useEffect(() => {
         const handleScroll = () => {
@@ -31,7 +61,6 @@ export function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    // Force "scrolled" look (solid bg) if not on home, or if actually scrolled
     const shouldShowSolidBackground = !isHome || isScrolled;
 
     return (
@@ -42,10 +71,11 @@ export function Header() {
                     ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-sm py-3 border-slate-200 dark:border-slate-800'
                     : 'bg-transparent py-5 border-transparent'
             )}
+            onMouseLeave={() => setHoveredNav(null)}
         >
-            <div className="w-full px-4 md:px-8 lg:px-12 flex items-center justify-between">
+            <div className="w-full px-4 md:px-8 lg:px-12 flex items-center justify-between relative">
                 {/* Logo */}
-                <Link href="/" className="group">
+                <Link href="/" className="group relative z-50">
                     <LabcityLogo
                         className={cn(
                             "transition-colors group-hover:opacity-80",
@@ -54,87 +84,100 @@ export function Header() {
                     />
                 </Link>
 
-                {/* Spacer to push navigation to the right */}
-                <div className="flex-grow" />
-
-                {/* Desktop Navigation - Tech Style (now on the right) */}
-                <nav className="hidden md:flex items-center gap-1">
+                {/* Desktop Navigation - Centered */}
+                <nav className="hidden md:flex items-center gap-6 absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
                     {navItems.map((item) => (
-                        <Link
+                        <div
                             key={item.name}
-                            href={isHome ? item.href : `/${item.href}`} // Fix anchors on other pages
-                            className={cn(
-                                "text-xs font-mono font-bold uppercase tracking-widest px-4 py-2 rounded transition-all hover:bg-primary/10 hover:text-primary relative group",
-                                shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200" : "text-white/90 hover:text-white"
-                            )}
+                            className="relative group"
+                            onMouseEnter={() => setHoveredNav(item.name)}
+                        // onMouseLeave handled by header container to prevent flicker gaps
                         >
-                            <span className="relative z-10"> // {item.name}</span>
-                        </Link>
+                            {item.items ? (
+                                <button
+                                    className={cn(
+                                        "flex items-center gap-1 text-xs font-mono font-bold uppercase tracking-widest py-2 transition-colors",
+                                        shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200 hover:text-primary" : "text-white/90 hover:text-white"
+                                    )}
+                                >
+                                    {'// '}{item.name}
+                                    <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", hoveredNav === item.name ? "rotate-180" : "")} />
+                                </button>
+                            ) : (
+                                <Link
+                                    href={isHome || !item.href?.startsWith('#') ? (item.href || '#') : `/${item.href}`}
+                                    className={cn(
+                                        "flex items-center text-xs font-mono font-bold uppercase tracking-widest py-2 transition-colors hover:text-primary",
+                                        shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200" : "text-white/90 hover:text-white"
+                                    )}
+                                >
+                                    {'// '}{item.name}
+                                </Link>
+                            )}
+
+                            {/* Dropdown Content */}
+                            <AnimatePresence>
+                                {item.items && hoveredNav === item.name && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        animate={{ opacity: 1, y: 0, scale: 1 }}
+                                        exit={{ opacity: 0, y: 10, scale: 0.95 }}
+                                        transition={{ duration: 0.15, ease: "easeOut" }}
+                                        className="absolute top-full left-0 mt-2 w-56 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg shadow-xl overflow-hidden py-2"
+                                    >
+                                        {item.items.map((subItem) => (
+                                            <Link
+                                                key={subItem.name}
+                                                href={isHome || !subItem.href.startsWith('#') ? subItem.href : `/${subItem.href}`}
+                                                className="block px-4 py-2 text-sm text-slate-600 dark:text-slate-300 hover:bg-slate-50 dark:hover:bg-slate-800 hover:text-primary transition-colors"
+                                                onClick={() => setHoveredNav(null)}
+                                            >
+                                                {subItem.name}
+                                            </Link>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
                     ))}
                 </nav>
 
-                {/* Divider between nav and theme toggle */}
-                <div className={cn(
-                    "hidden md:block h-6 w-px mx-3",
-                    shouldShowSolidBackground ? "bg-slate-300 dark:bg-slate-600" : "bg-white/30"
-                )} />
+
 
                 <div className="flex items-center gap-1">
-                    {/* Social Media Icons */}
-                    <a
-                        href={socialLinks.instagram}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn(
-                            "hidden md:flex w-9 h-9 items-center justify-center rounded-md transition-colors",
-                            shouldShowSolidBackground
-                                ? "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-pink-500"
-                                : "text-white/80 hover:bg-white/10 hover:text-pink-400"
-                        )}
-                        aria-label="Instagram"
-                    >
-                        <Instagram className="w-4 h-4" />
-                    </a>
-                    <a
-                        href={socialLinks.linkedin}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn(
-                            "hidden md:flex w-9 h-9 items-center justify-center rounded-md transition-colors",
-                            shouldShowSolidBackground
-                                ? "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-blue-600"
-                                : "text-white/80 hover:bg-white/10 hover:text-blue-400"
-                        )}
-                        aria-label="LinkedIn"
-                    >
-                        <Linkedin className="w-4 h-4" />
-                    </a>
-                    <a
-                        href={socialLinks.github}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className={cn(
-                            "hidden md:flex w-9 h-9 items-center justify-center rounded-md transition-colors",
-                            shouldShowSolidBackground
-                                ? "text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white"
-                                : "text-white/80 hover:bg-white/10 hover:text-white"
-                        )}
-                        aria-label="GitHub"
-                    >
-                        <Github className="w-4 h-4" />
-                    </a>
+                    {/* Socials */}
+                    {[
+                        { link: socialLinks.instagram, Icon: Instagram, label: "Instagram", colorClass: "hover:text-pink-500" },
+                        { link: socialLinks.linkedin, Icon: Linkedin, label: "LinkedIn", colorClass: "hover:text-blue-600" },
+                        { link: socialLinks.github, Icon: Github, label: "GitHub", colorClass: "hover:text-slate-900 dark:hover:text-white" }
+                    ].map(({ link, Icon, label, colorClass }) => (
+                        <a
+                            key={label}
+                            href={link}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className={cn(
+                                "hidden md:flex w-9 h-9 items-center justify-center rounded-md transition-colors",
+                                shouldShowSolidBackground
+                                    ? `text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 ${colorClass}`
+                                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                            )}
+                            aria-label={label}
+                        >
+                            <Icon className="w-4 h-4" />
+                        </a>
+                    ))}
 
-                    {/* Theme Toggle */}
                     <ThemeToggle className={shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800" : "text-white hover:bg-white/10"} />
 
                     {/* Mobile Menu Button */}
                     <button
-                        className="md:hidden p-2 text-foreground"
+                        className="md:hidden p-2 text-foreground relative z-50"
                         onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         aria-label="Menu"
                     >
                         {isMobileMenuOpen ? (
-                            <X className={shouldShowSolidBackground ? "text-slate-900 dark:text-white" : "text-white"} />
+                            <X className={shouldShowSolidBackground || isMobileMenuOpen ? "text-slate-900 dark:text-white" : "text-white"} />
                         ) : (
                             <Menu className={shouldShowSolidBackground ? "text-slate-900 dark:text-white" : "text-white"} />
                         )}
@@ -146,21 +189,55 @@ export function Header() {
             <AnimatePresence>
                 {isMobileMenuOpen && (
                     <motion.div
-                        initial={{ opacity: 0, y: -20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        className="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 p-4 shadow-xl md:hidden"
+                        initial={{ opacity: 0, height: 0 }}
+                        animate={{ opacity: 1, height: 'auto' }}
+                        exit={{ opacity: 0, height: 0 }}
+                        className="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 shadow-xl md:hidden overflow-hidden"
                     >
-                        <nav className="flex flex-col gap-2">
+                        <nav className="flex flex-col p-4 max-h-[80vh] overflow-y-auto">
                             {navItems.map((item) => (
-                                <Link
-                                    key={item.name}
-                                    href={isHome ? item.href : `/${item.href}`}
-                                    className="font-mono text-sm font-bold text-slate-600 dark:text-slate-300 hover:text-primary hover:bg-slate-50 dark:hover:bg-slate-900 py-3 px-4 rounded block uppercase tracking-wider"
-                                    onClick={() => setIsMobileMenuOpen(false)}
-                                >
-                                    // {item.name}
-                                </Link>
+                                <div key={item.name} className="border-b border-slate-100 dark:border-slate-900 last:border-0">
+                                    {item.items ? (
+                                        <>
+                                            <button
+                                                onClick={() => setMobileExpanded(mobileExpanded === item.name ? null : item.name)}
+                                                className="w-full flex items-center justify-between font-mono text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-primary py-4 uppercase tracking-wider"
+                                            >
+                                                <span>{'// '}{item.name}</span>
+                                                <ChevronDown className={cn("w-4 h-4 transition-transform", mobileExpanded === item.name ? "rotate-180" : "")} />
+                                            </button>
+                                            <AnimatePresence>
+                                                {mobileExpanded === item.name && (
+                                                    <motion.div
+                                                        initial={{ height: 0, opacity: 0 }}
+                                                        animate={{ height: 'auto', opacity: 1 }}
+                                                        exit={{ height: 0, opacity: 0 }}
+                                                        className="overflow-hidden bg-slate-50 dark:bg-slate-900/50 rounded-lg mb-2"
+                                                    >
+                                                        {item.items.map(subItem => (
+                                                            <Link
+                                                                key={subItem.name}
+                                                                href={isHome || !subItem.href.startsWith('#') ? subItem.href : `/${subItem.href}`}
+                                                                className="block py-3 px-6 text-sm text-slate-600 dark:text-slate-400 hover:text-primary border-t border-slate-100 dark:border-slate-800 first:border-0"
+                                                                onClick={() => setIsMobileMenuOpen(false)}
+                                                            >
+                                                                {subItem.name}
+                                                            </Link>
+                                                        ))}
+                                                    </motion.div>
+                                                )}
+                                            </AnimatePresence>
+                                        </>
+                                    ) : (
+                                        <Link
+                                            href={isHome || !item.href?.startsWith('#') ? (item.href || '#') : `/${item.href}`}
+                                            className="block font-mono text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-primary py-4 uppercase tracking-wider"
+                                            onClick={() => setIsMobileMenuOpen(false)}
+                                        >
+                                            {'// '}{item.name}
+                                        </Link>
+                                    )}
+                                </div>
                             ))}
                         </nav>
                     </motion.div>
