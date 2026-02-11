@@ -49,8 +49,7 @@ Você pode acessar o painel tanto localmente quanto na produção (Vercel).
 2. Acesse: [http://localhost:3000/studio](http://localhost:3000/studio)
 
 **Produção (Online):**
-- Acesse: `https://seu-site.vercel.app/studio`
-- (No seu caso: [https://labcity-github-io.vercel.app/studio](https://labcity-github-io.vercel.app/studio))
+- Acesse: `https://labcity.ufpa.br/studio`
 
 Você verá o painel do Sanity (Sanity Studio). Faça login com sua conta configurada.
 
