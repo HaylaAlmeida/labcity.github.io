@@ -85,7 +85,7 @@ export const masters = [
 
 
 
-export const bachelors = [
+export const bachelors: typeof masters = [
 ];
 
 
