@@ -5,7 +5,7 @@ import * as LucideIcons from 'lucide-react';
 import { getResearchAreaSlug, ResearchArea } from '@/lib/data/research';
 
 import Link from 'next/link';
-import { ChevronRight } from 'lucide-react';
+import { ArrowRight, ChevronRight } from 'lucide-react';
 
 interface ResearchProps {
     researchAreas: ResearchArea[];
@@ -34,7 +34,7 @@ export function Research({ researchAreas }: ResearchProps) {
                 </div>
 
                 <div className="flex flex-wrap border-t border-l border-slate-200 dark:border-slate-800 rounded-lg overflow-hidden">
-                    {researchAreas.map((area, index) => {
+                    {researchAreas.slice(0, 3).map((area, index) => {
                         const IconComponent = (LucideIcons as any)[area.icon as string] || LucideIcons.HelpCircle;
                         const slug = getResearchAreaSlug(area);
 
@@ -59,7 +59,30 @@ export function Research({ researchAreas }: ResearchProps) {
                             </Link>
                         )
                     })}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.5, delay: 0.5 }}
+                        className="w-full sm:w-1/2 lg:w-1/4 border-r border-b border-slate-200 dark:border-slate-800"
+                    >
+                        <Link
+                            href="/pesquisa/linhas-de-pesquisa"
+                            className="flex flex-col items-center justify-center bg-slate-50 dark:bg-slate-900 p-6 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors group h-full min-h-[200px]"
+                        >
+                            <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center mb-4 group-hover:scale-110 transition-all shadow-xs shadow-primary/20">
+                                <ArrowRight className="w-6 h-6 text-white" />
+                            </div>
+                            <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
+                                Ver Todas
+                            </span>
+                            <span className="text-sm text-muted-foreground mt-1">
+                                {researchAreas.length} linhas de pesquisa
+                            </span>
+                        </Link>
+                    </motion.div>
                 </div>
+
 
             </div>
         </section>

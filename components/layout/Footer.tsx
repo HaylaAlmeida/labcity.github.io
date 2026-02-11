@@ -2,10 +2,11 @@
 
 import Link from 'next/link';
 import Image from 'next/image';
-import { Mail, MapPin, Phone } from 'lucide-react';
+import { Mail, MapPin, Phone, Instagram, Linkedin, Github, } from 'lucide-react';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
-import { getAssetPath } from '@/lib/utils';
+import { cn, getAssetPath } from '@/lib/utils';
 import { contactInfo } from '@/lib/content';
+import { socialLinks } from '@/lib/content';
 
 export function Footer() {
     return (
@@ -41,20 +42,30 @@ export function Footer() {
                             />
                         </div>
 
-                        {/* Governo Federal Logo - Invert in Dark Mode to make text white */}
                         <div className="relative w-40 h-16 opacity-70 grayscale dark:invert dark:opacity-70">
                             <Image
-                                src={getAssetPath('/images/governo-logo.png')}
-                                alt="Governo Federal"
+                                src={getAssetPath('/images/ccad.png')}
+                                alt="CCAD-IA LOGO"
                                 fill
                                 className="object-contain"
                                 sizes="160px"
                             />
                         </div>
+
+                        <div className="relative w-40 h-16 opacity-70 grayscale dark:invert dark:opacity-70">
+                            <Image
+                                src={getAssetPath('/images/inct-iamazonia.png')}
+                                alt="INCT-IAmazonia LOGO"
+                                fill
+                                className="object-contain"
+                                sizes="160px"
+                            />
+                        </div>
+
                         <div className="relative w-40 h-16 opacity-75 grayscale dark:invert dark:opacity-70">
                             <Image
                                 src={getAssetPath('/images/Logo-PMCC-Horizontal.png')}
-                                alt="Governo Federal"
+                                alt="Prefeitura Municipal de Canaã dos Carajás"
                                 fill
                                 className="object-contain"
                                 sizes="160px"
@@ -69,7 +80,7 @@ export function Footer() {
 
                     <div className="md:col-span-1">
                         <Link href="/" className="inline-block mb-6 text-foreground hover:opacity-80 transition-opacity">
-                            <LabcityLogo showSubtitle={false} />
+                            <LabcityLogo />
                         </Link>
                         <p className="text-sm text-muted-foreground leading-relaxed">
                             Laboratório de pesquisas avançadas em Inteligência Artificial, Cidades Inteligentes e Internet das Coisas da Universidade Federal do Pará.
@@ -79,10 +90,11 @@ export function Footer() {
                     <div>
                         <h4 className="font-bold text-foreground mb-4">Navegação</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="/sobre" className="hover:text-primary transition-colors">Sobre</Link></li>
+                            <li><Link href="/institucional#sobre" className="hover:text-primary transition-colors">Institucional</Link></li>
                             <li><Link href="/pesquisa/linhas-de-pesquisa" className="hover:text-primary transition-colors">Pesquisa</Link></li>
                             <li><Link href="/projetos" className="hover:text-primary transition-colors">Projetos</Link></li>
                             <li><Link href="/equipe" className="hover:text-primary transition-colors">Equipe</Link></li>
+                            <li><Link href="/noticias" className="hover:text-primary transition-colors">Notícias</Link></li>
                         </ul>
                     </div>
 
@@ -93,6 +105,9 @@ export function Footer() {
                             <li><Link href="https://www.gov.br/acessoainformacao/pt-br" className="hover:text-primary transition-colors">Acesso à Informação</Link></li>
                             {/*<li><Link href="#" className="hover:text-primary transition-colors">Editais Abertos</Link></li>*/}
                             <li><Link href="http://lattes.cnpq.br/" target="_blank" className="hover:text-primary transition-colors">Plataforma Lattes</Link></li>
+                            <li><Link href="https://pctguama.org.br/" target="_blank" className="hover:text-primary transition-colors">PCT - Guamá</Link></li>
+                            <li><Link href="https://smartcitycanaadoscarajas.com.br/index.php" target="_blank" className="hover:text-primary transition-colors">SmartCity Canaã dos Carajás</Link></li>
+                            <li><Link href="https://www.gov.br/cnpq/pt-br" target="_blank" className="hover:text-primary transition-colors">CNPq</Link></li>
                         </ul>
                     </div>
 

@@ -19,10 +19,32 @@ export const postType = defineType({
       },
     }),
     defineField({
+      name: 'type',
+      title: 'Tipo',
+      type: 'string',
+      options: {
+        list: [
+          { title: 'Notícia Interna', value: 'internal' },
+          { title: 'Deu na Mídia (Externo)', value: 'external' },
+        ],
+        layout: 'radio',
+      },
+      initialValue: 'internal',
+      validation: (Rule) => Rule.required(),
+    }),
+    defineField({
       name: 'redirectUrl',
       title: 'Link de Redirecionamento (Externo)',
       type: 'url',
       description: 'Se preenchido, clicar na notícia levará para este link externo ao invés da página interna.',
+      hidden: ({ parent }) => parent?.type !== 'external',
+    }),
+    defineField({
+      name: 'source',
+      title: 'Veículo / Fonte',
+      type: 'string',
+      description: 'Nome do veículo externo (ex: G1 Pará, Jornal O Liberal)',
+      hidden: ({ parent }) => parent?.type !== 'external',
     }),
     defineField({
       name: 'author',
@@ -40,6 +62,12 @@ export const postType = defineType({
       title: 'Publicacoes Relacionadas',
       type: 'array',
       of: [{ type: 'reference', to: { type: 'publication' } }],
+    }),
+    defineField({
+      name: 'relatedPosts',
+      title: 'Notícias Relacionadas',
+      type: 'array',
+      of: [{ type: 'reference', to: { type: 'post' } }],
     }),
     defineField({
       name: 'mainImage',

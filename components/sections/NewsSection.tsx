@@ -1,9 +1,9 @@
 import Link from "next/link";
-import { ArrowRight, Calendar, User, ChevronRight } from "lucide-react";
+import { ArrowRight, Calendar, User, ChevronRight, ExternalLink } from "lucide-react";
 import { getRecentNews } from "@/lib/data/news";
 
 export async function NewsSection() {
-    const news = await getRecentNews(3);
+    const news = await getRecentNews(4);
 
     return (
         <section className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
@@ -45,9 +45,10 @@ export async function NewsSection() {
                                         <span className="text-4xl opacity-20 font-black">LAB</span>
                                     </div>
                                 )}
-                                {item.category && (
-                                    <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm border border-slate-200 dark:border-slate-800">
-                                        {item.category}
+                                {item.type === 'external' && (
+                                    <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm border border-slate-200 dark:border-slate-800 flex items-center gap-1">
+                                        <ExternalLink className="w-3 h-3" />
+                                        Deu na Mídia
                                     </div>
                                 )}
                             </div>
@@ -76,8 +77,15 @@ export async function NewsSection() {
                                 </p>
 
                                 <div className="text-primary font-bold text-sm flex items-center gap-2 group/btn">
-                                    Ler artigo
-                                    <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                                    {item.type === 'external' ? (
+                                        <>
+                                            Ler na fonte <ExternalLink className="w-4 h-4" />
+                                        </>
+                                    ) : (
+                                        <>
+                                            Ler artigo <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                                        </>
+                                    )}
                                 </div>
                             </div>
                         </Link>

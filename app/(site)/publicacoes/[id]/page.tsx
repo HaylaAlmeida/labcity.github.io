@@ -94,7 +94,7 @@ export default async function PublicationDetailsPage({ params }: { params: Promi
                                 <Tag className="w-5 h-5 text-primary" /> Palavras-chave
                             </h3>
                             <div className="flex flex-wrap gap-3">
-                                {publication.tags.map((tag) => (
+                                {publication.tags.filter(Boolean).map((tag) => (
                                     <span
                                         key={tag}
                                         className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-sm font-semibold text-foreground rounded-full border border-slate-200 dark:border-slate-700"

@@ -66,9 +66,9 @@ export const publicationType = defineType({
     }),
     defineField({
       name: 'tags',
-      title: 'Tags',
+      title: 'Tecnologias / Tags',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'reference', to: [{ type: 'tag' }] }],
     }),
     defineField({
       name: 'authors',

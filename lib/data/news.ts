@@ -4,7 +4,9 @@ export interface NewsPost {
     id: string;
     title: string;
     slug: string;
+    type?: 'internal' | 'external';
     redirectUrl?: string;
+    source?: string;
     excerpt?: string;
     publishedAt: string;
     image?: string;
@@ -27,6 +29,11 @@ export interface NewsPost {
         year?: number;
         venue?: string;
     }>;
+    relatedPosts?: Array<{
+        title: string;
+        slug: string;
+        publishedAt?: string;
+    }>;
 }
 
 const TAG = 'sanity:posts';
@@ -37,6 +44,7 @@ const localNews: NewsPost[] = [
         id: '1',
         title: 'LabCity firma parceria estratégica com Secretaria de Meio Ambiente',
         slug: 'parceria-sema',
+        type: 'internal',
         excerpt: 'Nova cooperação técnica visa implementar sensores de monitoramento de qualidade do ar em pontos críticos da cidade.',
         publishedAt: new Date().toISOString(),
         category: 'Parcerias',
@@ -46,6 +54,7 @@ const localNews: NewsPost[] = [
         id: '2',
         title: 'Pesquisadores publicam artigo sobre IoT na Amazônia',
         slug: 'artigo-iot-amazonia',
+        type: 'internal',
         excerpt: 'Estudo detalha os desafios e soluções para redes de sensores em ambientes de floresta densa e alta umidade.',
         publishedAt: new Date(Date.now() - 86400000 * 5).toISOString(),
         category: 'Publicações',
@@ -55,10 +64,23 @@ const localNews: NewsPost[] = [
         id: '3',
         title: 'Início do projeto de Gêmeos Digitais para Mobilidade Urbana',
         slug: 'gemeos-digitais-mobilidade',
+        type: 'internal',
         excerpt: 'Projeto utilizará dados de tráfego em tempo real para simular cenários e otimizar o fluxo de veículos.',
         publishedAt: new Date(Date.now() - 86400000 * 12).toISOString(),
         category: 'Projetos',
         author: { name: 'Dra. Jasmine Araújo' }
+    },
+    {
+        id: '4',
+        title: 'Pesquisa do LabCity sobre cidades inteligentes é destaque no G1 Pará',
+        slug: 'destaque-g1-para',
+        type: 'external',
+        redirectUrl: 'https://g1.globo.com/pa/para',
+        source: 'G1 Pará',
+        excerpt: 'Reportagem destaca os avanços do laboratório em tecnologias urbanas sustentáveis.',
+        publishedAt: new Date(Date.now() - 86400000 * 3).toISOString(),
+        category: 'Destaque',
+        author: { name: 'Equipe LabCity' }
     }
 ];
 
@@ -70,7 +92,9 @@ export async function getRecentNews(limit = 3): Promise<NewsPost[]> {
       "id": coalesce(id, _id),
       title,
       "slug": slug.current,
+      "type": coalesce(type, "internal"),
       redirectUrl,
+      source,
       publishedAt,
       "excerpt": coalesce(description, pt::text(body)[0...160] + "..."),
       "image": mainImage.asset->url,
@@ -95,7 +119,9 @@ export async function getAllNews(): Promise<NewsPost[]> {
       "id": coalesce(id, _id),
       title,
       "slug": slug.current,
+      "type": coalesce(type, "internal"),
       redirectUrl,
+      source,
       publishedAt,
       "excerpt": coalesce(description, pt::text(body)[0...160] + "..."),
       "image": mainImage.asset->url,
@@ -122,7 +148,9 @@ export async function getNewsBySlug(slug: string): Promise<NewsPost | null> {
       "id": coalesce(id, _id),
       title,
       "slug": slug.current,
+      "type": coalesce(type, "internal"),
       redirectUrl,
+      source,
       publishedAt,
       "image": mainImage.asset->url,
       "category": categories[0]->title,
@@ -143,6 +171,11 @@ export async function getNewsBySlug(slug: string): Promise<NewsPost | null> {
         "slug": slug.current,
         year,
         venue
+      },
+      "relatedPosts": relatedPosts[]->{
+        title,
+        "slug": slug.current,
+        publishedAt
       }
     }`;
 

@@ -19,15 +19,17 @@ export const personType = defineType({
     }),
     defineField({
       name: 'level',
-      title: 'Nivel',
+      title: 'Função',
       type: 'string',
       options: {
         list: [
-          { title: 'Coordenacao', value: 'coordinator' },
-          { title: 'Doutor', value: 'doctor' },
-          { title: 'Mestre', value: 'master' },
-          { title: 'Bacharel', value: 'bachelor' },
-          { title: 'Graduacao / IC', value: 'undergraduate' },
+          { title: 'Coordenação', value: 'coordinator' },
+          { title: 'Pesquisador', value: 'researcher' },
+          { title: 'Doutorado', value: 'phd' },
+          { title: 'Mestrado', value: 'masters' },
+          { title: 'Graduado', value: 'graduates' },
+          { title: 'Iniciação Científica', value: 'ic' },
+          { title: 'Bolsista de Desenvolvimento', value: 'dev_fellow' },
         ],
         layout: 'radio',
       },
@@ -35,13 +37,13 @@ export const personType = defineType({
     }),
     defineField({
       name: 'role',
-      title: 'Cargo (coordenacao)',
+      title: 'Cargo (coordenação)',
       type: 'string',
-      description: 'Ex: Coordenador(a). Usado principalmente para coordenacao.',
+      description: 'Ex: Coordenador(a). Usado principalmente para coordenação.',
     }),
     defineField({
       name: 'focus',
-      title: 'Foco / Area',
+      title: 'Foco / Área',
       type: 'string',
     }),
     defineField({
@@ -60,10 +62,24 @@ export const personType = defineType({
       type: 'url',
     }),
     defineField({
+      name: 'specialties',
+      title: 'Especialidades',
+      type: 'array',
+      of: [{ type: 'string' }],
+      description: 'Opcional. Lista de especialidades do membro.',
+    }),
+    defineField({
+      name: 'bio',
+      title: 'Breve Descrição',
+      type: 'text',
+      rows: 3,
+      description: 'Opcional. Uma breve descrição sobre o membro.',
+    }),
+    defineField({
       name: 'order',
       title: 'Ordem',
       type: 'number',
-      description: 'Ordenacao ascendente. Use para manter cargos acima e depois alfabetico.',
+      description: 'Ordenação ascendente. Use para manter cargos acima e depois alfabético.',
     }),
     defineField({
       name: 'image',
@@ -75,7 +91,7 @@ export const personType = defineType({
       name: 'imageUrl',
       title: 'Foto (URL alternativa)',
       type: 'url',
-      description: 'Use se voce nao quiser subir a imagem no Sanity.',
+      description: 'Use se você não quiser subir a imagem no Sanity.',
     }),
   ],
   preview: {
@@ -87,11 +103,13 @@ export const personType = defineType({
     prepare(selection) {
       const { title, subtitle, media } = selection as { title?: string; subtitle?: string; media?: any }
       const labels: Record<string, string> = {
-        coordinator: 'Coordenacao',
-        doctor: 'Doutor',
-        master: 'Mestre',
-        bachelor: 'Bacharel',
-        undergraduate: 'Graduacao / IC',
+        coordinator: 'Coordenação',
+        researcher: 'Pesquisador',
+        phd: 'Doutorado',
+        masters: 'Mestrado',
+        graduates: 'Graduado',
+        ic: 'Iniciação Científica',
+        dev_fellow: 'Bolsista de Desenvolvimento',
       }
       return {
         title: title || 'Sem nome',

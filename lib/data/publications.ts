@@ -22,7 +22,7 @@ export async function getPublications(): Promise<Publication[]> {
         type,
         doi,
         abstract,
-        "tags": coalesce(tags, []),
+        "tags": coalesce(tags[]->title, []),
         "researchAreas": researchAreas[]-> {
             title,
             code
@@ -61,7 +61,7 @@ export async function getPublicationsByProject(projectSlug: string): Promise<Pub
             type,
             doi,
             abstract,
-            "tags": coalesce(tags, []),
+            "tags": coalesce(tags[]->title, []),
             "researchAreas": researchAreas[]-> {
                 title,
                 code
@@ -95,7 +95,7 @@ export async function getPublicationBySlug(slug: string): Promise<Publication | 
       type,
       doi,
       abstract,
-      "tags": coalesce(tags, [])
+      "tags": coalesce(tags[]->title, [])
     }`;
 
     const item = await sanityQuery<Publication | null>(query, { slug }, { tags: [TAG], revalidate: 30 });

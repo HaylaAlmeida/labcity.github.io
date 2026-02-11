@@ -11,7 +11,7 @@ interface AnimatedCounterProps {
 export function AnimatedCounter({ value, duration = 0.5 }: AnimatedCounterProps) {
     const ref = useRef<HTMLSpanElement>(null);
     const motionValue = useMotionValue(0);
-    const isInView = useInView(ref, { once: true, margin: "-100px" });
+    const isInView = useInView(ref, { once: true, amount: 0.5 });
 
     useEffect(() => {
         if (isInView) {
@@ -33,5 +33,5 @@ export function AnimatedCounter({ value, duration = 0.5 }: AnimatedCounterProps)
         });
     }, [motionValue]);
 
-    return <span ref={ref} />;
+    return <span ref={ref}>0</span>;
 }

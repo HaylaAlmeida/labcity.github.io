@@ -7,10 +7,11 @@ import { postType } from './postType'
 import { partnerType } from './partnerType'
 import { researchAreaType } from './researchAreaType'
 import { aboutType } from './aboutType'
+import { tagType } from './tagType'
 
 import { categoryType } from './categoryType'
 import { blockContentType } from './blockContentType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [personType, projectType, publicationType, postType, categoryType, blockContentType, partnerType, researchAreaType, aboutType],
+  types: [personType, projectType, publicationType, postType, categoryType, blockContentType, partnerType, researchAreaType, aboutType, tagType],
 }

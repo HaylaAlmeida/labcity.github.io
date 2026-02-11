@@ -40,17 +40,17 @@ export function Publications({ publications }: { publications: Publication[] }) 
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="font-mono  text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
-                            Produção Científica
+                            Produção Científica & Inovação
                         </span>
                         <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
                             Publicações Recentes
                         </h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Acompanhe o estado da arte da nossa pesquisa, com publicações recentes em conferências e periódicos sobre tecnologia e inovação urbana.
+                            Acompanhe nossa produção científica e tecnológica: artigos e registros de software.
                         </p>
                     </div>
                     <Link href="/publicacoes" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
-                        [ Ver Todos as Publicações ] <ChevronRight className="w-4 h-4" />
+                        [ Ver Toda Produção ] <ChevronRight className="w-4 h-4" />
                     </Link>
                 </div>
 
@@ -118,10 +118,10 @@ export function Publications({ publications }: { publications: Publication[] }) 
                                 <ArrowRight className="w-6 h-6 text-white" />
                             </div>
                             <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                                Ver Todos
+                                Ver Toda Produção
                             </span>
                             <span className="text-sm text-muted-foreground mt-1">
-                                {publications.length} publicações
+                                {publications.length} produções
                             </span>
                         </Link>
                     </motion.div>

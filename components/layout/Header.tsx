@@ -19,10 +19,13 @@ type NavItem = {
 const navItems: NavItem[] = [
     {
         name: 'Institucional',
+        href: '/institucional#sobre',
         items: [
-            { name: 'O que é o LABCITY?', href: '/sobre' },
-            { name: 'Colaborações e Parcerias', href: '/institucional/parcerias' },
-            { name: 'Contato / Mapa', href: '/contato' },
+            { name: 'O que é o LABCITY?', href: '/institucional#sobre' },
+            { name: 'Linhas de Pesquisa', href: '/institucional#pesquisa' },
+            { name: 'Colaborações e Parcerias', href: '/institucional#parcerias' },
+            { name: 'História', href: '/institucional#historia' },
+            { name: 'Contato / Mapa', href: '/institucional#contato' },
         ]
     },
     {
@@ -33,8 +36,8 @@ const navItems: NavItem[] = [
         name: 'Pesquisa',
         items: [
             { name: 'Linhas de Pesquisa', href: '/pesquisa/linhas-de-pesquisa' },
-            { name: 'Projetos de Pesquisa', href: '/projetos' }, // Updated to likely page route
-            { name: 'Produção Científica', href: '/publicacoes' }, // Updated to likely page route
+            { name: 'Projetos de Pesquisa', href: '/projetos' },
+            { name: 'Produção Científica & Inovação', href: '/publicacoes' },
         ]
     },
     {
@@ -77,10 +80,8 @@ export function Header() {
                 {/* Logo */}
                 <Link href="/" className="group relative z-50">
                     <LabcityLogo
-                        className={cn(
-                            "transition-colors group-hover:opacity-80",
-                            isScrolled || !isHome ? "text-slate-900 dark:text-white" : "text-white"
-                        )}
+                        inverted={!shouldShowSolidBackground}
+                        className="transition-opacity group-hover:opacity-80"
                     />
                 </Link>
 
@@ -94,26 +95,52 @@ export function Header() {
                         // onMouseLeave handled by header container to prevent flicker gaps
                         >
                             {item.items ? (
-                                <button
-                                    className={cn(
-                                        "flex items-center gap-1 text-xs font-mono font-bold uppercase tracking-widest py-2 transition-colors",
-                                        shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200 hover:text-primary" : "text-white/90 hover:text-white"
+                                <div className="flex items-center">
+                                    {item.href ? (
+                                        <Link
+                                            href={item.href}
+                                            className={cn(
+                                                "flex items-center gap-1 text-base font-bold py-2 transition-colors mr-1",
+                                                shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200 hover:text-primary" : "text-white/90 hover:text-white"
+                                            )}
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    ) : (
+                                        <span
+                                            className={cn(
+                                                "flex items-center gap-1 text-base font-bold py-2 transition-colors cursor-default",
+                                                shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200" : "text-white/90"
+                                            )}
+                                        >
+                                            {item.name}
+                                        </span>
                                     )}
-                                >
-                                    {'// '}{item.name}
-                                    <ChevronDown className={cn("w-3 h-3 transition-transform duration-200", hoveredNav === item.name ? "rotate-180" : "")} />
-                                </button>
+                                    <button
+                                        className={cn(
+                                            "p-1 rounded hover:bg-black/5 dark:hover:bg-white/10 transition-colors",
+                                            shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200" : "text-white/90"
+                                        )}
+                                        onClick={(e) => {
+                                            e.preventDefault();
+                                            // Toggle logic if needed for mobile, but on desktop hover handles it
+                                        }}
+                                    >
+                                        <ChevronDown className={cn("w-4 h-4 transition-transform duration-200", hoveredNav === item.name ? "rotate-180" : "")} />
+                                    </button>
+                                </div>
                             ) : (
                                 <Link
                                     href={isHome || !item.href?.startsWith('#') ? (item.href || '#') : `/${item.href}`}
                                     className={cn(
-                                        "flex items-center text-xs font-mono font-bold uppercase tracking-widest py-2 transition-colors hover:text-primary",
+                                        "flex items-center text-base font-bold py-2 transition-colors hover:text-primary",
                                         shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200" : "text-white/90 hover:text-white"
                                     )}
                                 >
-                                    {'// '}{item.name}
+                                    {item.name}
                                 </Link>
                             )}
+
 
                             {/* Dropdown Content */}
                             <AnimatePresence>
@@ -201,9 +228,9 @@ export function Header() {
                                         <>
                                             <button
                                                 onClick={() => setMobileExpanded(mobileExpanded === item.name ? null : item.name)}
-                                                className="w-full flex items-center justify-between font-mono text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-primary py-4 uppercase tracking-wider"
+                                                className="w-full flex items-center justify-between text-base font-medium text-slate-800 dark:text-slate-200 hover:text-primary py-4"
                                             >
-                                                <span>{'// '}{item.name}</span>
+                                                <span>{item.name}</span>
                                                 <ChevronDown className={cn("w-4 h-4 transition-transform", mobileExpanded === item.name ? "rotate-180" : "")} />
                                             </button>
                                             <AnimatePresence>
@@ -231,10 +258,10 @@ export function Header() {
                                     ) : (
                                         <Link
                                             href={isHome || !item.href?.startsWith('#') ? (item.href || '#') : `/${item.href}`}
-                                            className="block font-mono text-sm font-bold text-slate-800 dark:text-slate-200 hover:text-primary py-4 uppercase tracking-wider"
+                                            className="block text-base font-medium text-slate-800 dark:text-slate-200 hover:text-primary py-4"
                                             onClick={() => setIsMobileMenuOpen(false)}
                                         >
-                                            {'// '}{item.name}
+                                            {item.name}
                                         </Link>
                                     )}
                                 </div>

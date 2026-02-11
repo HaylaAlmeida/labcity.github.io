@@ -2,7 +2,8 @@
 
 import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
-import { User, ChevronRight, FileText, ChevronLeft } from 'lucide-react';
+import { User, ChevronRight, ChevronLeft } from 'lucide-react';
+import { LattesIcon } from '@/components/icons/LattesIcon';
 import Link from 'next/link';
 import { useCallback } from 'react';
 import Image from 'next/image';
@@ -99,7 +100,7 @@ export function Team({
                                     target="_blank"
                                     className="mt-auto inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-primary uppercase tracking-wider transition-colors"
                                 >
-                                    Lattes <FileText className="w-3 h-3" />
+                                    Lattes <LattesIcon className="w-3 h-3" />
                                 </Link>
                             )}
                         </div>
@@ -131,7 +132,7 @@ export function Team({
                                     <p className="font-mono text-[10px] text-blue-600 dark:text-blue-400 uppercase tracking-wide mt-1 mb-4">{member.focus}</p>
 
                                     <Link href={member.lattes} target="_blank" className="mt-auto inline-flex items-center gap-1 text-[10px] font-bold text-slate-400 hover:text-primary uppercase tracking-wider transition-colors">
-                                        Lattes <FileText className="w-3 h-3" />
+                                        Lattes <LattesIcon className="w-3 h-3" />
                                     </Link>
                                 </div>
                             </div>

@@ -43,7 +43,7 @@ export function Hero() {
 
     return (
         <section
-            className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
+            className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
 
             {/* Background - Technical Grid (PRESERVED) */}
             <div className="absolute inset-0 z-0">
@@ -74,7 +74,7 @@ export function Hero() {
             </div>
 
             <div
-                className="container relative z-20 px-4 md:px-6 flex flex-col items-start text-left max-w-5xl pt-32 md:pt-40">
+                className="container relative z-20 px-4 md:px-6 flex flex-col items-start text-left max-w-8xl pt-32 md:pt-40">
 
                 {/* Badge Node */}
                 <motion.div
@@ -96,11 +96,10 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 text-white leading-[1.1] max-w-4xl"
+                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 text-white leading-[1.1] max-w-7xl"
                 >
-                    Inteligência Artificial<br />
-                    para {" "}
-                    <span className="text-blue-400 md:bg-gradient-to-r md:from-primary md:to-blue-300 md:bg-clip-text md:text-transparent selection:bg-blue-500/30">
+                    Inteligência Artificial para {" "}
+                    <span className="text-blue-400 md:bg-gradient-to-r md:from-primary md:to-blue-300 md:bg-clip-text md:text-transparent selection:bg-blue-500/30 whitespace-nowrap">
                         Cidades Inteligentes
                     </span>
                 </motion.h1>
@@ -110,9 +109,9 @@ export function Hero() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-lg md:text-xl text-slate-400 max-w-2xl mb-12 leading-relaxed font-light"
+                    className="text-lg md:text-xl text-slate-400 max-w-5xl mb-12 leading-relaxed font-light"
                 >
-                    Laboratório de pesquisa aplicada. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para monitoramento e gestão urbana na Amazônia.
+                    Laboratório de Inteligência Artificial aplicada a Cidades Inteligentes. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para monitoramento e gestão urbana na Amazônia.
                 </motion.p>
 
                 {/* Buttons - Reference Style */}
@@ -130,7 +129,7 @@ export function Hero() {
                         <ArrowRight className="ml-2 w-4 h-4 stroke-[3]" />
                     </Link>
                     <Link
-                        href="/sobre"
+                        href="/institucional#sobre"
                         className="inline-flex items-center justify-center h-14 px-8 rounded border border-slate-700 hover:border-slate-600 bg-slate-900/50 hover:bg-slate-800 text-slate-300 hover:text-white transition-all text-sm tracking-wider uppercase font-bold"
                     >
                         Sobre Labcity

@@ -18,10 +18,7 @@ export async function StatsSection() {
     // Calculate total researchers
     const researchersCount =
         (team.coordinators?.length || 0) +
-        (team.doctors?.length || 0) +
-        (team.masters?.length || 0) +
-        (team.bachelors?.length || 0) +
-        (team.undergraduates?.length || 0);
+        (team.members?.length || 0);
 
     const partnersCount = partners.length;
 
