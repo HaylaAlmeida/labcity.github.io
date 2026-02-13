@@ -66,10 +66,10 @@ export default function NewsClient({ news }: { news: NewsPost[] }) {
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
                             Sala de Imprensa
                         </span>
-                        <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-foreground mb-4">
+                        <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-foreground mb-4">
                             {activeTab === 'noticias' ? 'Nossas Notícias' : 'Deu na Mídia'}
                         </h1>
-                        <p className="text-lg text-muted-foreground max-w-2xl">
+                        <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
                             {activeTab === 'noticias'
                                 ? 'Fique por dentro das últimas descobertas, eventos e parcerias do LabCity.'
                                 : 'Cobertura da mídia sobre as atividades e pesquisas do nosso laboratório.'
@@ -86,14 +86,14 @@ export default function NewsClient({ news }: { news: NewsPost[] }) {
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
                                     className={`relative px-4 py-3 text-sm font-bold transition-colors ${activeTab === tab.id
-                                            ? 'text-primary'
-                                            : 'text-muted-foreground hover:text-foreground'
+                                        ? 'text-primary'
+                                        : 'text-muted-foreground hover:text-foreground'
                                         }`}
                                 >
                                     {tab.label}
                                     <span className={`ml-2 text-xs px-1.5 py-0.5 rounded-full ${activeTab === tab.id
-                                            ? 'bg-primary/10 text-primary'
-                                            : 'bg-slate-100 dark:bg-slate-800 text-muted-foreground'
+                                        ? 'bg-blue-100 dark:bg-blue-900/40 text-primary'
+                                        : 'bg-slate-100 dark:bg-slate-800 text-muted-foreground'
                                         }`}>
                                         {count}
                                     </span>
@@ -213,7 +213,7 @@ export default function NewsClient({ news }: { news: NewsPost[] }) {
                                                 )}
                                             </div>
 
-                                            <h3 className="text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
+                                            <h3 className="text-base md:text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
                                                 {item.title}
                                             </h3>
 

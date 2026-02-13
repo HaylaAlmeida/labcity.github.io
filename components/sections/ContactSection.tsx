@@ -1,7 +1,46 @@
 'use client';
 
-import { MapPin, Mail, Phone, Clock } from 'lucide-react';
+import { useState, useCallback } from 'react';
+import { MapPin, Mail, Phone, Clock, Check, Copy } from 'lucide-react';
 import { contactInfo } from '@/lib/content';
+import { cn } from '@/lib/utils';
+
+function CopyEmailInline({ email }: { email: string }) {
+    const [copied, setCopied] = useState(false);
+    const handleCopy = useCallback(async () => {
+        try {
+            await navigator.clipboard.writeText(email);
+        } catch {
+            const ta = document.createElement('textarea');
+            ta.value = email;
+            ta.style.position = 'fixed';
+            ta.style.opacity = '0';
+            document.body.appendChild(ta);
+            ta.select();
+            document.execCommand('copy');
+            document.body.removeChild(ta);
+        }
+        setCopied(true);
+        setTimeout(() => setCopied(false), 2000);
+    }, [email]);
+
+    return (
+        <button
+            onClick={handleCopy}
+            className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group cursor-pointer"
+            title={copied ? 'Copiado!' : 'Clique para copiar'}
+        >
+            <span>{email}</span>
+            {copied ? (
+                <span className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-medium">
+                    <Check className="w-3.5 h-3.5" /> Copiado!
+                </span>
+            ) : (
+                <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
+            )}
+        </button>
+    );
+}
 
 export function ContactSection() {
     return (
@@ -14,10 +53,10 @@ export function ContactSection() {
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
                             Fale Conosco
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-black text-foreground mb-8 tracking-tight">
+                        <h2 className="text-2xl md:text-5xl font-black text-foreground mb-8 tracking-tight">
                             Entre em Contato
                         </h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed mb-12">
+                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-12">
                             Estamos abertos a novas parcerias e projetos. Visite nosso laboratório ou entre em contato pelos canais oficiais.
                         </p>
 
@@ -41,9 +80,7 @@ export function ContactSection() {
                                 </div>
                                 <div>
                                     <h3 className="font-bold text-foreground mb-1">Email</h3>
-                                    <p className="text-muted-foreground">
-                                        {contactInfo.email}
-                                    </p>
+                                    <CopyEmailInline email={contactInfo.email} />
                                 </div>
                             </div>
 
@@ -90,6 +127,7 @@ export function ContactSection() {
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 className="absolute inset-0 transition-all duration-500 dark:invert-[0.9] dark:hue-rotate-180 dark:contrast-[1.1] dark:brightness-[0.8]"
+                                title="Localização do LabCity - CCAD-IA"
                             />
                         </div>
                     </div>

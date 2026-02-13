@@ -64,7 +64,7 @@ export function Header() {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const shouldShowSolidBackground = !isHome || isScrolled;
+    const shouldShowSolidBackground = !isHome || isScrolled || isMobileMenuOpen;
 
     return (
         <header

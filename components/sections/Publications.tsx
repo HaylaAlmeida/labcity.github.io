@@ -42,10 +42,10 @@ export function Publications({ publications }: { publications: Publication[] }) 
                         <span className="font-mono  text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
                             Produção Científica & Inovação
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+                        <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
                             Publicações Recentes
                         </h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
+                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                             Acompanhe nossa produção científica e tecnológica: artigos e registros de software.
                         </p>
                     </div>

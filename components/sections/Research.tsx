@@ -21,10 +21,10 @@ export function Research({ researchAreas }: ResearchProps) {
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
                             Competências Centrais
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+                        <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
                             Linhas de Pesquisa
                         </h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
+                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                             Conheça as principais áreas de atuação e frentes tecnológicas do nosso laboratório.
                         </p>
                     </div>

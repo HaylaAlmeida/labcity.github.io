@@ -1,87 +1,29 @@
-'use client';
-
-import { motion } from 'framer-motion';
 import { ArrowRight, Cpu } from 'lucide-react';
 import Link from 'next/link';
-import { useId, useMemo } from 'react';
-
-type DataNode = {
-    top: string;
-    left: string;
-    duration: number;
-};
-
-function hashStringToUint32(input: string): number {
-    let h = 2166136261;
-    for (let i = 0; i < input.length; i++) {
-        h ^= input.charCodeAt(i);
-        h = Math.imul(h, 16777619);
-    }
-    return h >>> 0;
-}
-
-function mulberry32(seed: number) {
-    return function rand() {
-        let t = (seed += 0x6D2B79F5);
-        t = Math.imul(t ^ (t >>> 15), t | 1);
-        t ^= t + Math.imul(t ^ (t >>> 7), t | 61);
-        return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
-    };
-}
+import { HeroAnimations } from './HeroAnimations';
 
 export function Hero() {
-    const seedId = useId();
-    const nodes = useMemo<DataNode[]>(() => {
-        const seed = hashStringToUint32(seedId);
-        const rand = mulberry32(seed);
-        return Array.from({ length: 6 }, () => ({
-            top: `${rand() * 80 + 10}%`,
-            left: `${rand() * 80 + 10}%`,
-            duration: 3 + rand() * 2,
-        }));
-    }, [seedId]);
-
     return (
         <section
             className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
 
-            {/* Background - Technical Grid (PRESERVED) */}
+            {/* Background - Technical Grid */}
             <div className="absolute inset-0 z-0">
                 <div
                     className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
                 <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-transparent to-slate-950/50" />
 
-                {/* Animated Data Nodes (PRESERVED) */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ duration: 2 }}
-                    className="absolute inset-0"
-                >
-                    {nodes.map((node, i) => (
-                        <motion.div
-                            key={i}
-                            className="absolute w-2 h-2 bg-primary rounded-full shadow-[0_0_10px_2px_rgba(59,130,246,0.5)]"
-                            style={{
-                                top: node.top,
-                                left: node.left
-                            }}
-                            animate={{ opacity: [0.2, 1, 0.2] }}
-                            transition={{ duration: node.duration, repeat: Infinity }}
-                        />
-                    ))}
-                </motion.div>
+                {/* Animated Data Nodes (client-only, non-blocking) */}
+                <HeroAnimations />
             </div>
 
             <div
                 className="container relative z-20 px-4 md:px-6 flex flex-col items-start text-left max-w-8xl pt-32 md:pt-40">
 
                 {/* Badge Node */}
-                <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ duration: 0.5 }}
-                    className="flex items-center gap-2 mb-8"
+                <div
+                    className="flex items-center gap-2 mb-8 hero-fade-in"
+                    style={{ animationDelay: '0s' }}
                 >
                     <div className="bg-blue-500/20 p-2 rounded-lg border border-blue-500/30">
                         <Cpu className="w-5 h-5 text-blue-400" />
@@ -89,37 +31,31 @@ export function Hero() {
                     <span className="text-xs md:text-sm font-mono text-blue-400 font-bold uppercase tracking-widest">
                         UFPA &bull; INCT IAmazônia &bull; CCAD-IA
                     </span>
-                </motion.div>
+                </div>
 
-                {/* Main Headline - Reference Style */}
-                <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.2 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter mb-8 text-white leading-[1.1] max-w-7xl"
+                {/* Main Headline — LCP Element (server-rendered, CSS animation) */}
+                <h1
+                    className="text-4xl md:text-5xl lg:text-8xl font-black tracking-tighter mb-8 text-white leading-[1.1] max-w-7xl hero-fade-in"
+                    style={{ animationDelay: '0.2s' }}
                 >
-                    Inteligência Artificial para {" "}
-                    <span className="text-blue-400 md:bg-gradient-to-r md:from-primary md:to-blue-300 md:bg-clip-text md:text-transparent selection:bg-blue-500/30 whitespace-nowrap">
+                    Inteligência Artificial para{" "}
+                    <span className="text-blue-400 md:bg-gradient-to-r md:from-primary md:to-blue-300 md:bg-clip-text md:text-transparent selection:bg-blue-500/30">
                         Cidades Inteligentes
                     </span>
-                </motion.h1>
+                </h1>
 
                 {/* Description */}
-                <motion.p
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.4 }}
-                    className="text-lg md:text-xl text-slate-400 max-w-5xl mb-12 leading-relaxed font-light"
+                <p
+                    className="text-sm md:text-lg lg:text-xl text-slate-400 max-w-5xl mb-12 leading-relaxed font-light hero-fade-in"
+                    style={{ animationDelay: '0.4s' }}
                 >
                     Laboratório de Inteligência Artificial aplicada a Cidades Inteligentes. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para monitoramento e gestão urbana na Amazônia.
-                </motion.p>
+                </p>
 
-                {/* Buttons - Reference Style */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.6, delay: 0.6 }}
-                    className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto"
+                {/* Buttons */}
+                <div
+                    className="flex flex-col sm:flex-row gap-5 w-full sm:w-auto hero-fade-in"
+                    style={{ animationDelay: '0.6s' }}
                 >
                     <Link
                         href="/projetos"
@@ -134,18 +70,16 @@ export function Hero() {
                     >
                         Sobre Labcity
                     </Link>
-                </motion.div>
+                </div>
 
-                {/* Bottom Tech Stats (Preserved) */}
-                <motion.div
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    transition={{ delay: 0.8, duration: 1 }}
-                    className="mt-20 pt-8 border-t border-slate-800/50 w-full flex items-center gap-12"
+                {/* Bottom indicator */}
+                <div
+                    className="mt-20 pt-8 border-t border-slate-800/50 w-full flex items-center gap-12 hero-fade-in"
+                    style={{ animationDelay: '0.8s' }}
                 >
                     <div
                         className="w-2 h-2 rounded-full bg-blue-500 shadow-[0_0_10px_2px_rgba(59,130,246,0.5)] animate-pulse" />
-                </motion.div>
+                </div>
 
             </div>
         </section>

@@ -13,10 +13,10 @@ export async function NewsSection() {
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
                             Atualizações
                         </span>
-                        <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
+                        <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
                             Notícias Recentes
                         </h2>
-                        <p className="text-lg text-muted-foreground leading-relaxed">
+                        <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
                             Acompanhe as últimas novidades, parcerias e avanços do laboratório.
                         </p>
                     </div>
@@ -68,7 +68,7 @@ export async function NewsSection() {
                                     )}
                                 </div>
 
-                                <h3 className="text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
+                                <h3 className="text-base md:text-xl font-bold text-foreground mb-3 leading-tight group-hover:text-primary transition-colors">
                                     {item.title}
                                 </h3>
 

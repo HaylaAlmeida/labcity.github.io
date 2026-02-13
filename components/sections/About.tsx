@@ -18,7 +18,7 @@ export function About() {
                         <span className="font-mono text-xs font-bold text-primary mb-4 block uppercase tracking-widest">
                             {'// '}Manifesto_Labcity
                         </span>
-                        <h2 className="text-3xl font-bold mb-6 text-foreground tracking-tight leading-tight">
+                        <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground tracking-tight leading-tight">
                             Ciência de Dados aplicada à <br />
                             <span className="text-primary">Realidade Urbana</span>
                         </h2>
@@ -32,7 +32,7 @@ export function About() {
                                 <span className="text-[10px] font-mono text-muted-foreground uppercase">Fundação</span>
                             </div>
                             <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                                <span className="block text-2xl font-bold text-primary mb-1">Guamá</span>
+                                <span className="block text-xl md:text-2xl font-bold text-primary mb-1">Guamá</span>
                                 <span className="text-[10px] font-mono text-muted-foreground uppercase">Campus</span>
                             </div>
                         </div>

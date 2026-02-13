@@ -2,9 +2,10 @@
 
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, ExternalLink, Search } from 'lucide-react';
+import { ArrowLeft, ExternalLink, Search, SlidersHorizontal, X, ChevronDown } from 'lucide-react';
 import Link from 'next/link';
 import type { Publication } from '@/lib/data/publications';
+import { cn } from '@/lib/utils';
 
 const typeLabels: Record<string, string> = {
   article: 'Artigo Científico',
@@ -18,6 +19,32 @@ const typeLabels: Record<string, string> = {
   book: 'Livro',
   thesis: 'Tese',
 };
+
+// Expandable abstract inside Link cards
+function ExpandableAbstract({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > 150;
+
+  return (
+    <div className="mt-3 mb-3">
+      <p className={cn(
+        'text-sm text-muted-foreground leading-relaxed transition-all',
+        !expanded && isLong && 'line-clamp-2'
+      )}>
+        {text}
+      </p>
+      {isLong && (
+        <button
+          onClick={(e) => { e.preventDefault(); e.stopPropagation(); setExpanded(!expanded); }}
+          className="text-xs text-primary hover:text-primary/80 font-medium mt-1 flex items-center gap-0.5 transition-colors"
+        >
+          {expanded ? 'Ver menos' : 'Ver mais'}
+          <ChevronDown className={cn('w-3 h-3 transition-transform', expanded && 'rotate-180')} />
+        </button>
+      )}
+    </div>
+  );
+}
 
 const tabs = [
   {
@@ -39,6 +66,7 @@ const tabs = [
 
 export default function PublicacoesClient({ publications }: { publications: Publication[] }) {
   const [activeTab, setActiveTab] = useState('academico');
+  const [filtersOpen, setFiltersOpen] = useState(false);
 
   // Independent filter state per tab
   const [filterState, setFilterState] = useState<Record<string, { search: string; type: string | null; year: string | null; tag: string | null }>>({
@@ -94,10 +122,10 @@ export default function PublicacoesClient({ publications }: { publications: Publ
             <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
               Produção Científica & Inovação
             </span>
-            <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-foreground mb-4">
+            <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-foreground mb-4">
               Nossas Produções
             </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
               Artigos e registros de software produzidos pelo nosso grupo de pesquisa.
             </p>
           </div>
@@ -117,7 +145,7 @@ export default function PublicacoesClient({ publications }: { publications: Publ
                 >
                   {tab.label}
                   <span className={`ml-2 text-xs px-1.5 py-0.5 rounded-full ${activeTab === tab.id
-                    ? 'bg-primary/10 text-primary'
+                    ? 'bg-blue-100 dark:bg-blue-900/40 text-primary'
                     : 'bg-slate-100 dark:bg-slate-800 text-muted-foreground'
                     }`}>
                     {count}
@@ -135,57 +163,115 @@ export default function PublicacoesClient({ publications }: { publications: Publ
           </div>
 
           {/* Search and Filters */}
-          <div className="w-full flex flex-col md:flex-row gap-4 mb-12 items-center">
-            <div className="relative w-full md:w-auto">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
-              <input
-                type="text"
-                placeholder="Buscar (título, autor, evento)..."
-                value={currentFilters.search}
-                onChange={(e) => updateFilter('search', e.target.value)}
-                className="pl-10 pr-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary/20 outline-none transition-all w-full md:w-[28rem]"
-              />
-            </div>
+          {(() => {
+            const activeFilterCount = [currentFilters.type, currentFilters.year, currentFilters.tag].filter(Boolean).length;
 
-            <div className="flex gap-2 w-full md:w-auto">
-              {availableTypes.length > 1 && (
+            const filterSelects = (
+              <>
+                {availableTypes.length > 1 && (
+                  <select
+                    className="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm outline-none focus:ring-2 focus:ring-primary/20 flex-1 md:flex-none cursor-pointer"
+                    value={currentFilters.type || ''}
+                    onChange={(e) => updateFilter('type', e.target.value || null)}
+                  >
+                    <option value="">Todos os Tipos</option>
+                    {availableTypes.map(t => (
+                      <option key={t} value={t}>{typeLabels[t] || t}</option>
+                    ))}
+                  </select>
+                )}
+
                 <select
                   className="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm outline-none focus:ring-2 focus:ring-primary/20 flex-1 md:flex-none cursor-pointer"
-                  value={currentFilters.type || ''}
-                  onChange={(e) => updateFilter('type', e.target.value || null)}
+                  value={currentFilters.year || ''}
+                  onChange={(e) => updateFilter('year', e.target.value || null)}
                 >
-                  <option value="">Todos os Tipos</option>
-                  {availableTypes.map(t => (
-                    <option key={t} value={t}>{typeLabels[t] || t}</option>
+                  <option value="">Todos os Anos</option>
+                  {availableYears.map(y => (
+                    <option key={y} value={y}>{y}</option>
                   ))}
                 </select>
-              )}
 
-              <select
-                className="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm outline-none focus:ring-2 focus:ring-primary/20 flex-1 md:flex-none cursor-pointer"
-                value={currentFilters.year || ''}
-                onChange={(e) => updateFilter('year', e.target.value || null)}
-              >
-                <option value="">Todos os Anos</option>
-                {availableYears.map(y => (
-                  <option key={y} value={y}>{y}</option>
-                ))}
-              </select>
+                {availableTags.length > 0 && (
+                  <select
+                    className="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm outline-none focus:ring-2 focus:ring-primary/20 flex-1 md:flex-none cursor-pointer"
+                    value={currentFilters.tag || ''}
+                    onChange={(e) => updateFilter('tag', e.target.value || null)}
+                  >
+                    <option value="">Todas as Tags</option>
+                    {availableTags.map(tag => (
+                      <option key={tag} value={tag}>{tag}</option>
+                    ))}
+                  </select>
+                )}
+              </>
+            );
 
-              {availableTags.length > 0 && (
-                <select
-                  className="px-3 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm outline-none focus:ring-2 focus:ring-primary/20 flex-1 md:flex-none cursor-pointer"
-                  value={currentFilters.tag || ''}
-                  onChange={(e) => updateFilter('tag', e.target.value || null)}
-                >
-                  <option value="">Todas as Tags</option>
-                  {availableTags.map(tag => (
-                    <option key={tag} value={tag}>{tag}</option>
-                  ))}
-                </select>
-              )}
-            </div>
-          </div>
+            return (
+              <div className="w-full flex flex-col gap-4 mb-12">
+                <div className="flex flex-col md:flex-row gap-4 items-center">
+                  <div className="relative w-full md:w-auto">
+                    <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
+                    <input
+                      type="text"
+                      placeholder="Buscar (título, autor, evento)..."
+                      value={currentFilters.search}
+                      onChange={(e) => updateFilter('search', e.target.value)}
+                      className="pl-10 pr-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 focus:ring-2 focus:ring-primary/20 outline-none transition-all w-full md:w-[28rem]"
+                    />
+                  </div>
+
+                  {/* Mobile: Filter toggle button */}
+                  <button
+                    onClick={() => setFiltersOpen(!filtersOpen)}
+                    className="flex md:hidden items-center gap-2 px-4 py-2 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 text-sm font-medium w-full justify-center transition-colors hover:border-primary/50"
+                  >
+                    {filtersOpen ? <X className="w-4 h-4" /> : <SlidersHorizontal className="w-4 h-4" />}
+                    Filtros
+                    {activeFilterCount > 0 && (
+                      <span className="ml-1 bg-primary text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full min-w-[18px] text-center">
+                        {activeFilterCount}
+                      </span>
+                    )}
+                  </button>
+
+                  {/* Desktop: inline selects */}
+                  <div className="hidden md:flex gap-2">
+                    {filterSelects}
+                  </div>
+                </div>
+
+                {/* Mobile: animated filter panel */}
+                <AnimatePresence>
+                  {filtersOpen && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: 'auto', opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      transition={{ duration: 0.2 }}
+                      className="overflow-hidden md:hidden"
+                    >
+                      <div className="flex flex-col gap-3 p-4 rounded-lg border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                        {filterSelects}
+                        {activeFilterCount > 0 && (
+                          <button
+                            onClick={() => {
+                              updateFilter('type', null);
+                              updateFilter('year', null);
+                              updateFilter('tag', null);
+                            }}
+                            className="text-xs text-primary hover:text-primary/80 font-medium self-end transition-colors"
+                          >
+                            Limpar Filtros
+                          </button>
+                        )}
+                      </div>
+                    </motion.div>
+                  )}
+                </AnimatePresence>
+              </div>
+            );
+          })()}
         </div>
 
         {/* Publications List */}
@@ -213,7 +299,7 @@ export default function PublicacoesClient({ publications }: { publications: Publ
                     <div className="flex flex-col lg:flex-row lg:items-start gap-4">
                       <div className="flex-1 min-w-0">
                         <div className="flex items-center gap-2 mb-2">
-                          <h3 className="text-lg font-bold text-foreground group-hover:text-primary transition-colors line-clamp-2">
+                          <h3 className="text-base md:text-lg font-bold text-foreground group-hover:text-primary transition-colors leading-tight">
                             {pub.title}
                           </h3>
                           <span className="text-sm text-muted-foreground shrink-0">• {pub.year}</span>
@@ -227,7 +313,7 @@ export default function PublicacoesClient({ publications }: { publications: Publ
                           <span className="text-blue-600 dark:text-blue-400 font-bold">{typeLabels[pub.type]}</span>
                         </div>
 
-                        <p className="text-sm text-muted-foreground line-clamp-2 mb-3 mt-3">{pub.abstract}</p>
+                        {pub.abstract && <ExpandableAbstract text={pub.abstract} />}
 
                         <div className="flex flex-wrap gap-2">
                           {pub.tags.filter(Boolean).map((tag) => (

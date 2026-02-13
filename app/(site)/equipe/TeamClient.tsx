@@ -1,13 +1,79 @@
 'use client';
 
-import { useState, useMemo } from 'react';
-import { motion } from 'framer-motion';
-import { User, ArrowLeft, Mail, Linkedin, Search, X } from 'lucide-react';
+import { useState, useMemo, useCallback } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { User, ArrowLeft, Mail, Linkedin, Search, X, Check, Copy, ChevronDown } from 'lucide-react';
 import { LattesIcon } from '@/components/icons/LattesIcon';
 import Link from 'next/link';
 import type { TeamData, TeamMember } from '@/lib/data/team';
 import { getAssetPath } from '@/lib/utils';
 import { cn } from '@/lib/utils';
+
+// Copy email button with feedback
+function CopyEmailButton({ email }: { email: string }) {
+  const [copied, setCopied] = useState(false);
+  const handleCopy = useCallback(async () => {
+    try {
+      await navigator.clipboard.writeText(email);
+    } catch {
+      const ta = document.createElement('textarea');
+      ta.value = email;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      document.execCommand('copy');
+      document.body.removeChild(ta);
+    }
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }, [email]);
+
+  return (
+    <button
+      onClick={handleCopy}
+      title={copied ? 'Copiado!' : `Copiar ${email}`}
+      className={cn(
+        'relative h-8 flex items-center justify-center rounded-full text-xs font-medium transition-all duration-200',
+        copied
+          ? 'bg-green-100 dark:bg-green-900/40 text-green-600 dark:text-green-400 px-3 gap-1.5'
+          : 'w-8 bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-primary hover:text-white'
+      )}
+    >
+      {copied ? (
+        <><Check className="w-3.5 h-3.5" /> Copiado!</>
+      ) : (
+        <Mail className="w-4 h-4" />
+      )}
+    </button>
+  );
+}
+
+// Expandable bio text
+function ExpandableBio({ text }: { text: string }) {
+  const [expanded, setExpanded] = useState(false);
+  const isLong = text.length > 120;
+
+  return (
+    <div className="mb-3">
+      <p className={cn(
+        'text-xs text-muted-foreground leading-relaxed transition-all',
+        !expanded && isLong && 'line-clamp-3'
+      )}>
+        {text}
+      </p>
+      {isLong && (
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="text-xs text-primary hover:text-primary/80 font-medium mt-1 flex items-center gap-0.5 transition-colors"
+        >
+          {expanded ? 'Ver menos' : 'Ver mais'}
+          <ChevronDown className={cn('w-3 h-3 transition-transform', expanded && 'rotate-180')} />
+        </button>
+      )}
+    </div>
+  );
+}
 
 // Labels for level display
 const levelLabels: Record<string, string> = {
@@ -87,15 +153,15 @@ export default function TeamClient({ team }: { team: TeamData }) {
   return (
     <main className="min-h-screen bg-slate-50 dark:bg-slate-950 pt-32 pb-16">
       <div className="container mx-auto px-4 md:px-6">
-        <div className="mb-12 text-center md:text-left">
+        <div className="mb-12">
           <Link
             href="/#equipe"
             className="inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-primary mb-6 transition-colors"
           >
             <ArrowLeft className="w-4 h-4" /> Voltar para Home
           </Link>
-          <h1 className="text-4xl md:text-5xl font-black tracking-tighter text-foreground mb-4">Nossa Equipe</h1>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto md:mx-0">
+          <h1 className="text-3xl md:text-5xl font-black tracking-tighter text-foreground mb-4">Nossa Equipe</h1>
+          <p className="text-base md:text-lg text-muted-foreground max-w-2xl">
             Conheça os pesquisadores e bolsistas que impulsionam a inovação no Labcity UFPA.
           </p>
         </div>
@@ -165,7 +231,7 @@ export default function TeamClient({ team }: { team: TeamData }) {
                     className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-start gap-4 group hover:border-primary/50 hover:shadow-sm transition-all duration-300"
                   >
                     {/* Photo - Left */}
-                    <div className="w-24 h-24 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden ring-2 ring-slate-100 dark:ring-slate-800 group-hover:ring-primary/30 transition-all">
+                    <div className="w-16 h-16 md:w-24 md:h-24 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden ring-2 ring-slate-100 dark:ring-slate-800 group-hover:ring-primary/30 transition-all">
                       {member.image && member.image !== '/images/team/avatar-placeholder.jpg' ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={getAssetPath(member.image)} alt={member.name} className="w-full h-full object-cover" />
@@ -178,17 +244,15 @@ export default function TeamClient({ team }: { team: TeamData }) {
 
                     {/* Info - Right */}
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-lg text-foreground truncate" title={member.name}>
+                      <h4 className="font-bold text-base md:text-lg text-foreground break-words leading-tight">
                         {member.name}
                       </h4>
-                      <p className="text-sm text-primary font-medium mb-2">
+                      <p className="text-[13px] text-primary font-medium mb-2">
                         {member.role || 'Coordenador(a)'}
                       </p>
                       <div className="w-full h-px bg-slate-200 dark:bg-slate-700 mb-2" />
                       {(member.bio || member.focus) && (
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-4 mb-3">
-                          {member.bio || member.focus}
-                        </p>
+                        <ExpandableBio text={member.bio || member.focus || ''} />
                       )}
                       <div className="flex items-center gap-2">
                         {member.lattes && member.lattes !== '#' && (
@@ -197,9 +261,7 @@ export default function TeamClient({ team }: { team: TeamData }) {
                           </Link>
                         )}
                         {member.email && member.email !== '#' && (
-                          <Link href={`mailto:${member.email}`} title="Email" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-red-500 hover:text-white transition-colors">
-                            <Mail className="w-4 h-4" />
-                          </Link>
+                          <CopyEmailButton email={member.email} />
                         )}
                         {member.linkedin && member.linkedin !== '#' && (
                           <Link href={member.linkedin} target="_blank" title="LinkedIn" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-[#0077b5] hover:text-white transition-colors">
@@ -231,7 +293,7 @@ export default function TeamClient({ team }: { team: TeamData }) {
                     className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl p-4 flex items-start gap-4 group hover:border-primary/50 hover:shadow-sm transition-all duration-300"
                   >
                     {/* Photo - Left */}
-                    <div className="w-20 h-20 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden ring-2 ring-slate-100 dark:ring-slate-800 group-hover:ring-primary/30 transition-all">
+                    <div className="w-14 h-14 md:w-20 md:h-20 shrink-0 rounded-full bg-slate-100 dark:bg-slate-800 overflow-hidden ring-2 ring-slate-100 dark:ring-slate-800 group-hover:ring-primary/30 transition-all">
                       {member.image && member.image !== '/images/team/avatar-placeholder.jpg' ? (
                         // eslint-disable-next-line @next/next/no-img-element
                         <img src={getAssetPath(member.image)} alt={member.name} className="w-full h-full object-cover" />
@@ -244,17 +306,15 @@ export default function TeamClient({ team }: { team: TeamData }) {
 
                     {/* Info - Right */}
                     <div className="flex-1 min-w-0">
-                      <h4 className="font-bold text-base text-foreground truncate" title={member.name}>
+                      <h4 className="font-bold text-base text-foreground break-words leading-tight">
                         {member.name}
                       </h4>
-                      <p className="text-sm text-primary font-medium mb-2">
+                      <p className="text-[13px] text-primary font-medium mb-2">
                         {levelLabels[member.level || ''] || 'Membro'}
                       </p>
                       <div className="w-full h-px bg-slate-200 dark:bg-slate-700 mb-2" />
                       {member.bio && (
-                        <p className="text-xs text-muted-foreground leading-relaxed line-clamp-4 mb-3">
-                          {member.bio}
-                        </p>
+                        <ExpandableBio text={member.bio} />
                       )}
                       <div className="flex items-center gap-2">
                         {member.lattes && member.lattes !== '#' && (
@@ -263,9 +323,7 @@ export default function TeamClient({ team }: { team: TeamData }) {
                           </Link>
                         )}
                         {member.email && member.email !== '#' && (
-                          <Link href={`mailto:${member.email}`} title="Email" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-red-500 hover:text-white transition-colors">
-                            <Mail className="w-4 h-4" />
-                          </Link>
+                          <CopyEmailButton email={member.email} />
                         )}
                         {member.linkedin && member.linkedin !== '#' && (
                           <Link href={member.linkedin} target="_blank" title="LinkedIn" className="w-8 h-8 flex items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800 text-slate-500 hover:bg-[#0077b5] hover:text-white transition-colors">
