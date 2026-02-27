@@ -71,8 +71,8 @@ export function LocaleSwitcher({ className, inverted = false }: LocaleSwitcherPr
                         <button
                             onClick={() => onLocaleChange('pt')}
                             className={cn(
-                                "w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-between",
-                                locale === 'pt' ? "text-primary font-bold bg-primary/5" : "text-slate-700 dark:text-slate-200"
+                                "w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between",
+                                locale === 'pt' ? "bg-slate-100 dark:bg-slate-800 text-primary font-bold" : "text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
                             )}
                         >
                             Português (BR)
@@ -81,8 +81,8 @@ export function LocaleSwitcher({ className, inverted = false }: LocaleSwitcherPr
                         <button
                             onClick={() => onLocaleChange('en')}
                             className={cn(
-                                "w-full text-left px-4 py-2.5 text-sm transition-colors hover:bg-slate-50 dark:hover:bg-slate-800 flex items-center justify-between",
-                                locale === 'en' ? "text-primary font-bold bg-primary/5" : "text-slate-700 dark:text-slate-200"
+                                "w-full text-left px-4 py-2.5 text-sm transition-colors flex items-center justify-between",
+                                locale === 'en' ? "bg-slate-100 dark:bg-slate-800 text-primary font-bold" : "text-slate-700 dark:text-slate-200 hover:bg-slate-50 dark:hover:bg-slate-800"
                             )}
                         >
                             English (EN)
