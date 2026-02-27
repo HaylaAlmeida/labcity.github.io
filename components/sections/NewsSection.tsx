@@ -1,9 +1,12 @@
-import Link from "next/link";
+import { Link } from '@/i18n/routing';
 import { ArrowRight, Calendar, User, ChevronRight, ExternalLink } from "lucide-react";
 import { getRecentNews } from "@/lib/data/news";
+import { getTranslations, getLocale } from 'next-intl/server';
 
 export async function NewsSection() {
-    const news = await getRecentNews(4);
+    const locale = await getLocale();
+    const news = await getRecentNews(4, locale);
+    const t = await getTranslations('NewsSection');
 
     return (
         <section className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
@@ -11,17 +14,17 @@ export async function NewsSection() {
                 <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
-                            Atualizações
+                            {t('tag')}
                         </span>
                         <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-                            Notícias Recentes
+                            {t('title')}
                         </h2>
                         <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                            Acompanhe as últimas novidades, parcerias e avanços do laboratório.
+                            {t('description')}
                         </p>
                     </div>
                     <Link href="/noticias" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
-                        [ Ver Todas as Notícias ] <ChevronRight className="w-4 h-4" />
+                        {t('viewAll')} <ChevronRight className="w-4 h-4" />
                     </Link>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -48,7 +51,7 @@ export async function NewsSection() {
                                 {item.type === 'external' && (
                                     <div className="absolute top-4 left-4 bg-white/90 dark:bg-slate-950/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-bold text-primary shadow-sm border border-slate-200 dark:border-slate-800 flex items-center gap-1">
                                         <ExternalLink className="w-3 h-3" />
-                                        Deu na Mídia
+                                        {t('media')}
                                     </div>
                                 )}
                             </div>
@@ -79,11 +82,11 @@ export async function NewsSection() {
                                 <div className="text-primary font-bold text-sm flex items-center gap-2 group/btn">
                                     {item.type === 'external' ? (
                                         <>
-                                            Ler na fonte <ExternalLink className="w-4 h-4" />
+                                            {t('readSource')} <ExternalLink className="w-4 h-4" />
                                         </>
                                     ) : (
                                         <>
-                                            Ler artigo <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
+                                            {t('readArticle')} <ArrowRight className="w-4 h-4 transition-transform group-hover/btn:translate-x-1" />
                                         </>
                                     )}
                                 </div>
@@ -97,7 +100,7 @@ export async function NewsSection() {
                         href="/noticias"
                         className="inline-flex items-center gap-2 text-sm font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wide group"
                     >
-                        Ver todas as notícias
+                        {t('viewAllBtn')}
                         <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                     </Link>
                 </div>

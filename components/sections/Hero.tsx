@@ -1,8 +1,10 @@
 import { ArrowRight, Cpu } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { HeroAnimations } from './HeroAnimations';
+import { useTranslations } from 'next-intl';
 
 export function Hero() {
+    const t = useTranslations('Hero');
     return (
         <section
             className="relative min-h-[100vh] flex items-center justify-center overflow-hidden bg-slate-950 text-white border-b border-slate-800">
@@ -38,9 +40,9 @@ export function Hero() {
                     className="text-4xl md:text-5xl lg:text-8xl font-black tracking-tighter mb-8 text-white leading-[1.1] max-w-7xl hero-fade-in"
                     style={{ animationDelay: '0.2s' }}
                 >
-                    Inteligência Artificial para{" "}
+                    {t('titleLine1')}{" "}
                     <span className="text-blue-400 md:bg-gradient-to-r md:from-primary md:to-blue-300 md:bg-clip-text md:text-transparent selection:bg-blue-500/30">
-                        Cidades Inteligentes
+                        {t('titleLine2')}
                     </span>
                 </h1>
 
@@ -49,7 +51,7 @@ export function Hero() {
                     className="text-sm md:text-lg lg:text-xl text-slate-400 max-w-5xl mb-12 leading-relaxed font-light hero-fade-in"
                     style={{ animationDelay: '0.4s' }}
                 >
-                    Laboratório de Inteligência Artificial aplicada a Cidades Inteligentes. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para monitoramento e gestão urbana na Amazônia.
+                    {t('description')}
                 </p>
 
                 {/* Buttons */}
@@ -61,14 +63,14 @@ export function Hero() {
                         href="/projetos"
                         className="inline-flex items-center justify-center h-14 px-8 rounded bg-blue-500 hover:bg-blue-600 text-white font-extrabold transition-all shadow-lg hover:shadow-blue-500/25 text-sm tracking-wider uppercase"
                     >
-                        Ver Projetos
+                        {t('projectsCta')}
                         <ArrowRight className="ml-2 w-4 h-4 stroke-[3]" />
                     </Link>
                     <Link
                         href="/institucional#sobre"
                         className="inline-flex items-center justify-center h-14 px-8 rounded border border-slate-700 hover:border-slate-600 bg-slate-900/50 hover:bg-slate-800 text-slate-300 hover:text-white transition-all text-sm tracking-wider uppercase font-bold"
                     >
-                        Sobre Labcity
+                        {t('aboutCta')}
                     </Link>
                 </div>
 

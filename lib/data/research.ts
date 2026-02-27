@@ -3,6 +3,7 @@ import { researchAreas as localAreas } from '@/lib/content';
 
 export type ResearchArea = {
     title: string;
+    baseTitle: string;
     code: string;
     icon: string | any;
     description: string;
@@ -11,19 +12,20 @@ export type ResearchArea = {
 
 const TAG = 'sanity:research';
 
-export async function getResearchAreas(): Promise<ResearchArea[]> {
+export async function getResearchAreas(lang: string = 'pt'): Promise<ResearchArea[]> {
     if (!isSanityEnabled()) return localAreas;
 
     try {
-        const query = `*[_type == "researchArea"] | order(order asc, title asc) {
-      title,
+        const query = `*[_type == "researchArea"] | order(order asc, title.pt asc, title asc) {
+      "title": coalesce(title[$lang], title.pt, title, ""),
+      "baseTitle": coalesce(title.pt, title, ""),
       code,
       "icon": icon,
-      description,
+      "description": coalesce(description[$lang], description.pt, description, ""),
       order
     }`;
 
-        const items = await sanityQuery<ResearchArea[]>(query, {}, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<ResearchArea[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
         return items.length ? items : localAreas;
     } catch (err) {
         console.error('[Sanity] getResearchAreas failed', err);
@@ -33,7 +35,7 @@ export async function getResearchAreas(): Promise<ResearchArea[]> {
 
 
 export function getResearchAreaSlug(area: ResearchArea): string {
-    return area.title
+    return (area.baseTitle || area.title || 'area')
         .toLowerCase()
         .normalize('NFD')
         .replace(/[\u0300-\u036f]/g, '')
@@ -41,7 +43,7 @@ export function getResearchAreaSlug(area: ResearchArea): string {
         .replace(/\s+/g, '-');
 }
 
-export async function getResearchAreaBySlug(slug: string): Promise<ResearchArea | null> {
-    const areas = await getResearchAreas();
+export async function getResearchAreaBySlug(slug: string, lang: string = 'pt'): Promise<ResearchArea | null> {
+    const areas = await getResearchAreas(lang);
     return areas.find(area => getResearchAreaSlug(area) === slug) || null;
 }

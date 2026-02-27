@@ -2,7 +2,8 @@
 
 import { motion } from 'framer-motion';
 import { ArrowRight, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 
 export type Publication = {
     id: string;
@@ -14,21 +15,10 @@ export type Publication = {
     type: 'journal' | 'conference' | 'book' | 'thesis';
 };
 
-// Helper para mapear tipo de publicação para label em português
-const typeLabels: Record<string, string> = {
-    journal: 'Periódico',
-    article: 'Artigo Científico',
-    conference: 'Conferência',
-    book: 'Livro',
-    thesis: 'Tese',
-    tcc: 'TCC',
-    masters_thesis: 'Mestrado',
-    doctoral_thesis: 'Doutorado',
-    software: 'Software',
-    patent: 'Patente'
-};
 
 export function Publications({ publications }: { publications: Publication[] }) {
+    const t = useTranslations('PublicationsSection');
+    const tTypes = useTranslations('PublicationsPage.types');
     const recentPublications = [...publications]
         .sort((a, b) => b.year - a.year)
         .slice(0, 5);
@@ -39,18 +29,18 @@ export function Publications({ publications }: { publications: Publication[] }) 
 
                 <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-2xl">
-                        <span className="font-mono  text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
-                            Produção Científica & Inovação
+                        <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
+                            {t('tag')}
                         </span>
                         <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-                            Publicações Recentes
+                            {t('title')}
                         </h2>
                         <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                            Acompanhe nossa produção científica e tecnológica: artigos e registros de software.
+                            {t('description')}
                         </p>
                     </div>
                     <Link href="/publicacoes" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
-                        [ Ver Toda Produção ] <ChevronRight className="w-4 h-4" />
+                        {t('viewAll')} <ChevronRight className="w-4 h-4" />
                     </Link>
                 </div>
 
@@ -75,7 +65,7 @@ export function Publications({ publications }: { publications: Publication[] }) 
                                         {pub.year}
                                     </span>
                                     <span className="font-mono text-[10px] font-bold text-white bg-primary px-2 py-0.5 rounded-full uppercase">
-                                        {typeLabels[pub.type]}
+                                        {tTypes(pub.type)}
                                     </span>
                                 </div>
 
@@ -96,7 +86,7 @@ export function Publications({ publications }: { publications: Publication[] }) 
 
                                 {/* Link */}
                                 <div className="flex items-center text-primary text-xs font-bold opacity-0 group-hover:opacity-100 transition-opacity transform translate-y-2 group-hover:translate-y-0 duration-300">
-                                    Ver detalhes <span className="ml-1">&rarr;</span>
+                                    {t('details')} <span className="ml-1">&rarr;</span>
                                 </div>
                             </Link>
                         </motion.div>
@@ -118,10 +108,10 @@ export function Publications({ publications }: { publications: Publication[] }) 
                                 <ArrowRight className="w-6 h-6 text-white" />
                             </div>
                             <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                                Ver Toda Produção
+                                {t('viewAllBtn')}
                             </span>
                             <span className="text-sm text-muted-foreground mt-1">
-                                {publications.length} produções
+                                {publications.length} {t('itemsCount')}
                             </span>
                         </Link>
                     </motion.div>

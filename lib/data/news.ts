@@ -84,25 +84,26 @@ const localNews: NewsPost[] = [
     }
 ];
 
-export async function getRecentNews(limit = 3): Promise<NewsPost[]> {
+export async function getRecentNews(limit = 3, lang: string = 'pt'): Promise<NewsPost[]> {
     if (!isSanityEnabled()) return localNews;
 
     try {
         const query = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc)[0...${limit}] {
       "id": coalesce(id, _id),
-      title,
+      "title": coalesce(title[$lang], title.pt, ""),
       "slug": slug.current,
       "type": coalesce(type, "internal"),
       redirectUrl,
+      redirectUrl,
       source,
       publishedAt,
-      "excerpt": coalesce(description, pt::text(body)[0...160] + "..."),
+      "excerpt": coalesce(description, pt::text(body[$lang])[0...160] + "...", pt::text(body.pt)[0...160] + "..."),
       "image": mainImage.asset->url,
-      "category": categories[0]->title,
+      "category": categories[0]->{"t": coalesce(title[$lang], title.pt, title, "")}.t,
       "author": author->{name, "image": image.asset->url}
     }`;
 
-        const items = await sanityQuery<NewsPost[]>(query, {}, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<NewsPost[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
         console.log('[Sanity] Fetched Recent News:', items.length);
         return items.length ? items : localNews;
     } catch (err) {
@@ -111,25 +112,26 @@ export async function getRecentNews(limit = 3): Promise<NewsPost[]> {
     }
 }
 
-export async function getAllNews(): Promise<NewsPost[]> {
+export async function getAllNews(lang: string = 'pt'): Promise<NewsPost[]> {
     if (!isSanityEnabled()) return localNews;
 
     try {
         const query = `*[_type == "post" && defined(slug.current)] | order(publishedAt desc) {
       "id": coalesce(id, _id),
-      title,
+      "title": coalesce(title[$lang], title.pt, ""),
       "slug": slug.current,
       "type": coalesce(type, "internal"),
       redirectUrl,
+      redirectUrl,
       source,
       publishedAt,
-      "excerpt": coalesce(description, pt::text(body)[0...160] + "..."),
+      "excerpt": coalesce(description, pt::text(body[$lang])[0...160] + "...", pt::text(body.pt)[0...160] + "..."),
       "image": mainImage.asset->url,
-      "category": categories[0]->title,
+      "category": categories[0]->{"t": coalesce(title[$lang], title.pt, title, "")}.t,
       "author": author->{name, "image": image.asset->url}
     }`;
 
-        const items = await sanityQuery<NewsPost[]>(query, {}, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<NewsPost[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
         console.log('[Sanity] Fetched All News:', items.length);
         return items.length ? items : localNews;
     } catch (err) {
@@ -138,7 +140,7 @@ export async function getAllNews(): Promise<NewsPost[]> {
     }
 }
 
-export async function getNewsBySlug(slug: string): Promise<NewsPost | null> {
+export async function getNewsBySlug(slug: string, lang: string = 'pt'): Promise<NewsPost | null> {
     if (!isSanityEnabled()) {
         return localNews.find((p) => p.slug === slug) ?? null;
     }
@@ -146,40 +148,41 @@ export async function getNewsBySlug(slug: string): Promise<NewsPost | null> {
     try {
         const query = `*[_type == "post" && slug.current == $slug][0] {
       "id": coalesce(id, _id),
-      title,
+      "title": coalesce(title[$lang], title.pt, ""),
       "slug": slug.current,
       "type": coalesce(type, "internal"),
+      redirectUrl,
       redirectUrl,
       source,
       publishedAt,
       "image": mainImage.asset->url,
-      "category": categories[0]->title,
+      "category": categories[0]->{"t": coalesce(title[$lang], title.pt, title, "")}.t,
       "author": author->{
         name, 
         role, 
         "image": image.asset->url, 
         "id": coalesce(id, _id)
       },
-      body,
+      "body": coalesce(body[$lang], body.pt),
       "relatedProjects": relatedProjects[]->{
-        title, 
+        "title": coalesce(title[$lang], title.pt, ""), 
         "slug": slug.current,
         "image": image.asset->url
       },
       "relatedPublications": relatedPublications[]->{
-        title, 
+        "title": coalesce(title[$lang], title.pt, ""), 
         "slug": slug.current,
         year,
         venue
       },
       "relatedPosts": relatedPosts[]->{
-        title,
+        "title": coalesce(title[$lang], title.pt, ""),
         "slug": slug.current,
         publishedAt
       }
     }`;
 
-        const item = await sanityQuery<NewsPost | null>(query, { slug }, { tags: [TAG], revalidate: 30 });
+        const item = await sanityQuery<NewsPost | null>(query, { slug, lang }, { tags: [TAG], revalidate: 30 });
         return item || (localNews.find((p) => p.slug === slug) ?? null);
     } catch (err) {
         console.error('[Sanity] getNewsBySlug failed, falling back to local content', err);

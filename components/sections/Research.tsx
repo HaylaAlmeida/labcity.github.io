@@ -4,14 +4,16 @@ import { motion } from 'framer-motion';
 import * as LucideIcons from 'lucide-react';
 import { getResearchAreaSlug, ResearchArea } from '@/lib/data/research';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { ArrowRight, ChevronRight } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 interface ResearchProps {
     researchAreas: ResearchArea[];
 }
 
 export function Research({ researchAreas }: ResearchProps) {
+    const t = useTranslations('ResearchLinesSection');
     return (
         <section id="pesquisa" className="py-24 bg-white dark:bg-slate-950 border-t border-slate-100 dark:border-slate-800">
             <div className="container mx-auto px-4 md:px-6">
@@ -19,17 +21,17 @@ export function Research({ researchAreas }: ResearchProps) {
                 <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
-                            Competências Centrais
+                            {t('tag')}
                         </span>
                         <h2 className="text-2xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-                            Linhas de Pesquisa
+                            {t('title')}
                         </h2>
                         <p className="text-base md:text-lg text-muted-foreground leading-relaxed">
-                            Conheça as principais áreas de atuação e frentes tecnológicas do nosso laboratório.
+                            {t('description')}
                         </p>
                     </div>
                     <Link href="/pesquisa/linhas-de-pesquisa" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
-                        [ Ver Todas as Linhas ] <ChevronRight className="w-4 h-4" />
+                        {t('viewAll')} <ChevronRight className="w-4 h-4" />
                     </Link>
                 </div>
 
@@ -74,10 +76,10 @@ export function Research({ researchAreas }: ResearchProps) {
                                 <ArrowRight className="w-6 h-6 text-white" />
                             </div>
                             <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                                Ver Todas
+                                {t('viewAllBtn')}
                             </span>
                             <span className="text-sm text-muted-foreground mt-1">
-                                {researchAreas.length} linhas de pesquisa
+                                {researchAreas.length} {t('itemsCount')}
                             </span>
                         </Link>
                     </motion.div>

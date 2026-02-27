@@ -1,22 +1,24 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { ArrowRight } from 'lucide-react';
 import { getAssetPath } from '@/lib/utils';
 import type { Partner } from '@/lib/data/partners';
+import { useTranslations } from 'next-intl';
 
 export function InstitutionalPartners({ partners }: { partners: Partner[] }) {
     const displayPartners = partners;
+    const t = useTranslations('PartnersSection');
 
     return (
         <section id="parcerias" className="py-24">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="flex flex-col md:flex-row justify-between items-end gap-8 mb-16">
                     <div>
-                        <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">Colaborações e Parcerias</h2>
+                        <h2 className="text-3xl md:text-4xl font-black tracking-tight mb-4">{t('title')}</h2>
                         <p className="text-lg text-muted-foreground max-w-2xl">
-                            Construímos o futuro através de uma rede sólida de cooperação institucional.
+                            {t('description')}
                         </p>
                     </div>
                     {/* Optional: Link to a full list if needed, or this section replaces the page entirely */}

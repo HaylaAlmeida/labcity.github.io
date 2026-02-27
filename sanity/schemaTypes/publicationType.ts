@@ -13,8 +13,7 @@ export const publicationType = defineType({
     defineField({
       name: 'title',
       title: 'Titulo',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'slug',
@@ -61,8 +60,7 @@ export const publicationType = defineType({
     defineField({
       name: 'abstract',
       title: 'Resumo',
-      type: 'text',
-      rows: 8,
+      type: 'localeText',
     }),
     defineField({
       name: 'tags',
@@ -99,7 +97,7 @@ export const publicationType = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.pt',
       year: 'year',
       type: 'type',
     },

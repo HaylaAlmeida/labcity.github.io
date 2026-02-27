@@ -3,9 +3,10 @@
 import { useState, useCallback } from 'react';
 import { MapPin, Mail, Phone, Clock, Check, Copy } from 'lucide-react';
 import { contactInfo } from '@/lib/content';
-import { cn } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 function CopyEmailInline({ email }: { email: string }) {
+    const t = useTranslations('Contact');
     const [copied, setCopied] = useState(false);
     const handleCopy = useCallback(async () => {
         try {
@@ -28,12 +29,12 @@ function CopyEmailInline({ email }: { email: string }) {
         <button
             onClick={handleCopy}
             className="flex items-center gap-2 text-muted-foreground hover:text-primary transition-colors group cursor-pointer"
-            title={copied ? 'Copiado!' : 'Clique para copiar'}
+            title={copied ? t('copied') : t('copyEmail')}
         >
             <span>{email}</span>
             {copied ? (
                 <span className="flex items-center gap-1 text-xs text-green-600 dark:text-green-400 font-medium">
-                    <Check className="w-3.5 h-3.5" /> Copiado!
+                    <Check className="w-3.5 h-3.5" /> {t('copied')}
                 </span>
             ) : (
                 <Copy className="w-3.5 h-3.5 opacity-0 group-hover:opacity-100 transition-opacity" />
@@ -43,6 +44,7 @@ function CopyEmailInline({ email }: { email: string }) {
 }
 
 export function ContactSection() {
+    const t = useTranslations('Contact');
     return (
         <section id="contato" className="py-24 bg-slate-50 dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
             <div className="container mx-auto px-4 md:px-6">
@@ -51,13 +53,13 @@ export function ContactSection() {
                     {/* Contact Info */}
                     <div>
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
-                            Fale Conosco
+                            {t('title')}
                         </span>
                         <h2 className="text-2xl md:text-5xl font-black text-foreground mb-8 tracking-tight">
-                            Entre em Contato
+                            {t('send')}
                         </h2>
                         <p className="text-base md:text-lg text-muted-foreground leading-relaxed mb-12">
-                            Estamos abertos a novas parcerias e projetos. Visite nosso laboratório ou entre em contato pelos canais oficiais.
+                            {t('description')}
                         </p>
 
                         <div className="space-y-8">
@@ -66,7 +68,7 @@ export function ContactSection() {
                                     <MapPin className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-foreground mb-1">Endereço</h3>
+                                    <h3 className="font-bold text-foreground mb-1">{t('addressTitle')}</h3>
                                     <p className="text-muted-foreground leading-relaxed">
                                         {contactInfo.address.street}<br />
                                         {contactInfo.address.city} - {contactInfo.address.state}, {contactInfo.address.zipCode}
@@ -89,10 +91,10 @@ export function ContactSection() {
                                     <Clock className="w-6 h-6 text-primary" />
                                 </div>
                                 <div>
-                                    <h3 className="font-bold text-foreground mb-1">Horário de Funcionamento</h3>
+                                    <h3 className="font-bold text-foreground mb-1">{t('hoursTitle')}</h3>
                                     <p className="text-muted-foreground">
-                                        Segunda a Sexta<br />
-                                        08:00 - 18:00
+                                        {t('weekdays')}<br />
+                                        {t('hours')}
                                     </p>
                                 </div>
                             </div>
@@ -111,7 +113,7 @@ export function ContactSection() {
                             />
                             <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                                 <p className="text-white text-xs font-medium">
-                                    CCAD - Centro de Computação de Alto Desempenho
+                                    {t('buildingName')}
                                 </p>
                             </div>
                         </div>
@@ -127,7 +129,7 @@ export function ContactSection() {
                                 loading="lazy"
                                 referrerPolicy="no-referrer-when-downgrade"
                                 className="absolute inset-0 transition-all duration-500 dark:invert-[0.9] dark:hue-rotate-180 dark:contrast-[1.1] dark:brightness-[0.8]"
-                                title="Localização do LabCity - CCAD-IA"
+                                title={t('mapTitle')}
                             />
                         </div>
                     </div>

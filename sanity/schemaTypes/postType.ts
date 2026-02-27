@@ -9,7 +9,7 @@ export const postType = defineType({
   fields: [
     defineField({
       name: 'title',
-      type: 'string',
+      type: 'localeString',
     }),
     defineField({
       name: 'slug',
@@ -78,7 +78,7 @@ export const postType = defineType({
       fields: [
         defineField({
           name: 'alt',
-          type: 'string',
+          type: 'localeString',
           title: 'Alternative text',
         })
       ]
@@ -94,12 +94,12 @@ export const postType = defineType({
     }),
     defineField({
       name: 'body',
-      type: 'blockContent',
+      type: 'localeBlockContent',
     }),
   ],
   preview: {
     select: {
-      title: 'title',
+      title: 'title.pt',
       author: 'author.name',
       media: 'mainImage',
     },

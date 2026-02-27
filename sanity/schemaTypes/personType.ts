@@ -44,7 +44,7 @@ export const personType = defineType({
     defineField({
       name: 'focus',
       title: 'Foco / Área',
-      type: 'string',
+      type: 'localeString',
     }),
     defineField({
       name: 'lattes',
@@ -65,14 +65,13 @@ export const personType = defineType({
       name: 'specialties',
       title: 'Especialidades',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'localeString' }],
       description: 'Opcional. Lista de especialidades do membro.',
     }),
     defineField({
       name: 'bio',
       title: 'Breve Descrição',
-      type: 'text',
-      rows: 3,
+      type: 'localeText',
       description: 'Opcional. Uma breve descrição sobre o membro.',
     }),
     defineField({

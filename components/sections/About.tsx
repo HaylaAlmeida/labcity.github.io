@@ -2,8 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { Target, Cpu, Users, Globe } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function About() {
+    const t = useTranslations('AboutSection');
     return (
         <section id="sobre" className="py-16 bg-white dark:bg-slate-950 relative overflow-hidden">
             {/* Tech Grid Background */}
@@ -16,24 +18,24 @@ export function About() {
                     {/* Header Block */}
                     <div className="lg:col-span-4">
                         <span className="font-mono text-xs font-bold text-primary mb-4 block uppercase tracking-widest">
-                            {'// '}Manifesto_Labcity
+                            {t('manifesto')}
                         </span>
                         <h2 className="text-2xl md:text-3xl font-bold mb-6 text-foreground tracking-tight leading-tight">
-                            Ciência de Dados aplicada à <br />
-                            <span className="text-primary">Realidade Urbana</span>
+                            {t('title1')} <br />
+                            <span className="text-primary">{t('title2')}</span>
                         </h2>
                         <p className="text-muted-foreground text-sm leading-relaxed mb-8 border-l-2 border-primary/20 pl-4">
-                            Nascido na Universidade Federal do Pará. Focado no desenvolvimento de tecnologias disruptivas para a Amazônia. Interceção entre IA, IoT e Políticas Públicas.
+                            {t('description')}
                         </p>
 
                         <div className="grid grid-cols-2 gap-4">
                             <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                                 <span className="block text-2xl font-bold text-primary mb-1">2024</span>
-                                <span className="text-[10px] font-mono text-muted-foreground uppercase">Fundação</span>
+                                <span className="text-[10px] font-mono text-muted-foreground uppercase">{t('foundation')}</span>
                             </div>
                             <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
-                                <span className="block text-xl md:text-2xl font-bold text-primary mb-1">Guamá</span>
-                                <span className="text-[10px] font-mono text-muted-foreground uppercase">Campus</span>
+                                <span className="block text-xl md:text-2xl font-bold text-primary mb-1">{t('campus')}</span>
+                                <span className="text-[10px] font-mono text-muted-foreground uppercase">Guamá</span>
                             </div>
                         </div>
                     </div>
@@ -44,23 +46,23 @@ export function About() {
                             {[
                                 {
                                     icon: Target,
-                                    title: "Objetivo",
-                                    desc: "Criar soluções reais para saúde, mobilidade, energia e governança digital."
+                                    title: t('goalTitle'),
+                                    desc: t('goalDesc')
                                 },
                                 {
                                     icon: Cpu,
-                                    title: "Stack Tecnológico",
-                                    desc: "Deep Learning, Visão Computacional, Redes IoT, Análise de Big Data."
+                                    title: t('stackTitle'),
+                                    desc: t('stackDesc')
                                 },
                                 {
                                     icon: Users,
-                                    title: "Capital Humano",
-                                    desc: "Formação de pesquisadores de alta performance adaptados ao ecossistema local."
+                                    title: t('humanCapitalTitle'),
+                                    desc: t('humanCapitalDesc')
                                 },
                                 {
                                     icon: Globe,
-                                    title: "Contexto Regional",
-                                    desc: "Soluções desenhadas para os desafios climáticos e logísticos da Amazônia."
+                                    title: t('regionalTitle'),
+                                    desc: t('regionalDesc')
                                 }
                             ].map((item, i) => (
                                 <motion.div

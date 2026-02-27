@@ -1,12 +1,12 @@
 'use client';
 
 import { useState, useEffect } from 'react';
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
+import { Link, usePathname } from '@/i18n/routing';
 import { Menu, X, Instagram, Linkedin, Github, ChevronDown } from 'lucide-react';
 import { cn } from '@/lib/utils';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ThemeToggle } from '@/components/ui/theme-toggle';
+import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
 import { socialLinks } from '@/lib/content';
 
@@ -16,42 +16,45 @@ type NavItem = {
     items?: { name: string; href: string }[];
 };
 
-const navItems: NavItem[] = [
-    {
-        name: 'Institucional',
-        href: '/institucional#sobre',
-        items: [
-            { name: 'O que é o LABCITY?', href: '/institucional#sobre' },
-            { name: 'Linhas de Pesquisa', href: '/institucional#pesquisa' },
-            { name: 'Colaborações e Parcerias', href: '/institucional#parcerias' },
-            { name: 'História', href: '/institucional#historia' },
-            { name: 'Contato / Mapa', href: '/institucional#contato' },
-        ]
-    },
-    {
-        name: 'Equipe',
-        href: '/equipe'
-    },
-    {
-        name: 'Pesquisa',
-        items: [
-            { name: 'Linhas de Pesquisa', href: '/pesquisa/linhas-de-pesquisa' },
-            { name: 'Projetos de Pesquisa', href: '/projetos' },
-            { name: 'Produção Científica & Inovação', href: '/publicacoes' },
-        ]
-    },
-    {
-        name: 'Notícias',
-        href: '/noticias'
-    }
-];
+import { useTranslations } from 'next-intl';
 
 export function Header() {
+    const t = useTranslations('Navigation');
     const pathname = usePathname();
-    const isHome = pathname === '/';
+    const isHome = pathname === '/pt' || pathname === '/en' || pathname === '/';
     const [isScrolled, setIsScrolled] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
     const [hoveredNav, setHoveredNav] = useState<string | null>(null);
+
+    const navItems: NavItem[] = [
+        {
+            name: t('institucional'),
+            href: '/institucional#sobre',
+            items: [
+                { name: t('sobre'), href: '/institucional#sobre' },
+                { name: t('linhasPesquisa'), href: '/institucional#pesquisa' },
+                { name: t('colaboracoes'), href: '/institucional#parcerias' },
+                { name: t('historia'), href: '/institucional#historia' },
+                { name: t('contato'), href: '/institucional#contato' },
+            ]
+        },
+        {
+            name: t('equipe'),
+            href: '/equipe'
+        },
+        {
+            name: t('pesquisa'),
+            items: [
+                { name: t('linhasPesquisa'), href: '/pesquisa/linhas-de-pesquisa' },
+                { name: t('projetos'), href: '/projetos' },
+                { name: t('producao'), href: '/publicacoes' },
+            ]
+        },
+        {
+            name: t('noticias'),
+            href: '/noticias'
+        }
+    ];
 
     // Mobile accordion state
     const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -195,6 +198,9 @@ export function Header() {
                         </a>
                     ))}
 
+                    <div className="hidden md:flex items-center">
+                        <LocaleSwitcher inverted={shouldShowSolidBackground} />
+                    </div>
                     <ThemeToggle className={shouldShowSolidBackground ? "text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800" : "text-white hover:bg-white/10"} />
 
                     {/* Mobile Menu Button */}
@@ -219,53 +225,84 @@ export function Header() {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 shadow-xl md:hidden overflow-hidden"
+                        className="absolute top-full left-0 right-0 bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 shadow-xl md:hidden"
                     >
-                        <nav className="flex flex-col p-4 max-h-[80vh] overflow-y-auto">
-                            {navItems.map((item) => (
-                                <div key={item.name} className="border-b border-slate-100 dark:border-slate-900 last:border-0">
-                                    {item.items ? (
-                                        <>
-                                            <button
-                                                onClick={() => setMobileExpanded(mobileExpanded === item.name ? null : item.name)}
-                                                className="w-full flex items-center justify-between text-base font-medium text-slate-800 dark:text-slate-200 hover:text-primary py-4"
+                        <nav className="flex flex-col max-h-[85vh] overflow-y-auto">
+                            <div className="p-4">
+                                {navItems.map((item) => (
+                                    <div key={item.name} className="border-b border-slate-100 dark:border-slate-900 last:border-0">
+                                        {item.items ? (
+                                            <>
+                                                <button
+                                                    onClick={() => setMobileExpanded(mobileExpanded === item.name ? null : item.name)}
+                                                    className="w-full flex items-center justify-between text-base font-medium text-slate-800 dark:text-slate-200 hover:text-primary py-4"
+                                                >
+                                                    <span>{item.name}</span>
+                                                    <ChevronDown className={cn("w-4 h-4 transition-transform", mobileExpanded === item.name ? "rotate-180" : "")} />
+                                                </button>
+                                                <AnimatePresence>
+                                                    {mobileExpanded === item.name && (
+                                                        <motion.div
+                                                            initial={{ height: 0, opacity: 0 }}
+                                                            animate={{ height: 'auto', opacity: 1 }}
+                                                            exit={{ height: 0, opacity: 0 }}
+                                                            className="overflow-hidden bg-slate-50 dark:bg-slate-900/50 rounded-lg mb-2"
+                                                        >
+                                                            {item.items.map(subItem => (
+                                                                <Link
+                                                                    key={subItem.name}
+                                                                    href={isHome || !subItem.href.startsWith('#') ? subItem.href : `/${subItem.href}`}
+                                                                    className="block py-3 px-6 text-sm text-slate-600 dark:text-slate-400 hover:text-primary border-t border-slate-100 dark:border-slate-800 first:border-0"
+                                                                    onClick={() => setIsMobileMenuOpen(false)}
+                                                                >
+                                                                    {subItem.name}
+                                                                </Link>
+                                                            ))}
+                                                        </motion.div>
+                                                    )}
+                                                </AnimatePresence>
+                                            </>
+                                        ) : (
+                                            <Link
+                                                href={isHome || !item.href?.startsWith('#') ? (item.href || '#') : `/${item.href}`}
+                                                className="block text-base font-medium text-slate-800 dark:text-slate-200 hover:text-primary py-4"
+                                                onClick={() => setIsMobileMenuOpen(false)}
                                             >
-                                                <span>{item.name}</span>
-                                                <ChevronDown className={cn("w-4 h-4 transition-transform", mobileExpanded === item.name ? "rotate-180" : "")} />
-                                            </button>
-                                            <AnimatePresence>
-                                                {mobileExpanded === item.name && (
-                                                    <motion.div
-                                                        initial={{ height: 0, opacity: 0 }}
-                                                        animate={{ height: 'auto', opacity: 1 }}
-                                                        exit={{ height: 0, opacity: 0 }}
-                                                        className="overflow-hidden bg-slate-50 dark:bg-slate-900/50 rounded-lg mb-2"
-                                                    >
-                                                        {item.items.map(subItem => (
-                                                            <Link
-                                                                key={subItem.name}
-                                                                href={isHome || !subItem.href.startsWith('#') ? subItem.href : `/${subItem.href}`}
-                                                                className="block py-3 px-6 text-sm text-slate-600 dark:text-slate-400 hover:text-primary border-t border-slate-100 dark:border-slate-800 first:border-0"
-                                                                onClick={() => setIsMobileMenuOpen(false)}
-                                                            >
-                                                                {subItem.name}
-                                                            </Link>
-                                                        ))}
-                                                    </motion.div>
-                                                )}
-                                            </AnimatePresence>
-                                        </>
-                                    ) : (
-                                        <Link
-                                            href={isHome || !item.href?.startsWith('#') ? (item.href || '#') : `/${item.href}`}
-                                            className="block text-base font-medium text-slate-800 dark:text-slate-200 hover:text-primary py-4"
-                                            onClick={() => setIsMobileMenuOpen(false)}
+                                                {item.name}
+                                            </Link>
+                                        )}
+                                    </div>
+                                ))}
+                            </div>
+
+                            {/* Mobile Locale Switcher */}
+                            <div className="border-t border-slate-100 dark:border-slate-900 mt-2 p-4 flex justify-between items-center relative overflow-visible">
+                                <div className="flex gap-2">
+                                    {[
+                                        { link: socialLinks.instagram, Icon: Instagram, label: "Instagram", colorClass: "hover:text-pink-500" },
+                                        { link: socialLinks.linkedin, Icon: Linkedin, label: "LinkedIn", colorClass: "hover:text-blue-600" },
+                                        { link: socialLinks.github, Icon: Github, label: "GitHub", colorClass: "hover:text-slate-900 dark:hover:text-white" }
+                                    ].map(({ link, Icon, label, colorClass }) => (
+                                        <a
+                                            key={label}
+                                            href={link}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className={cn(
+                                                "flex w-10 h-10 items-center justify-center rounded-md transition-colors",
+                                                shouldShowSolidBackground
+                                                    ? `text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 ${colorClass}`
+                                                    : "text-white/80 hover:bg-white/10 hover:text-white"
+                                            )}
+                                            aria-label={label}
                                         >
-                                            {item.name}
-                                        </Link>
-                                    )}
+                                            <Icon className="w-4 h-4" />
+                                        </a>
+                                    ))}
                                 </div>
-                            ))}
+
+                                <LocaleSwitcher inverted={true} />
+                            </div>
                         </nav>
                     </motion.div>
                 )}

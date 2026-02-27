@@ -1,7 +1,8 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
+import { useTranslations } from 'next-intl';
 import * as LucideIcons from 'lucide-react';
 import type { ResearchArea } from '@/lib/data/research';
 import { getResearchAreaSlug } from '@/lib/data/research';
@@ -34,6 +35,7 @@ interface ResearchDetailedProps {
 }
 
 export function ResearchDetailed({ researchAreas, projects }: ResearchDetailedProps) {
+    const t = useTranslations();
     return (
         <section className="py-8">
             <motion.div
@@ -86,7 +88,7 @@ export function ResearchDetailed({ researchAreas, projects }: ResearchDetailedPr
                                     <div className="mt-auto pt-6 border-t border-slate-100 dark:border-slate-800/50 relative z-10">
                                         <h4 className="flex items-center gap-2 text-[10px] uppercase font-bold tracking-widest text-slate-400 dark:text-slate-600 mb-4">
                                             <LucideIcons.Layers className="w-3 h-3" />
-                                            Projetos em Destaque
+                                            {t('ProjectsSection.title')}
                                         </h4>
                                         <div className="flex flex-wrap gap-2">
                                             {relatedProjects.map(project => (

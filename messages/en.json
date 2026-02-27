@@ -1,0 +1,353 @@
+{
+    "Navigation": {
+        "institucional": "Institutional",
+        "sobre": "What is LABCITY?",
+        "linhasPesquisa": "Research Areas",
+        "colaboracoes": "Collaborations and Partnerships",
+        "historia": "History",
+        "contato": "Contact / Map",
+        "contactTitle": "Contact Us",
+        "equipe": "Team",
+        "pesquisa": "Research",
+        "projetos": "Research Projects",
+        "producao": "Scientific Production & Innovation",
+        "noticias": "News",
+        "backHome": "Back to Home",
+        "backToProjects": "Back to Projects",
+        "backToPublications": "Back to Publications",
+        "backToNews": "Back to News"
+    },
+    "Contact": {
+        "title": "Contact Us",
+        "send": "Send Message",
+        "namePlaceholder": "Your name",
+        "emailPlaceholder": "Your email",
+        "messagePlaceholder": "Your message",
+        "copyEmail": "Copy Email",
+        "copied": "Copied!",
+        "description": "We are open to new partnerships and projects. Visit our laboratory or contact us through the official channels.",
+        "addressTitle": "Address",
+        "hoursTitle": "Business Hours",
+        "weekdays": "Monday to Friday",
+        "hours": "8:00 AM - 6:00 PM",
+        "buildingName": "CCAD - Centro de Computação de Alto Desempenho",
+        "mapTitle": "LabCity Location - CCAD-IA"
+    },
+    "Hero": {
+        "titleLine1": "Artificial Intelligence for",
+        "titleLine2": "Smart Cities",
+        "description": "Artificial Intelligence Laboratory applied to Smart Cities. We develop solutions in IoT, Computer Vision, and Big Data for urban monitoring and management in the Amazon.",
+        "projectsCta": "View Projects",
+        "aboutCta": "About Labcity"
+    },
+    "Footer": {
+        "support": "Support & Funding",
+        "description": "Advanced research laboratory in Artificial Intelligence, Smart Cities, and Internet of Things at the Federal University of Pará.",
+        "usefulLinks": "Useful Links",
+        "transparency": "Transparency Portal",
+        "infoAccess": "Access to Information",
+        "cnpq": "CNPq",
+        "capes": "CAPES",
+        "rights": "All rights reserved."
+    },
+    "Institutional": {
+        "backHome": "Back to Home",
+        "title": "What is LabCity?",
+        "description": "We are an innovation laboratory at the Federal University of Pará (UFPA) dedicated to transforming cities through technology.",
+        "manifestoTag": "// Manifesto_Labcity",
+        "manifestoTitleLine1": "Data Science applied to",
+        "manifestoTitleLine2": "Urban Reality",
+        "manifestoDesc": "Born at the Federal University of Pará. Focused on developing disruptive technologies for the Amazon. Intersection between AI, IoT, and Public Policies.",
+        "foundation": "Foundation",
+        "campus": "Campus",
+        "goalTitle": "Goal",
+        "goalDesc": "Create real solutions for health, mobility, energy, and digital governance.",
+        "stackTitle": "Tech Stack",
+        "stackDesc": "Deep Learning, Computer Vision, IoT Networks, Big Data Analysis.",
+        "capitalTitle": "Human Capital",
+        "capitalDesc": "Training high-performance researchers adapted to the local ecosystem.",
+        "contextTitle": "Regional Context",
+        "contextDesc": "Solutions designed for the climatic and logistical challenges of the Amazon."
+    },
+    "ResearchSection": {
+        "title": "Research Areas",
+        "description": "Our scientific focus covers strategic areas for the development of smart cities.",
+        "viewAll": "View all areas"
+    },
+    "PartnersSection": {
+        "title": "Collaborations and Partnerships",
+        "description": "We build the future through a solid network of institutional cooperation."
+    },
+    "HistorySection": {
+        "title": "Our History",
+        "description": "A journey of constant evolution, adapting to the technological and social challenges of each era.",
+        "lpradSubtitle": "High Performance Networks Planning Laboratory",
+        "lpradDesc": "Linked to PPGEE/UFPA, it constituted the first state-of-the-art laboratory in telecommunications network technologies in the Amazon region. It carried out activities related to various network technologies (backbone, access, and \"last mile\" - wired and wireless) from an optical network planning, aiming at evaluating and optimizing the performance of these networks.",
+        "ltsSubtitle": "Social Technologies Laboratory",
+        "ltsDesc": "Also linked to the Applied Computing concentration area of PPGEE/UFPA, it had an interdisciplinary and multi-institutional role, bringing together researchers and institutions of diverse profiles. It was based on the use of mathematical and computational models to solve real-world problems in areas such as energy, public health, social security, environment, education, and digital inclusion.",
+        "labcitySubtitle": "Artificial Intelligence Laboratory applied to Smart Cities",
+        "labcityDesc": "The consolidation of our journey, uniting the legacy of high performance and social impact to create smarter, more sustainable, and human cities in the Amazon."
+    },
+    "NewsSection": {
+        "tag": "Updates",
+        "title": "Recent News",
+        "description": "Follow the latest news, partnerships, and advances of the laboratory.",
+        "viewAll": "[ View All News ]",
+        "viewAllBtn": "View all news",
+        "media": "In the Media",
+        "readSource": "Read source",
+        "readArticle": "Read article"
+    },
+    "PublicationsSection": {
+        "tag": "Scientific Production & Innovation",
+        "title": "Recent Publications",
+        "description": "Follow our scientific and technological production: articles and software registrations.",
+        "viewAll": "[ View All Publications ]",
+        "details": "View details",
+        "viewAllBtn": "View All Publications",
+        "itemsCount": "items"
+    },
+    "ProjectsSection": {
+        "tag": "Innovation Portfolio",
+        "title": "Featured Projects",
+        "description": "Discover the initiatives that are transforming the Amazon and Brazil through Artificial Intelligence and IoT.",
+        "viewAll": "[ View All Projects ]",
+        "learnMore": "Learn more",
+        "viewAllBtn": "View All",
+        "itemsCount": "projects"
+    },
+    "TeamSection": {
+        "tag": "HUMAN CAPITAL",
+        "title": "Our Team",
+        "description": "Meet the members who make up the LabCity team.",
+        "viewAll": "[ View All Members ]",
+        "coordBadge": "COORDINATION"
+    },
+    "AboutSection": {
+        "manifesto": "// Labcity_Manifesto",
+        "title1": "Data Science applied to",
+        "title2": "Urban Reality",
+        "description": "Born at the Federal University of Pará. Focused on the development of disruptive technologies for the Amazon. Intersection between AI, IoT, and Public Policies.",
+        "foundation": "Foundation",
+        "campus": "Campus",
+        "goalTitle": "Objective",
+        "goalDesc": "Create real solutions for health, mobility, energy, and digital governance.",
+        "stackTitle": "Technology Stack",
+        "stackDesc": "Deep Learning, Computer Vision, IoT Networks, Big Data Analysis.",
+        "humanCapitalTitle": "Human Capital",
+        "humanCapitalDesc": "Training high-performance researchers adapted to the local ecosystem.",
+        "regionalTitle": "Regional Context",
+        "regionalDesc": "Solutions designed for the climatic and logistical challenges of the Amazon."
+    },
+    "StatsSection": {
+        "activeProjects": "Active Projects",
+        "researchers": "Researchers",
+        "publications": "Publications",
+        "partners": "Partners"
+    },
+    "ResearchLinesSection": {
+        "tag": "Core Competencies",
+        "title": "Research Areas",
+        "description": "Discover the main areas of expertise and technological fronts of our laboratory.",
+        "viewAll": "[ View All Areas ]",
+        "viewAllBtn": "View All",
+        "itemsCount": "research areas"
+    },
+    "Metadata": {
+        "title": "Labcity UFPA | Artificial Intelligence & Smart Cities",
+        "description": "Applied Artificial Intelligence Laboratory for Smart Cities at UFPA. Research, Innovation, and development for the Amazon."
+    },
+    "MetadataInstitutional": {
+        "title": "Our History | Labcity UFPA",
+        "description": "Discover the history, objectives, and human capital of the AI and Smart Cities laboratory at the Federal University of Pará."
+    },
+    "MetadataSobre": {
+        "title": "What is LabCity? | UFPA",
+        "description": "Innovation laboratory from UFPA dedicated to transforming cities through technology in the Amazon."
+    },
+    "MetadataEquipe": {
+        "title": "Our Team | Labcity UFPA",
+        "description": "Meet the researchers, coordinators, and students who make up our laboratory."
+    },
+    "SobrePage": {
+        "backHome": "Back to Home",
+        "title": "What is LabCity?",
+        "description": "We are an innovation laboratory at the Federal University of Pará (UFPA) dedicated to transforming cities through technology.",
+        "journeyTitle": "Our Journey",
+        "journey1Title": "Foundation",
+        "journey1Desc": "LabCity was founded with the clear mission of transforming the urban reality of the Amazon through applied technology.",
+        "journey2Title": "Expansion and Innovation",
+        "journey2Desc": "Since our conception at UFPA, we have expanded our operations by integrating Artificial Intelligence, IoT, and strategic partnerships for efficient public management.",
+        "techTitle": "Cutting-edge Technology",
+        "techDesc": "We work at the intersection of Artificial Intelligence, Internet of Things (IoT), and Data Science to create smart and responsive urban systems.",
+        "regionalTitle": "Regional Focus",
+        "regionalDesc": "Our research is not just theoretical; it is applied to solve real problems in Belém and the Amazon region, such as mobility, sanitation, and environmental monitoring.",
+        "talentTitle": "Talent Development",
+        "talentDesc": "More than code, we develop people. LabCity is a hotbed of new researchers, preparing students for the challenges of the global technology market.",
+        "socialTitle": "Social Impact",
+        "socialDesc": "We believe that a smart city must be a city for everyone. Our projects aim to democratize access to urban services and promote digital inclusion."
+    },
+    "MetadataContato": {
+        "title": "Contact & Location | Labcity UFPA",
+        "description": "Get in touch with us and find our location at CCAD-IA, Federal University of Pará."
+    },
+    "ContactPage": {
+        "backHome": "Back to Home",
+        "title": "Contact & Location",
+        "description": "We are ready to assist you. Get in touch with us.",
+        "infoTitle": "Contact Information",
+        "addressTitle": "Address",
+        "emailTitle": "Email",
+        "phoneTitle": "Phone",
+        "mapTitle": "LabCity Location - CCAD-IA",
+        "zipCode": "ZIP Code"
+    },
+    "MetadataResearch": {
+        "title": "Research Areas | Labcity UFPA",
+        "description": "Discover the scientific and technological areas that drive our urban innovations, from IoT to advanced medical diagnostics."
+    },
+    "ResearchLinesPage": {
+        "backHome": "Back to Home",
+        "title": "Research Areas",
+        "description": "Discover the scientific and technological areas that drive our urban innovations, from IoT to advanced medical diagnostics."
+    },
+    "ResearchLineSlugPage": {
+        "backToList": "Back to Research Areas",
+        "tag": "Research Area",
+        "relatedProjects": "Related Projects",
+        "noProjects": "No projects linked to this research area at the moment.",
+        "relatedPublications": "Related Publications",
+        "noPublications": "No publications linked to this research area at the moment."
+    },
+    "TeamPage": {
+        "title": "Our Team",
+        "description": "Meet the researchers and fellows who drive innovation at Labcity UFPA.",
+        "searchPlaceholder": "Search by name...",
+        "clearFilters": "Clear filters",
+        "membersFound": "{count} members found",
+        "memberFound": "1 member found",
+        "coordinatorsTab": "> Coordinators",
+        "membersTab": "> Members",
+        "notFound": "No members found with the selected filters.",
+        "seeMore": "See more",
+        "seeLess": "See less",
+        "levels": {
+            "all": "All",
+            "coordinator": "Coordination",
+            "researcher": "Researcher",
+            "phd": "PhD",
+            "masters": "Masters",
+            "graduates": "Graduate",
+            "ic": "Undergraduate",
+            "dev_fellow": "Development Fellow"
+        }
+    },
+    "ProjectsPage": {
+        "title": "Our Projects",
+        "description": "Discover in detail the initiatives that are transforming the Amazon and Brazil through technology.",
+        "searchPlaceholder": "Search projects...",
+        "filters": "Filters",
+        "allCategories": "All Categories",
+        "allStatuses": "All Statuses",
+        "clearFilters": "Clear Filters",
+        "notFound": "No projects found for the selected filters.",
+        "viewDetails": "View Project Details"
+    },
+    "ProjectDetails": {
+        "about": "About the Project",
+        "features": "Main Features",
+        "researchLines": "Research Lines",
+        "partners": "Partnerships",
+        "relatedProjects": "Related Projects",
+        "publications": "Publications",
+        "viewMore": "View more...",
+        "ctaTitle": "Interested in the results?",
+        "ctaDesc": "Access the public reports or contact our team."
+    },
+    "MetadataPublications": {
+        "title": "Publications | LabCity UFPA",
+        "description": "Discover all the research and technology projects applied to smart cities by LabCity."
+    },
+    "PublicationsPage": {
+        "badge": "Scientific Production & Innovation",
+        "title": "Our Publications",
+        "description": "Articles, software registrations, and research outcomes produced by our team.",
+        "searchPlaceholder": "Search (title, author, venue)...",
+        "filters": "Filters",
+        "allTypes": "All Types",
+        "allYears": "All Years",
+        "allTags": "All Tags",
+        "clearFilters": "Clear Filters",
+        "notFound": "No items found for the selected filters.",
+        "viewMore": "Read more",
+        "viewLess": "Read less",
+        "tabs": {
+            "academic": "Academic Production",
+            "software": "Software Registration"
+        },
+        "types": {
+            "article": "Scientific Article",
+            "tcc": "Undergraduate Thesis",
+            "masters_thesis": "Master's Thesis",
+            "doctoral_thesis": "Doctoral Thesis",
+            "software": "Software Registration",
+            "patent": "Patent",
+            "journal": "Scientific Article",
+            "conference": "Conference",
+            "book": "Book",
+            "thesis": "Thesis"
+        }
+    },
+    "PublicationDetails": {
+        "abstract": "Abstract",
+        "keywords": "Keywords",
+        "doi": "DOI Identifier",
+        "info": "Information",
+        "year": "Year",
+        "type": "Type",
+        "authors": "Authors",
+        "ctaTitle": "Access Publication",
+        "ctaDesc": "Read the full article on the journal or conference website.",
+        "ctaBtn": "Access DOI"
+    },
+    "MetadataNews": {
+        "title": "News | LabCity UFPA",
+        "description": "Stay updated with our latest updates, articles and media coverage."
+    },
+    "NewsPage": {
+        "badge": "Press Room",
+        "tabs": {
+            "noticias": {
+                "label": "News",
+                "title": "Our News",
+                "description": "Stay updated with LabCity's latest discoveries, events, and partnerships."
+            },
+            "midia": {
+                "label": "In The Media",
+                "title": "In The Media",
+                "description": "Media coverage of our laboratory's activities and research."
+            }
+        },
+        "searchPlaceholder": "Search news...",
+        "allCategories": "All Categories",
+        "sort": {
+            "newest": "Newest",
+            "oldest": "Oldest"
+        },
+        "notFound": "No news found for the selected filters.",
+        "readExternal": "Read at source",
+        "readMore": "Read full article"
+    },
+    "NewsDetails": {
+        "notFound": "News not found.",
+        "breadcrumbHome": "Home",
+        "breadcrumbNews": "News",
+        "readTime": "{min} min read",
+        "linkCopied": "Link copied!",
+        "writtenBy": "Written by",
+        "researcher": "LabCity Researcher",
+        "relatedProjects": "Related Projects",
+        "relatedPublications": "Related Publications",
+        "relatedNews": "Related News"
+    }
+}

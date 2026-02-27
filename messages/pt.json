@@ -1,0 +1,353 @@
+{
+    "Navigation": {
+        "institucional": "Institucional",
+        "sobre": "O que é o LABCITY?",
+        "linhasPesquisa": "Linhas de Pesquisa",
+        "colaboracoes": "Colaborações e Parcerias",
+        "historia": "História",
+        "contato": "Contato / Mapa",
+        "contactTitle": "Contato",
+        "equipe": "Equipe",
+        "pesquisa": "Pesquisa",
+        "projetos": "Projetos de Pesquisa",
+        "producao": "Produção Científica & Inovação",
+        "noticias": "Notícias",
+        "backHome": "Voltar para Home",
+        "backToProjects": "Voltar para Projetos",
+        "backToPublications": "Voltar para Publicações",
+        "backToNews": "Voltar para Notícias"
+    },
+    "Contact": {
+        "title": "Fale Conosco",
+        "send": "Enviar Mensagem",
+        "namePlaceholder": "Seu nome",
+        "emailPlaceholder": "Seu e-mail",
+        "messagePlaceholder": "Sua mensagem",
+        "copyEmail": "Copiar E-mail",
+        "copied": "Copiado!",
+        "addressTitle": "Endereço",
+        "hoursTitle": "Horário de Funcionamento",
+        "weekdays": "Segunda a Sexta",
+        "hours": "08:00 - 18:00",
+        "description": "Estamos abertos a novas parcerias e projetos. Visite nosso laboratório ou entre em contato pelos canais oficiais.",
+        "buildingName": "CCAD - Centro de Computação de Alto Desempenho",
+        "mapTitle": "Localização do LabCity - CCAD-IA"
+    },
+    "Hero": {
+        "titleLine1": "Inteligência Artificial para",
+        "titleLine2": "Cidades Inteligentes",
+        "description": "Laboratório de Inteligência Artificial aplicada a Cidades Inteligentes. Desenvolvemos soluções em IoT, Visão Computacional e Big Data para monitoramento e gestão urbana na Amazônia.",
+        "projectsCta": "Ver Projetos",
+        "aboutCta": "Sobre Labcity"
+    },
+    "Footer": {
+        "support": "Apoio & Fomento",
+        "description": "Laboratório de pesquisas avançadas em Inteligência Artificial, Cidades Inteligentes e Internet das Coisas da Universidade Federal do Pará.",
+        "usefulLinks": "Links Úteis",
+        "transparency": "Portal da Transparência",
+        "infoAccess": "Acesso à Informação",
+        "cnpq": "CNPq",
+        "capes": "CAPES",
+        "rights": "Todos os direitos reservados."
+    },
+    "Institutional": {
+        "backHome": "Voltar para Home",
+        "title": "O que é o LabCity?",
+        "description": "Somos um laboratório de inovação da Universidade Federal do Pará (UFPA) dedicado a transformar cidades através da tecnologia.",
+        "manifestoTag": "// Manifesto_Labcity",
+        "manifestoTitleLine1": "Ciência de Dados aplicada à",
+        "manifestoTitleLine2": "Realidade Urbana",
+        "manifestoDesc": "Nascido na Universidade Federal do Pará. Focado no desenvolvimento de tecnologias disruptivas para a Amazônia. Interseção entre IA, IoT e Políticas Públicas.",
+        "foundation": "Fundação",
+        "campus": "Campus",
+        "goalTitle": "Objetivo",
+        "goalDesc": "Criar soluções reais para saúde, mobilidade, energia e governança digital.",
+        "stackTitle": "Stack Tecnológico",
+        "stackDesc": "Deep Learning, Visão Computacional, Redes IoT, Análise de Big Data.",
+        "capitalTitle": "Capital Humano",
+        "capitalDesc": "Formação de pesquisadores de alta performance adaptados ao ecossistema local.",
+        "contextTitle": "Contexto Regional",
+        "contextDesc": "Soluções desenhadas para os desafios climáticos e logísticos da Amazônia."
+    },
+    "ResearchSection": {
+        "title": "Linhas de Pesquisa",
+        "description": "Nossa atuação científica abrange áreas estratégicas para o desenvolvimento de cidades inteligentes.",
+        "viewAll": "Ver todas as linhas"
+    },
+    "PartnersSection": {
+        "title": "Colaborações e Parcerias",
+        "description": "Construímos o futuro através de uma rede sólida de cooperação institucional."
+    },
+    "HistorySection": {
+        "title": "Nossa História",
+        "description": "Uma jornada de evolução constante, adaptando-nos aos desafios tecnológicos e sociais de cada época.",
+        "lpradSubtitle": "Laboratório de Planejamento de Redes de Alto Desempenho",
+        "lpradDesc": "Vinculado ao PPGEE/UFPA, constituiu-se no primeiro laboratório de última geração em tecnologias de redes de telecomunicação da região amazônica. Exerceu atividades relacionadas às diversas tecnologias de redes (backbone, aproximação e \"última milha\" - cabeadas e sem fio) sob uma ótica de planejamento, visando à avaliação e otimização do desempenho dessas redes.",
+        "ltsSubtitle": "Laboratório de Tecnologias Sociais",
+        "ltsDesc": "Também vinculado à área de concentração de Computação Aplicada do PPGEE/UFPA, teve atuação interdisciplinar e multi-institucional, agregando pesquisadores e instituições de diversos perfis. Baseou-se na utilização de modelos matemáticos e computacionais para a solução de problemas do mundo real em áreas como energia, saúde pública, seguridade social, meio ambiente, educação e inclusão digital.",
+        "labcitySubtitle": "Laboratório de Inteligência Artificial aplicada a Cidades Inteligentes",
+        "labcityDesc": "A consolidação de nossa jornada, unindo o legado de alto desempenho e impacto social para criar cidades mais inteligentes, sustentáveis e humanas na Amazônia."
+    },
+    "NewsSection": {
+        "tag": "Atualizações",
+        "title": "Notícias Recentes",
+        "description": "Acompanhe as últimas novidades, parcerias e avanços do laboratório.",
+        "viewAll": "[ Ver Todas as Notícias ]",
+        "viewAllBtn": "Ver todas as notícias",
+        "media": "Deu na Mídia",
+        "readSource": "Ler na fonte",
+        "readArticle": "Ler artigo"
+    },
+    "PublicationsSection": {
+        "tag": "Produção Científica & Inovação",
+        "title": "Publicações Recentes",
+        "description": "Acompanhe nossa produção científica e tecnológica: artigos e registros de software.",
+        "viewAll": "[ Ver Toda Produção ]",
+        "details": "Ver detalhes",
+        "viewAllBtn": "Ver Toda Produção",
+        "itemsCount": "produções"
+    },
+    "ProjectsSection": {
+        "tag": "Portfólio de Inovação",
+        "title": "Projetos em Destaque",
+        "description": "Conheça as iniciativas que estão transformando a Amazônia e o Brasil através da Inteligência Artificial e IoT.",
+        "viewAll": "[ Ver Todos os Projetos ]",
+        "learnMore": "Saiba mais",
+        "viewAllBtn": "Ver Todos",
+        "itemsCount": "projetos"
+    },
+    "TeamSection": {
+        "tag": "CAPITAL HUMANO",
+        "title": "Nossa Equipe",
+        "description": "Conheça os membros que compõem a equipe do LabCity.",
+        "viewAll": "[ Ver Todos os Integrantes ]",
+        "coordBadge": "COORDENAÇÃO"
+    },
+    "AboutSection": {
+        "manifesto": "// Manifesto_Labcity",
+        "title1": "Ciência de Dados aplicada à",
+        "title2": "Realidade Urbana",
+        "description": "Nascido na Universidade Federal do Pará. Focado no desenvolvimento de tecnologias disruptivas para a Amazônia. Interceção entre IA, IoT e Políticas Públicas.",
+        "foundation": "Fundação",
+        "campus": "Campus",
+        "goalTitle": "Objetivo",
+        "goalDesc": "Criar soluções reais para saúde, mobilidade, energia e governança digital.",
+        "stackTitle": "Stack Tecnológico",
+        "stackDesc": "Deep Learning, Visão Computacional, Redes IoT, Análise de Big Data.",
+        "humanCapitalTitle": "Capital Humano",
+        "humanCapitalDesc": "Formação de pesquisadores de alta performance adaptados ao ecossistema local.",
+        "regionalTitle": "Contexto Regional",
+        "regionalDesc": "Soluções desenhadas para os desafios climáticos e logísticos da Amazônia."
+    },
+    "StatsSection": {
+        "activeProjects": "Projetos Ativos",
+        "researchers": "Pesquisadores",
+        "publications": "Publicações",
+        "partners": "Parceiros"
+    },
+    "ResearchLinesSection": {
+        "tag": "Competências Centrais",
+        "title": "Linhas de Pesquisa",
+        "description": "Conheça as principais áreas de atuação e frentes tecnológicas do nosso laboratório.",
+        "viewAll": "[ Ver Todas as Linhas ]",
+        "viewAllBtn": "Ver Todas",
+        "itemsCount": "linhas de pesquisa"
+    },
+    "Metadata": {
+        "title": "Labcity UFPA | Inteligência Artificial & Cidades Inteligentes",
+        "description": "Laboratório de Inteligência Artificial Aplicada a Cidades Inteligentes da UFPA. Pesquisa, Inovação e desenvolvimento para a Amazônia."
+    },
+    "MetadataInstitutional": {
+        "title": "Nossa História | Labcity UFPA",
+        "description": "Conheça a história, os objetivos e o capital humano do laboratório de IA e Cidades Inteligentes da Universidade Federal do Pará."
+    },
+    "MetadataSobre": {
+        "title": "O que é o LabCity? | UFPA",
+        "description": "Laboratório de inovação da UFPA dedicado a transformar cidades através da tecnologia na Amazônia."
+    },
+    "MetadataEquipe": {
+        "title": "Nossa Equipe | Labcity UFPA",
+        "description": "Conheça os pesquisadores, coordenadores e alunos que compõem o nosso laboratório."
+    },
+    "SobrePage": {
+        "backHome": "Voltar para Home",
+        "title": "O que é o LabCity?",
+        "description": "Somos um laboratório de inovação da Universidade Federal do Pará (UFPA) dedicado a transformar cidades através da tecnologia.",
+        "journeyTitle": "Nossa Jornada",
+        "journey1Title": "Fundação",
+        "journey1Desc": "O LabCity foi fundado com a missão clara de transformar a realidade urbana da Amazônia através da tecnologia aplicada.",
+        "journey2Title": "Expansão e Inovação",
+        "journey2Desc": "Desde nossa concepção na UFPA, expandimos nossa atuação integrando Inteligência Artificial, IoT e parcerias estratégicas para gestão pública eficiente.",
+        "techTitle": "Tecnologia de Ponta",
+        "techDesc": "Trabalhamos na interseção entre Inteligência Artificial, Internet das Coisas (IoT) e Ciência de Dados para criar sistemas urbanos inteligentes e responsivos.",
+        "regionalTitle": "Foco Regional",
+        "regionalDesc": "Nossas pesquisas não são apenas teóricas; elas são aplicadas para resolver problemas reais de Belém e da região Amazônica, como mobilidade, saneamento e monitoramento ambiental.",
+        "talentTitle": "Formação de Talentos",
+        "talentDesc": "Mais do que código, desenvolvemos pessoas. O LabCity é um celeiro de novos pesquisadores, preparando estudantes para os desafios do mercado global de tecnologia.",
+        "socialTitle": "Impacto Social",
+        "socialDesc": "Acreditamos que a cidade inteligente deve ser uma cidade para todos. Nossos projetos visam democratizar o acesso aos serviços urbanos e promover a inclusão digital."
+    },
+    "MetadataContato": {
+        "title": "Contato e Localização | Labcity UFPA",
+        "description": "Entre em contato conosco e saiba onde estamos localizados no CCAD-IA da Universidade Federal do Pará."
+    },
+    "ContactPage": {
+        "backHome": "Voltar para Home",
+        "title": "Contato e Localização",
+        "description": "Estamos prontos para atender você. Entre em contato conosco.",
+        "infoTitle": "Informações de Contato",
+        "addressTitle": "Endereço",
+        "emailTitle": "Email",
+        "phoneTitle": "Telefone",
+        "mapTitle": "Localização do LabCity - CCAD-IA",
+        "zipCode": "CEP"
+    },
+    "MetadataResearch": {
+        "title": "Linhas de Pesquisa | Labcity UFPA",
+        "description": "Descubra as áreas de atuação científica e tecnológica que impulsionam nossas inovações urbanas, desde IoT até diagnósticos médicos avançados."
+    },
+    "ResearchLinesPage": {
+        "backHome": "Voltar para Home",
+        "title": "Linhas de Pesquisa",
+        "description": "Descubra as áreas de atuação científica e tecnológica que impulsionam nossas inovações urbanas, desde IoT até diagnósticos médicos avançados."
+    },
+    "ResearchLineSlugPage": {
+        "backToList": "Voltar para Linhas de Pesquisa",
+        "tag": "Linha de Pesquisa",
+        "relatedProjects": "Projetos Relacionados",
+        "noProjects": "Nenhum projeto vinculado a esta linha de pesquisa no momento.",
+        "relatedPublications": "Publicações Relacionadas",
+        "noPublications": "Nenhuma publicação vinculada a esta linha de pesquisa no momento."
+    },
+    "TeamPage": {
+        "title": "Nossa Equipe",
+        "description": "Conheça os pesquisadores e bolsistas que impulsionam a inovação no Labcity UFPA.",
+        "searchPlaceholder": "Buscar por nome...",
+        "clearFilters": "Limpar filtros",
+        "membersFound": "{count} membros encontrados",
+        "memberFound": "1 membro encontrado",
+        "coordinatorsTab": "> Coordenadores",
+        "membersTab": "> Membros",
+        "notFound": "Nenhum membro encontrado com os filtros selecionados.",
+        "seeMore": "Ver mais",
+        "seeLess": "Ver menos",
+        "levels": {
+            "all": "Todos",
+            "coordinator": "Coordenação",
+            "researcher": "Pesquisador",
+            "phd": "Doutorado",
+            "masters": "Mestrado",
+            "graduates": "Graduado",
+            "ic": "Iniciação Científica",
+            "dev_fellow": "Bolsista de Desenvolvimento"
+        }
+    },
+    "ProjectsPage": {
+        "title": "Nossos Projetos",
+        "description": "Conheça em detalhes as iniciativas que estão transformando a Amazônia e o Brasil através da tecnologia.",
+        "searchPlaceholder": "Buscar projetos...",
+        "filters": "Filtros",
+        "allCategories": "Todas as Categorias",
+        "allStatuses": "Todos os Status",
+        "clearFilters": "Limpar Filtros",
+        "notFound": "Nenhum projeto encontrado para os filtros selecionados.",
+        "viewDetails": "Ver Detalhes do Projeto"
+    },
+    "ProjectDetails": {
+        "about": "Sobre o Projeto",
+        "features": "Principais Funcionalidades",
+        "researchLines": "Linhas de Pesquisa",
+        "partners": "Parcerias",
+        "relatedProjects": "Projetos Relacionados",
+        "publications": "Publicações",
+        "viewMore": "Ver mais...",
+        "ctaTitle": "Interessado nos resultados?",
+        "ctaDesc": "Acesse os relatórios públicos ou entre em contato com nossa equipe."
+    },
+    "MetadataPublications": {
+        "title": "Publicações | LabCity UFPA",
+        "description": "Conheça todas as publicações e artigos científicos publicados pelo LabCity."
+    },
+    "PublicationsPage": {
+        "badge": "Produção Científica & Inovação",
+        "title": "Nossas Produções",
+        "description": "Artigos, registros de software e resultados de pesquisa produzidos por nossa equipe.",
+        "searchPlaceholder": "Buscar (título, autor, evento)...",
+        "filters": "Filtros",
+        "allTypes": "Todos os Tipos",
+        "allYears": "Todos os Anos",
+        "allTags": "Todas as Tags",
+        "clearFilters": "Limpar Filtros",
+        "notFound": "Nenhum item encontrado para os filtros selecionados.",
+        "viewMore": "Ver mais",
+        "viewLess": "Ver menos",
+        "tabs": {
+            "academic": "Produção Acadêmica",
+            "software": "Registro de Software"
+        },
+        "types": {
+            "article": "Artigo Científico",
+            "tcc": "Trabalho de Conclusão de Curso",
+            "masters_thesis": "Dissertação de Mestrado",
+            "doctoral_thesis": "Tese de Doutorado",
+            "software": "Registro de Software",
+            "patent": "Patente",
+            "journal": "Artigo Científico",
+            "conference": "Conferência",
+            "book": "Livro",
+            "thesis": "Tese"
+        }
+    },
+    "PublicationDetails": {
+        "abstract": "Resumo",
+        "keywords": "Palavras-chave",
+        "doi": "Identificador DOI",
+        "info": "Informações",
+        "year": "Ano",
+        "type": "Tipo",
+        "authors": "Autores",
+        "ctaTitle": "Acessar Publicação",
+        "ctaDesc": "Leia o artigo completo no site do periódico ou conferência.",
+        "ctaBtn": "Acessar DOI"
+    },
+    "MetadataNews": {
+        "title": "Notícias | LabCity UFPA",
+        "description": "Fique por dentro das últimas atualizações, reportagens e mídia do grupo."
+    },
+    "NewsPage": {
+        "badge": "Sala de Imprensa",
+        "tabs": {
+            "noticias": {
+                "label": "Notícias",
+                "title": "Nossas Notícias",
+                "description": "Fique por dentro das últimas descobertas, eventos e parcerias do LabCity."
+            },
+            "midia": {
+                "label": "Deu na Mídia",
+                "title": "Deu na Mídia",
+                "description": "Cobertura da mídia sobre as atividades e pesquisas do nosso laboratório."
+            }
+        },
+        "searchPlaceholder": "Buscar notícias...",
+        "allCategories": "Todas as Categorias",
+        "sort": {
+            "newest": "Mais recentes",
+            "oldest": "Mais antigas"
+        },
+        "notFound": "Nenhuma notícia encontrada para os filtros selecionados.",
+        "readExternal": "Ler na fonte",
+        "readMore": "Ler artigo completo"
+    },
+    "NewsDetails": {
+        "notFound": "Notícia não encontrada.",
+        "breadcrumbHome": "Home",
+        "breadcrumbNews": "Notícias",
+        "readTime": "{min} min de leitura",
+        "linkCopied": "Link copiado!",
+        "writtenBy": "Escrito por",
+        "researcher": "Pesquisador LabCity",
+        "relatedProjects": "Projetos Relacionados",
+        "relatedPublications": "Publicações Relacionadas",
+        "relatedNews": "Notícias Relacionadas"
+    }
+}

@@ -11,7 +11,24 @@ import { tagType } from './tagType'
 
 import { categoryType } from './categoryType'
 import { blockContentType } from './blockContentType'
+import { localeStringType } from './localeStringType'
+import { localeTextType } from './localeTextType'
+import { localeBlockContentType } from './localeBlockContentType'
 
 export const schema: { types: SchemaTypeDefinition[] } = {
-  types: [personType, projectType, publicationType, postType, categoryType, blockContentType, partnerType, researchAreaType, aboutType, tagType],
+  types: [
+    localeStringType,
+    localeTextType,
+    localeBlockContentType,
+    personType,
+    projectType,
+    publicationType,
+    postType,
+    categoryType,
+    blockContentType,
+    partnerType,
+    researchAreaType,
+    aboutType,
+    tagType
+  ],
 }

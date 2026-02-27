@@ -1,14 +1,17 @@
 'use client';
 
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { Mail, MapPin, Phone, Instagram, Linkedin, Github, } from 'lucide-react';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
 import { cn, getAssetPath } from '@/lib/utils';
 import { contactInfo } from '@/lib/content';
 import { socialLinks } from '@/lib/content';
+import { useTranslations } from 'next-intl';
 
 export function Footer() {
+    const navT = useTranslations('Navigation');
+    const footerT = useTranslations('Footer');
     return (
         <footer className="bg-slate-100 dark:bg-slate-950/50 border-t border-slate-200 dark:border-slate-800 pt-16 pb-8">
             <div className="container mx-auto px-4 md:px-6">
@@ -16,7 +19,7 @@ export function Footer() {
                 {/* Institutional Supporters Bar */}
                 <div className="border-b border-slate-200 dark:border-slate-800 pb-12 mb-12">
                     <h5 className="text-center font-mono text-xs font-bold text-muted-foreground/60 uppercase tracking-widest mb-8">
-                        Apoio & Fomento
+                        {footerT('support')}
                     </h5>
                     <div className="flex flex-wrap justify-center items-center gap-8 md:gap-16">
 
@@ -24,7 +27,7 @@ export function Footer() {
                         <div className="relative w-32 h-16 opacity-45 dark:opacity-60">
                             <Image
                                 src={getAssetPath('/images/cnpq-logo.png')}
-                                alt="CNPq"
+                                alt={footerT('cnpq')}
                                 fill
                                 className="object-contain invert dark:invert-0"
                                 sizes="128px"
@@ -35,7 +38,7 @@ export function Footer() {
                         <div className="relative w-28 h-12 opacity-80 grayscale dark:invert dark:opacity-90">
                             <Image
                                 src={getAssetPath('/images/capes-logo.png')}
-                                alt="CAPES"
+                                alt={footerT('capes')}
                                 fill
                                 className="object-contain dark:invert-0"
                                 sizes="112px"
@@ -83,36 +86,37 @@ export function Footer() {
                             <LabcityLogo />
                         </Link>
                         <p className="text-sm text-muted-foreground leading-relaxed">
-                            Laboratório de pesquisas avançadas em Inteligência Artificial, Cidades Inteligentes e Internet das Coisas da Universidade Federal do Pará.
+                            {footerT('description')}
                         </p>
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-foreground mb-4">Navegação</h4>
+                        <h4 className="font-bold text-foreground mb-4">{navT('institucional')}</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="/institucional#sobre" className="hover:text-primary transition-colors">Institucional</Link></li>
-                            <li><Link href="/pesquisa/linhas-de-pesquisa" className="hover:text-primary transition-colors">Pesquisa</Link></li>
-                            <li><Link href="/projetos" className="hover:text-primary transition-colors">Projetos</Link></li>
-                            <li><Link href="/equipe" className="hover:text-primary transition-colors">Equipe</Link></li>
-                            <li><Link href="/noticias" className="hover:text-primary transition-colors">Notícias</Link></li>
+                            <li><Link href="/institucional#sobre" className="hover:text-primary transition-colors">{navT('institucional')}</Link></li>
+                            <li><Link href="/pesquisa/linhas-de-pesquisa" className="hover:text-primary transition-colors">{navT('pesquisa')}</Link></li>
+                            <li><Link href="/projetos" className="hover:text-primary transition-colors">{navT('projetos')}</Link></li>
+                            <li><Link href="/equipe" className="hover:text-primary transition-colors">{navT('equipe')}</Link></li>
+                            <li><Link href="/noticias" className="hover:text-primary transition-colors">{navT('noticias')}</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-foreground mb-4">Links Úteis</h4>
+                        <h4 className="font-bold text-foreground mb-4">{footerT('usefulLinks')}</h4>
                         <ul className="space-y-2 text-sm text-muted-foreground">
-                            <li><Link href="https://portaldatransparencia.gov.br/" className="hover:text-primary transition-colors">Portal da Transparência</Link></li>
-                            <li><Link href="https://www.gov.br/acessoainformacao/pt-br" className="hover:text-primary transition-colors">Acesso à Informação</Link></li>
+                            <li><Link href="https://portaldatransparencia.gov.br/" className="hover:text-primary transition-colors">{footerT('transparency')}</Link></li>
+                            <li><Link href="https://www.gov.br/acessoainformacao/pt-br" className="hover:text-primary transition-colors">{footerT('infoAccess')}</Link></li>
                             {/*<li><Link href="#" className="hover:text-primary transition-colors">Editais Abertos</Link></li>*/}
                             <li><Link href="http://lattes.cnpq.br/" target="_blank" className="hover:text-primary transition-colors">Plataforma Lattes</Link></li>
+                            <li><Link href="https://inctiamazonia.org.br/" target="_blank" className="hover:text-primary transition-colors">INCT IAmazônia</Link></li>
                             <li><Link href="https://pctguama.org.br/" target="_blank" className="hover:text-primary transition-colors">PCT - Guamá</Link></li>
                             <li><Link href="https://smartcitycanaadoscarajas.com.br/index.php" target="_blank" className="hover:text-primary transition-colors">SmartCity Canaã dos Carajás</Link></li>
-                            <li><Link href="https://www.gov.br/cnpq/pt-br" target="_blank" className="hover:text-primary transition-colors">CNPq</Link></li>
+                            <li><Link href="https://www.gov.br/cnpq/pt-br" target="_blank" className="hover:text-primary transition-colors">{footerT('cnpq')}</Link></li>
                         </ul>
                     </div>
 
                     <div>
-                        <h4 className="font-bold text-foreground mb-4">Contato</h4>
+                        <h4 className="font-bold text-foreground mb-4">{navT('contactTitle')}</h4>
                         <ul className="space-y-4 text-sm text-muted-foreground">
                             <li className="flex items-start gap-3">
                                 <MapPin className="w-5 h-5 text-primary shrink-0" />
@@ -135,7 +139,7 @@ export function Footer() {
 
                 {/* Copyright */}
                 <div className="text-center mt-8 text-xs text-muted-foreground font-mono">
-                    &copy; {new Date().getFullYear()} Labcity UFPA. Todos os direitos reservados.
+                    &copy; {new Date().getFullYear()} Labcity UFPA. {footerT('rights')}
                 </div>
             </div>
         </footer>

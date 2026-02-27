@@ -10,8 +10,7 @@ export const tagType = defineType({
         defineField({
             name: 'title',
             title: 'Nome',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
+            type: 'localeString',
         }),
         defineField({
             name: 'slug',
@@ -22,6 +21,6 @@ export const tagType = defineType({
         }),
     ],
     preview: {
-        select: { title: 'title' },
+        select: { title: 'title.pt' },
     },
 })

@@ -13,8 +13,7 @@ export const projectType = defineType({
     defineField({
       name: 'title',
       title: 'Titulo',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'slug',
@@ -26,27 +25,22 @@ export const projectType = defineType({
     defineField({
       name: 'category',
       title: 'Categoria',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'status',
       title: 'Status',
-      type: 'string',
-      validation: (Rule) => Rule.required(),
+      type: 'localeString',
     }),
     defineField({
       name: 'description',
       title: 'Descricao curta',
-      type: 'text',
-      rows: 3,
-      validation: (Rule) => Rule.required(),
+      type: 'localeText',
     }),
     defineField({
       name: 'longDescription',
       title: 'Descricao completa',
-      type: 'text',
-      rows: 12,
+      type: 'localeText',
     }),
     defineField({
       name: 'partnersLegacy',
@@ -65,7 +59,7 @@ export const projectType = defineType({
       name: 'features',
       title: 'Principais funcionalidades',
       type: 'array',
-      of: [{ type: 'string' }],
+      of: [{ type: 'localeString' }],
     }),
     defineField({
       name: 'order',
@@ -106,8 +100,8 @@ export const projectType = defineType({
   ],
   preview: {
     select: {
-      title: 'title',
-      subtitle: 'category',
+      title: 'title.pt',
+      subtitle: 'category.pt',
       media: 'image',
     },
   },

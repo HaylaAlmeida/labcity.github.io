@@ -8,7 +8,7 @@ export const partnerType = defineType({
         defineField({
             name: 'name',
             title: 'Nome',
-            type: 'string',
+            type: 'localeString',
             validation: (Rule) => Rule.required(),
         }),
         defineField({
@@ -20,7 +20,7 @@ export const partnerType = defineType({
             fields: [
                 defineField({
                     name: 'alt',
-                    type: 'string',
+                    type: 'localeString',
                     title: 'Alternative text',
                 })
             ]
@@ -45,7 +45,7 @@ export const partnerType = defineType({
     ],
     preview: {
         select: {
-            title: 'name',
+            title: 'name.pt',
             media: 'logo',
         },
     },

@@ -42,7 +42,7 @@ const levelPriority: Record<string, number> = {
   researcher: 6,
 };
 
-export async function getTeam(): Promise<TeamData> {
+export async function getTeam(lang: string = 'pt'): Promise<TeamData> {
   console.log('[Sanity] Check Enabled:', isSanityEnabled());
   if (!isSanityEnabled()) {
     // Fallback to local content - combine all non-coordinators into members
@@ -70,14 +70,14 @@ export async function getTeam(): Promise<TeamData> {
     "id": coalesce(id, _id),
     name,
     role,
-    focus,
+    "focus": coalesce(focus[$lang], focus.pt, ""),
     lattes,
     email,
     linkedin,
     "image": coalesce(image.asset->url, imageUrl),
     level,
     specialties,
-    bio
+    "bio": coalesce(bio[$lang], bio.pt, "")
   }`;
 
   type SanityPerson = {
@@ -96,7 +96,7 @@ export async function getTeam(): Promise<TeamData> {
 
   let people: SanityPerson[];
   try {
-    people = await sanityQuery<SanityPerson[]>(query, {}, { tags: [TAG], revalidate: 30 });
+    people = await sanityQuery<SanityPerson[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
     console.log('[Sanity] Fetched People:', people.length);
   } catch (err) {
     console.error('[Sanity] getTeam failed, falling back to local content', err);
@@ -142,7 +142,7 @@ export async function getTeam(): Promise<TeamData> {
     .map((p) => ({
       id: p.id,
       name: p.name,
-      role: p.role || 'Coordenador(a)',
+      role: p.role || '',
       focus: p.focus || '',
       lattes: p.lattes || '#',
       email: p.email || '',

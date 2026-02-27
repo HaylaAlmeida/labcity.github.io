@@ -8,8 +8,7 @@ export const researchAreaType = defineType({
         defineField({
             name: 'title',
             title: 'Título',
-            type: 'string',
-            validation: (Rule) => Rule.required(),
+            type: 'localeString',
         }),
         defineField({
             name: 'code',
@@ -27,9 +26,7 @@ export const researchAreaType = defineType({
         defineField({
             name: 'description',
             title: 'Descrição',
-            type: 'text',
-            rows: 4,
-            validation: (Rule) => Rule.required(),
+            type: 'localeText',
         }),
         defineField({
             name: 'projects',

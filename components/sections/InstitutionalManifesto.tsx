@@ -2,31 +2,33 @@
 
 import { motion } from 'framer-motion';
 import { Target, Cpu, Users, Globe } from 'lucide-react';
+import { useTranslations } from 'next-intl';
 
 export function InstitutionalManifesto() {
+    const t = useTranslations('Institutional');
     return (
         <div className="flex flex-col gap-12">
             {/* Header Block */}
             <div className="w-full">
                 <span className="font-mono text-xs font-bold text-primary mb-4 block uppercase tracking-widest">
-                    {'// '}Manifesto_Labcity
+                    {t('manifestoTag')}
                 </span>
                 <h2 className="text-3xl font-bold mb-6 text-foreground tracking-tight leading-tight">
-                    Ciência de Dados aplicada à <br />
-                    <span className="text-primary">Realidade Urbana</span>
+                    {t('manifestoTitleLine1')} <br />
+                    <span className="text-primary">{t('manifestoTitleLine2')}</span>
                 </h2>
                 <p className="text-muted-foreground text-sm leading-relaxed mb-8 border-l-2 border-primary/20 pl-4">
-                    Nascido na Universidade Federal do Pará. Focado no desenvolvimento de tecnologias disruptivas para a Amazônia. Interceção entre IA, IoT e Políticas Públicas.
+                    {t('manifestoDesc')}
                 </p>
 
                 <div className="grid grid-cols-2 gap-4">
                     <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                         <span className="block text-2xl font-bold text-primary mb-1">2024</span>
-                        <span className="text-[10px] font-mono text-muted-foreground uppercase">Fundação</span>
+                        <span className="text-[10px] font-mono text-muted-foreground uppercase">{t('foundation')}</span>
                     </div>
                     <div className="p-4 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800">
                         <span className="block text-2xl font-bold text-primary mb-1">Guamá</span>
-                        <span className="text-[10px] font-mono text-muted-foreground uppercase">Campus</span>
+                        <span className="text-[10px] font-mono text-muted-foreground uppercase">{t('campus')}</span>
                     </div>
                 </div>
             </div>
@@ -37,23 +39,23 @@ export function InstitutionalManifesto() {
                     {[
                         {
                             icon: Target,
-                            title: "Objetivo",
-                            desc: "Criar soluções reais para saúde, mobilidade, energia e governança digital."
+                            title: t('goalTitle'),
+                            desc: t('goalDesc')
                         },
                         {
                             icon: Cpu,
-                            title: "Stack Tecnológico",
-                            desc: "Deep Learning, Visão Computacional, Redes IoT, Análise de Big Data."
+                            title: t('stackTitle'),
+                            desc: t('stackDesc')
                         },
                         {
                             icon: Users,
-                            title: "Capital Humano",
-                            desc: "Formação de pesquisadores de alta performance adaptados ao ecossistema local."
+                            title: t('capitalTitle'),
+                            desc: t('capitalDesc')
                         },
                         {
                             icon: Globe,
-                            title: "Contexto Regional",
-                            desc: "Soluções desenhadas para os desafios climáticos e logísticos da Amazônia."
+                            title: t('contextTitle'),
+                            desc: t('contextDesc')
                         }
                     ].map((item, i) => (
                         <motion.div

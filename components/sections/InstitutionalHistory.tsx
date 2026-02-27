@@ -4,45 +4,48 @@ import { motion } from 'framer-motion';
 import Image from 'next/image';
 import { getAssetPath } from '@/lib/utils';
 import { LabcityLogo } from '@/components/ui/labcity-logo';
-
-const timelineItems = [
-    {
-        id: 'lprad',
-        year: '2010',
-        title: 'LPRAD',
-        subtitle: 'Laboratório de Planejamento de Redes de Alto Desempenho',
-        description: 'Vinculado ao PPGEE/UFPA, constituiu-se no primeiro laboratório de última geração em tecnologias de redes de telecomunicação da região amazônica. Exerceu atividades relacionadas às diversas tecnologias de redes (backbone, aproximação e "última milha" - cabeadas e sem fio) sob uma ótica de planejamento, visando à avaliação e otimização do desempenho dessas redes.',
-        logo: '/images/3_lprad.jpg',
-        isCurrent: false
-    },
-    {
-        id: 'lts',
-        year: '2015',
-        title: 'LTS',
-        subtitle: 'Laboratório de Tecnologias Sociais',
-        description: 'Também vinculado à área de concentração de Computação Aplicada do PPGEE/UFPA, teve atuação interdisciplinar e multi-institucional, agregando pesquisadores e instituições de diversos perfis. Baseou-se na utilização de modelos matemáticos e computacionais para a solução de problemas do mundo real em áreas como energia, saúde pública, seguridade social, meio ambiente, educação e inclusão digital.',
-        logo: '/images/6_lts.jpg',
-        isCurrent: false
-    },
-    {
-        id: 'labcity',
-        year: '2024',
-        title: 'LABCITY',
-        subtitle: 'Laboratório de Inteligência Artificial aplicada a Cidades Inteligentes',
-        description: 'A consolidação de nossa jornada, unindo o legado de alto desempenho e impacto social para criar cidades mais inteligentes, sustentáveis e humanas na Amazônia.',
-        logo: 'labcity-component', // Special flag to use component
-        isCurrent: true
-    }
-];
+import { useTranslations } from 'next-intl';
 
 export function InstitutionalHistory() {
+    const t = useTranslations('HistorySection');
+
+    const timelineItems = [
+        {
+            id: 'lprad',
+            year: '2010',
+            title: 'LPRAD',
+            subtitle: t('lpradSubtitle'),
+            description: t('lpradDesc'),
+            logo: '/images/3_lprad.jpg',
+            isCurrent: false
+        },
+        {
+            id: 'lts',
+            year: '2015',
+            title: 'LTS',
+            subtitle: t('ltsSubtitle'),
+            description: t('ltsDesc'),
+            logo: '/images/6_lts.jpg',
+            isCurrent: false
+        },
+        {
+            id: 'labcity',
+            year: '2024',
+            title: 'LABCITY',
+            subtitle: t('labcitySubtitle'),
+            description: t('labcityDesc'),
+            logo: 'labcity-component', // Special flag to use component
+            isCurrent: true
+        }
+    ];
+
     return (
         <section id="historia" className="py-24 bg-slate-50 dark:bg-slate-900/50">
             <div className="container mx-auto px-4 md:px-6">
                 <div className="mb-16 text-center">
-                    <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">Nossa História</h2>
+                    <h2 className="text-3xl md:text-4xl font-black mb-4 tracking-tight">{t('title')}</h2>
                     <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-                        Uma jornada de evolução constante, adaptando-nos aos desafios tecnológicos e sociais de cada época.
+                        {t('description')}
                     </p>
                 </div>
 

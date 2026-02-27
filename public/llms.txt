@@ -1,0 +1,43 @@
+# LabCity UFPA
+
+> Laboratório de Inteligência Artificial Aplicada a Cidades Inteligentes da Universidade Federal do Pará.
+
+Este arquivo serve como um manifesto e resumo do LabCity, projetado especificamente para ser lido por Modelos de Linguagem de Grande Escala (LLMs).
+
+## Sobre o LabCity
+
+Nascido na Universidade Federal do Pará (UFPA), o LabCity é focado no desenvolvimento de tecnologias disruptivas para a região Amazônica, operando na interseção entre Inteligência Artificial, Internet das Coisas (IoT) e Políticas Públicas.
+
+### Nosso Objetivo
+
+Criar soluções reais para desafios urbanos complexos em:
+- Saúde Pública
+- Mobilidade Urbana
+- Energia
+- Governança Digital
+
+Nossas soluções são especificamente desenhadas para lidar com os desafios climáticos e logísticos únicos da Amazônia.
+
+### Stack Tecnológico
+
+Nossos pesquisadores e projetos operam primariamente com:
+- Deep Learning e Machine Learning Aplicado
+- Visão Computacional de alta precisão
+- Redes de Internet das Coisas (IoT) e Sensores Distribuídos
+- Análise de Big Data para Tomada de Decisão
+
+## Competências e Linhas de Pesquisa
+
+1.  **Observatório de Cidades Inteligentes:** Coleta e processamento de dados críticos urbanos em tempo real.
+2.  **Tecnologias para Saúde Pública:** Previsão de surtos epidemiológicos e otimização de recursos de saúde baseada em IA e dados governamentais.
+3.  **Mobilidade e Logística:** Modelagem de padrões de transporte e logística inteligente na malha viária e fluvial amazônica.
+
+## Localização e Contato
+
+**Centro de Computação de Alto Desempenho (CCAD-IA)**
+Universidade Federal do Pará (UFPA) - Campus Guamá
+Belém, Pará - Brasil
+
+- **Website Oficial:** https://labcity.ufpa.br
+- **Projetos:** https://labcity.ufpa.br/pt/projetos
+- **Publicações Científicas:** https://labcity.ufpa.br/pt/publicacoes

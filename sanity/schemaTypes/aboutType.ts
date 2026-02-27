@@ -25,12 +25,12 @@ export const aboutType = defineType({
                     fields: [
                         {
                             name: 'caption',
-                            type: 'string',
+                            type: 'localeString',
                             title: 'Legenda',
                         },
                         {
                             name: 'alt',
-                            type: 'string',
+                            type: 'localeString',
                             title: 'Texto Alternativo',
                         }
                     ]

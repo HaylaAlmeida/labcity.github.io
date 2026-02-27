@@ -1,4 +1,5 @@
 import { isSanityEnabled, sanityQuery } from '@/lib/cms/sanity';
+import { getLocale } from 'next-intl/server';
 
 export interface Partner {
     id: string;
@@ -35,19 +36,20 @@ const localPartners: Partner[] = [
     }
 ];
 
-export async function getPartners(): Promise<Partner[]> {
+export async function getPartners(localeParam?: string): Promise<Partner[]> {
     if (!isSanityEnabled()) return localPartners;
 
     try {
-        const query = `*[_type == "partner"] | order(name asc) {
+        const locale = localeParam || await getLocale();
+        const query = `*[_type == "partner"] | order(name.pt asc) {
             "id": coalesce(id, _id),
-            name,
+            "name": coalesce(name[$lang], name.pt, ''),
             "logo": logo.asset->url,
             url,
             category
         }`;
 
-        const items = await sanityQuery<Partner[]>(query, {}, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<Partner[]>(query, { lang: locale }, { tags: [TAG], revalidate: 30 });
         console.log('[Sanity] Fetched Partners:', items.length);
         return items.length ? items : localPartners;
     } catch (err) {

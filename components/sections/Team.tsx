@@ -4,11 +4,12 @@ import useEmblaCarousel from 'embla-carousel-react';
 import Autoplay from 'embla-carousel-autoplay';
 import { User, ChevronRight, ChevronLeft } from 'lucide-react';
 import { LattesIcon } from '@/components/icons/LattesIcon';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import { useCallback } from 'react';
 import Image from 'next/image';
 import { getAssetPath } from '@/lib/utils';
 import { TeamMember } from '@/lib/data/team';
+import { useTranslations } from 'next-intl';
 
 export type Coordinator = TeamMember & {
     role: string;
@@ -27,6 +28,7 @@ export function Team({
     bachelors: TeamMember[];
     undergraduates: TeamMember[];
 }) {
+    const t = useTranslations('TeamSection');
     // Combine all members for the carousel (or select highlights)
     // We keep coordinators separate as 'Featured' and carousel the rest
     const allMembers = [...doctors, ...masters, ...bachelors, ...undergraduates];
@@ -48,17 +50,17 @@ export function Team({
                 <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="font-mono  text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
-                            CAPITAL HUMANO
+                            {t('tag')}
                         </span>
                         <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-                            Nossa Equipe
+                            {t('title')}
                         </h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Conheça os membros que compõem a equipe do LabCity.
+                            {t('description')}
                         </p>
                     </div>
                     <Link href="/equipe" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
-                        [ Ver Todos os Integrantes ] <ChevronRight className="w-4 h-4" />
+                        {t('viewAll')} <ChevronRight className="w-4 h-4" />
                     </Link>
                 </div>
 
@@ -87,7 +89,7 @@ export function Team({
                             </div>
 
                             {/* Badge */}
-                            <span className="font-mono text-[10px] font-bold text-white bg-primary px-2 py-0.5 rounded-full mb-2">COORDENAÇÃO</span>
+                            <span className="font-mono text-[10px] font-bold text-white bg-primary px-2 py-0.5 rounded-full mb-2">{t('coordBadge')}</span>
 
                             {/* Info */}
                             <h4 className="font-bold text-sm text-foreground line-clamp-1 w-full" title={coord.name}>{coord.name}</h4>

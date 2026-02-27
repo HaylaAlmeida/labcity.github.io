@@ -2,9 +2,10 @@
 
 import { motion } from 'framer-motion';
 import { ArrowUpRight, ArrowRight, ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+import { Link } from '@/i18n/routing';
 import Image from 'next/image';
 import { getAssetPath } from '@/lib/utils';
+import { useTranslations } from 'next-intl';
 
 export type Project = {
     id: string;
@@ -16,6 +17,7 @@ export type Project = {
 };
 
 export function Projects({ projects }: { projects: Project[] }) {
+    const t = useTranslations('ProjectsSection');
     const [inct, brasil, mina] = projects;
 
     if (!inct || !brasil || !mina) {
@@ -30,17 +32,17 @@ export function Projects({ projects }: { projects: Project[] }) {
                 <div className="w-full flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6">
                     <div className="max-w-2xl">
                         <span className="font-mono text-xs font-bold text-primary mb-2 block uppercase tracking-wider">
-                            Portfólio de Inovação
+                            {t('tag')}
                         </span>
                         <h2 className="text-3xl md:text-5xl font-black text-foreground mb-4 tracking-tight">
-                            Projetos em Destaque
+                            {t('title')}
                         </h2>
                         <p className="text-lg text-muted-foreground leading-relaxed">
-                            Conheça as iniciativas que estão transformando a Amazônia e o Brasil através da Inteligência Artificial e IoT.
+                            {t('description')}
                         </p>
                     </div>
                     <Link href="/projetos" className="flex items-center gap-2 font-mono text-xs font-bold text-primary hover:text-primary/80 transition-colors uppercase tracking-wider">
-                        [ Ver Todos os Projetos ] <ChevronRight className="w-4 h-4" />
+                        {t('viewAll')} <ChevronRight className="w-4 h-4" />
                     </Link>
                 </div>
 
@@ -71,7 +73,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                                         {inct.description}
                                     </p>
                                     <Link href={`/projetos/${inct.slug}`} className="text-xs font-bold text-white/80 hover:text-white uppercase tracking-wider flex items-center gap-1">
-                                        Saiba mais <ArrowUpRight className="w-3 h-3" />
+                                        {t('learnMore')} <ArrowUpRight className="w-3 h-3" />
                                     </Link>
                                 </div>
                             </div>
@@ -105,7 +107,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                                         {brasil.description}
                                     </p>
                                     <Link href={`/projetos/${brasil.slug}`} className="text-xs font-bold text-white/80 hover:text-white uppercase tracking-wider flex items-center gap-1">
-                                        Saiba mais <ArrowUpRight className="w-3 h-3" />
+                                        {t('learnMore')} <ArrowUpRight className="w-3 h-3" />
                                     </Link>
                                 </div>
                             </div>
@@ -136,7 +138,7 @@ export function Projects({ projects }: { projects: Project[] }) {
                                             {mina.description}
                                         </p>
                                         <Link href={`/projetos/${mina.slug}`} className="text-[10px] font-bold text-white/80 hover:text-white uppercase tracking-wider flex items-center gap-1">
-                                            Saiba mais <ArrowUpRight className="w-3 h-3" />
+                                            {t('learnMore')} <ArrowUpRight className="w-3 h-3" />
                                         </Link>
                                     </div>
                                 </div>
@@ -148,10 +150,10 @@ export function Projects({ projects }: { projects: Project[] }) {
                                     <ArrowRight className="w-6 h-6 text-white" />
                                 </div>
                                 <span className="font-mono text-xs font-bold text-slate-600 dark:text-slate-400 uppercase tracking-wider">
-                                    Ver Todos
+                                    {t('viewAllBtn')}
                                 </span>
                                 <span className="text-sm text-muted-foreground mt-1">
-                                    {projects.length} projetos
+                                    {projects.length} {t('itemsCount')}
                                 </span>
                             </Link>
                         </div>
