@@ -43,8 +43,7 @@ export default function NotFound() {
                 <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800">
                     <p className="text-sm text-muted-foreground mb-4">Ou navegue para:</p>
                     <div className="flex flex-wrap justify-center gap-4 text-sm">
-                        <Link href="/#sobre" className="text-primary hover:underline">Sobre</Link>
-                        <Link href="/#pesquisa" className="text-primary hover:underline">Pesquisa</Link>
+                        <Link href="/institucional" className="text-primary hover:underline">Institucional</Link>
                         <Link href="/publicacoes" className="text-primary hover:underline">Publicações</Link>
                         <Link href="/equipe" className="text-primary hover:underline">Equipe</Link>
                     </div>

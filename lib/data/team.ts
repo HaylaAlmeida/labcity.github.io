@@ -148,7 +148,9 @@ export async function getTeam(lang: string = 'pt'): Promise<TeamData> {
       email: p.email || '',
       linkedin: p.linkedin || '',
       image: p.image || '/images/team/avatar-placeholder.jpg',
-      specialties: p.specialties || [],
+      specialties: Array.isArray(p.specialties)
+        ? p.specialties.map((s: any) => typeof s === 'string' ? s : (s[lang] || s.pt || ''))
+        : [],
       bio: p.bio || '',
     }));
 
@@ -163,7 +165,9 @@ export async function getTeam(lang: string = 'pt'): Promise<TeamData> {
       email: p.email || '',
       linkedin: p.linkedin || '',
       image: p.image || '/images/team/avatar-placeholder.jpg',
-      specialties: p.specialties || [],
+      specialties: Array.isArray(p.specialties)
+        ? p.specialties.map((s: any) => typeof s === 'string' ? s : (s[lang] || s.pt || ''))
+        : [],
       bio: p.bio || '',
     }));
 

@@ -49,7 +49,15 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
 
     const items = await sanityQuery<Project[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
     console.log('[Sanity] Fetched Projects:', items.length);
-    return items.length ? items : localProjects;
+
+    const mappedItems = items.map(item => ({
+      ...item,
+      features: Array.isArray(item.features)
+        ? item.features.map((f: any) => typeof f === 'string' ? f : (f[lang] || f.pt || ''))
+        : []
+    }));
+
+    return mappedItems.length ? mappedItems : localProjects;
   } catch (err) {
     console.error('[Sanity] getProjects failed, falling back to local content', err);
     return localProjects;
@@ -93,6 +101,11 @@ export async function getProjectBySlug(slug: string, lang: string = 'pt'): Promi
     }`;
 
     const item = await sanityQuery<Project | null>(query, { slug, lang }, { tags: [TAG], revalidate: 30 });
+
+    if (item && Array.isArray(item.features)) {
+      item.features = item.features.map((f: any) => typeof f === 'string' ? f : (f[lang] || f.pt || ''));
+    }
+
     return item || (localProjects.find((p) => p.slug === slug) ?? null);
   } catch (err) {
     console.error('[Sanity] getProjectBySlug failed, falling back to local content', err);
