@@ -242,6 +242,10 @@
             "dev_fellow": "Bolsista de Desenvolvimento"
         }
     },
+    "MetadataProjects": {
+        "title": "Projetos de Pesquisa | LabCity UFPA",
+        "description": "Conheça o portfólio de projetos e iniciativas desenvolvidas pelo nosso laboratório."
+    },
     "ProjectsPage": {
         "title": "Nossos Projetos",
         "description": "Conheça em detalhes as iniciativas que estão transformando a Amazônia e o Brasil através da tecnologia.",
@@ -349,5 +353,15 @@
         "relatedProjects": "Projetos Relacionados",
         "relatedPublications": "Publicações Relacionadas",
         "relatedNews": "Notícias Relacionadas"
+    },
+    "NotFound": {
+        "title": "Página não encontrada",
+        "description": "A página que você está procurando não existe ou foi movida para outro endereço.",
+        "backHome": "Voltar ao Início",
+        "viewProjects": "Ver Projetos",
+        "orNavigateTo": "Ou navegue para:",
+        "institutional": "Institucional",
+        "publications": "Publicações",
+        "team": "Equipe"
     }
 }

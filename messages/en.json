@@ -242,6 +242,10 @@
             "dev_fellow": "Development Fellow"
         }
     },
+    "MetadataProjects": {
+        "title": "Research Projects | LabCity UFPA",
+        "description": "Discover the portfolio of projects and initiatives developed by our laboratory."
+    },
     "ProjectsPage": {
         "title": "Our Projects",
         "description": "Discover in detail the initiatives that are transforming the Amazon and Brazil through technology.",
@@ -349,5 +353,15 @@
         "relatedProjects": "Related Projects",
         "relatedPublications": "Related Publications",
         "relatedNews": "Related News"
+    },
+    "NotFound": {
+        "title": "Page not found",
+        "description": "The page you are looking for does not exist or has been moved to another address.",
+        "backHome": "Back to Home",
+        "viewProjects": "View Projects",
+        "orNavigateTo": "Or navigate to:",
+        "institutional": "Institutional",
+        "publications": "Publications",
+        "team": "Team"
     }
 }
