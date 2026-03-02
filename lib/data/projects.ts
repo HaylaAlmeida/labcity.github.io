@@ -35,8 +35,7 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
           name,
           "logo": logo.asset->url,
           url
-        },
-        "features": coalesce(features[], []),
+        "features": coalesce(features[]->{"t": coalesce(title[$lang], title.pt, "")}.t, features[]{"t": coalesce(@[$lang], @.pt, "")}.t, []),
         "researchAreas": researchAreas[]-> {
           "title": coalesce(title[$lang], title.pt, ""),
           code
@@ -50,14 +49,7 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
     const items = await sanityQuery<Project[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
     console.log('[Sanity] Fetched Projects:', items.length);
 
-    const mappedItems = items.map(item => ({
-      ...item,
-      features: Array.isArray(item.features)
-        ? item.features.map((f: any) => typeof f === 'string' ? f : (f[lang] || f.pt || ''))
-        : []
-    }));
-
-    return mappedItems.length ? mappedItems : localProjects;
+    return items.length ? items : localProjects;
   } catch (err) {
     console.error('[Sanity] getProjects failed, falling back to local content', err);
     return localProjects;
@@ -89,7 +81,7 @@ export async function getProjectBySlug(slug: string, lang: string = 'pt'): Promi
         "logo": logo.asset->url,
         url
       },
-      "features": coalesce(features[], []),
+      "features": coalesce(features[]->{"t": coalesce(title[$lang], title.pt, "")}.t, features[]{"t": coalesce(@[$lang], @.pt, "")}.t, []),
       "researchAreas": researchAreas[]-> {
         "title": coalesce(title[$lang], title.pt, ""),
         code
@@ -101,10 +93,6 @@ export async function getProjectBySlug(slug: string, lang: string = 'pt'): Promi
     }`;
 
     const item = await sanityQuery<Project | null>(query, { slug, lang }, { tags: [TAG], revalidate: 30 });
-
-    if (item && Array.isArray(item.features)) {
-      item.features = item.features.map((f: any) => typeof f === 'string' ? f : (f[lang] || f.pt || ''));
-    }
 
     return item || (localProjects.find((p) => p.slug === slug) ?? null);
   } catch (err) {
