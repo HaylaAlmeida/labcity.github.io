@@ -71,7 +71,7 @@ export function About() {
                                     whileInView={{ opacity: 1, y: 0 }}
                                     viewport={{ once: true }}
                                     transition={{ delay: i * 0.1 }}
-                                    className="bg-white dark:bg-slate-950 p-8 hover:bg-slate-50 dark:hover:bg-slate-900 transition-colors"
+                                    className="bg-white dark:bg-slate-950 p-8 transition-colors"
                                 >
                                     <div className="flex items-center gap-3 mb-4">
                                         <item.icon className="w-5 h-5 text-primary" />

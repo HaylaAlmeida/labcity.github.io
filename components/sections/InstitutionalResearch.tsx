@@ -2,7 +2,7 @@
 
 import { Link } from '@/i18n/routing';
 import { ArrowRight, Brain, Cpu, Database, Network, HelpCircle } from 'lucide-react';
-import type { ResearchArea } from '@/lib/data/research';
+import { getResearchAreaSlug, type ResearchArea } from '@/lib/data/research';
 import * as LucideIcons from 'lucide-react';
 import { useTranslations } from 'next-intl';
 
@@ -30,17 +30,18 @@ export function InstitutionalResearch({ researchAreas }: InstitutionalResearchPr
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 content-center">
                     {researchAreas.slice(0, 3).map((area) => {
                         const IconComponent = (LucideIcons as any)[area.icon as string] || HelpCircle;
+                        const slug = getResearchAreaSlug(area);
 
                         return (
-                            <div key={area.code} className="bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-colors group">
+                            <Link href={`/pesquisa/linhas-de-pesquisa/${slug}`} key={area.code} className="block bg-white dark:bg-slate-900 p-8 rounded-2xl border border-slate-200 dark:border-slate-800 hover:border-primary/50 transition-colors group">
                                 <div className="mb-6 p-4 bg-slate-50 dark:bg-slate-800 rounded-xl inline-block group-hover:bg-primary/10 group-hover:text-primary transition-colors text-slate-600 dark:text-slate-400">
                                     <IconComponent className="w-8 h-8" />
                                 </div>
-                                <h3 className="text-xl font-bold mb-3">{area.title}</h3>
+                                <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">{area.title}</h3>
                                 <p className="text-muted-foreground text-sm leading-relaxed line-clamp-4">
                                     {area.description}
                                 </p>
-                            </div>
+                            </Link>
                         );
                     })}
                 </div>
