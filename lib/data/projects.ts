@@ -39,6 +39,7 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
         "features": coalesce(features[], []),
         "researchAreas": researchAreas[]-> {
           "title": coalesce(title[$lang], title.pt, ""),
+          "baseTitle": coalesce(title.pt, title, ""),
           code
         },
         "relatedProjects": relatedProjects[]-> {
@@ -92,6 +93,7 @@ export async function getProjectBySlug(slug: string, lang: string = 'pt'): Promi
       "features": coalesce(features[], []),
       "researchAreas": researchAreas[]-> {
         "title": coalesce(title[$lang], title.pt, ""),
+        "baseTitle": coalesce(title.pt, title, ""),
         code
       },
       "relatedProjects": relatedProjects[]-> {
