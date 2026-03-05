@@ -25,7 +25,7 @@ export async function getResearchAreas(lang: string = 'pt'): Promise<ResearchAre
       order
     }`;
 
-        const items = await sanityQuery<ResearchArea[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<ResearchArea[]>(query, { lang }, { tags: [TAG] });
         return items.length ? items : localAreas;
     } catch (err) {
         console.error('[Sanity] getResearchAreas failed', err);

@@ -2,7 +2,7 @@ import { Link } from '@/i18n/routing';
 import { BackLink } from '@/components/ui/BackLink';
 import { ArrowLeft, Target, Cpu, Users, Globe } from 'lucide-react';
 import { StatsSection } from "@/components/about/StatsSection";
-import { getTranslations } from 'next-intl/server';
+import { getTranslations , setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 
 import { sanityQuery, isSanityEnabled } from '@/lib/cms/sanity';
@@ -14,6 +14,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>
 }): Promise<Metadata> {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'MetadataSobre' });
 
     return {
@@ -27,7 +28,7 @@ async function getAboutData() {
     const query = `*[_type == "about"][0] {
         gallery
     }`;
-    return await sanityQuery<any>(query, {}, { tags: ['about'], revalidate: 30 });
+    return await sanityQuery<any>(query, {}, { tags: ['about'] });
 }
 
 export default async function SobrePage({
@@ -36,6 +37,7 @@ export default async function SobrePage({
     params: Promise<{ locale: string }>
 }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'SobrePage' });
     const aboutData = await getAboutData();
 

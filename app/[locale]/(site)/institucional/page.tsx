@@ -6,7 +6,7 @@ import { getPartners } from "@/lib/data/partners";
 import { getResearchAreas } from "@/lib/data/research";
 import { sanityQuery, isSanityEnabled } from '@/lib/cms/sanity';
 import { ContactSection } from "@/components/sections/ContactSection";
-import { getTranslations } from "next-intl/server";
+import { getTranslations , setRequestLocale } from "next-intl/server";
 import { Metadata } from "next";
 
 export async function generateMetadata({
@@ -15,6 +15,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>
 }): Promise<Metadata> {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'MetadataInstitutional' });
 
     return {
@@ -28,11 +29,12 @@ async function getAboutData() {
     const query = `*[_type == "about"][0] {
         gallery
     }`;
-    return await sanityQuery<any>(query, {}, { tags: ['about'], revalidate: 30 });
+    return await sanityQuery<any>(query, {}, { tags: ['about'] });
 }
 
 export default async function InstitutionalPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const partners = await getPartners();
     const researchAreas = await getResearchAreas(locale);
     const aboutData = await getAboutData();

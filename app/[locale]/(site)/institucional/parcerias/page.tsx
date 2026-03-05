@@ -1,12 +1,14 @@
 
 import { Link } from '@/i18n/routing';
 import { BackLink } from '@/components/ui/BackLink';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getPartners } from '@/lib/data/partners';
 import { getAssetPath } from '@/lib/utils';
 import Image from 'next/image';
 
-export default async function ParceriasPage() {
+export default async function ParceriasPage({ params }: { params: Promise<{ locale: string }> }) {
+    const { locale } = await params;
+    setRequestLocale(locale);
     const partners = await getPartners();
 
     const funding = partners.filter(p => p.category === 'funding');

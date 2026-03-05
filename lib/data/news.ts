@@ -103,7 +103,7 @@ export async function getRecentNews(limit = 3, lang: string = 'pt'): Promise<New
       "author": author->{name, "image": image.asset->url}
     }`;
 
-        const items = await sanityQuery<NewsPost[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<NewsPost[]>(query, { lang }, { tags: [TAG] });
         console.log('[Sanity] Fetched Recent News:', items.length);
         return items.length ? items : localNews;
     } catch (err) {
@@ -131,7 +131,7 @@ export async function getAllNews(lang: string = 'pt'): Promise<NewsPost[]> {
       "author": author->{name, "image": image.asset->url}
     }`;
 
-        const items = await sanityQuery<NewsPost[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<NewsPost[]>(query, { lang }, { tags: [TAG] });
         console.log('[Sanity] Fetched All News:', items.length);
         return items.length ? items : localNews;
     } catch (err) {
@@ -182,10 +182,25 @@ export async function getNewsBySlug(slug: string, lang: string = 'pt'): Promise<
       }
     }`;
 
-        const item = await sanityQuery<NewsPost | null>(query, { slug, lang }, { tags: [TAG], revalidate: 30 });
+        const item = await sanityQuery<NewsPost | null>(query, { slug, lang }, { tags: [TAG] });
         return item || (localNews.find((p) => p.slug === slug) ?? null);
     } catch (err) {
         console.error('[Sanity] getNewsBySlug failed, falling back to local content', err);
         return localNews.find((p) => p.slug === slug) ?? null;
+    }
+}
+
+export async function getNewsSlugs(): Promise<string[]> {
+    if (!isSanityEnabled()) {
+        return localNews.map(p => p.slug);
+    }
+
+    try {
+        const query = `*[_type == "post" && defined(slug.current)][].slug.current`;
+        const slugs = await sanityQuery<string[]>(query, {}, { tags: [TAG] });
+        return slugs || [];
+    } catch (err) {
+        console.error('[Sanity] getNewsSlugs failed, falling back to local content', err);
+        return localNews.map(p => p.slug);
     }
 }

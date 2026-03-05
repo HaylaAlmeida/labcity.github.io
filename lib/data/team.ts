@@ -96,7 +96,7 @@ export async function getTeam(lang: string = 'pt'): Promise<TeamData> {
 
   let people: SanityPerson[];
   try {
-    people = await sanityQuery<SanityPerson[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
+    people = await sanityQuery<SanityPerson[]>(query, { lang }, { tags: [TAG] });
     console.log('[Sanity] Fetched People:', people.length);
   } catch (err) {
     console.error('[Sanity] getTeam failed, falling back to local content', err);

@@ -2,7 +2,7 @@ import { Link } from '@/i18n/routing';
 import { BackLink } from '@/components/ui/BackLink';
 import { ArrowLeft, Mail, MapPin, Phone } from 'lucide-react';
 import { contactInfo } from '@/lib/content';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations , setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 
 export async function generateMetadata({
@@ -11,6 +11,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>
 }): Promise<Metadata> {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'MetadataContato' });
 
     return {
@@ -25,6 +26,7 @@ export default async function ContatoPage({
     params: Promise<{ locale: string }>
 }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'ContactPage' });
 
     return (

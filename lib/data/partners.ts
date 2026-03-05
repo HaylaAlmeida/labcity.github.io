@@ -49,7 +49,7 @@ export async function getPartners(localeParam?: string): Promise<Partner[]> {
             category
         }`;
 
-        const items = await sanityQuery<Partner[]>(query, { lang: locale }, { tags: [TAG], revalidate: 30 });
+        const items = await sanityQuery<Partner[]>(query, { lang: locale }, { tags: [TAG] });
         console.log('[Sanity] Fetched Partners:', items.length);
         return items.length ? items : localPartners;
     } catch (err) {

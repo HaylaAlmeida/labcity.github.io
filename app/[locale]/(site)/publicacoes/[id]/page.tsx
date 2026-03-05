@@ -2,7 +2,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, BookOpen, Users, ExternalLink, Calendar, Tag, FileText } from 'lucide-react';
 import { BackLink } from '@/components/ui/BackLink';
 import { getPublicationBySlug, getPublicationSlugs } from '@/lib/data/publications';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 
 // removed typeLabels as we will use translations
 
@@ -14,6 +14,7 @@ export async function generateStaticParams() {
 
 export default async function PublicationDetailsPage({ params }: { params: Promise<{ id: string, locale: string }> }) {
     const resolvedParams = await params;
+    setRequestLocale(resolvedParams.locale);
     const publication = await getPublicationBySlug(resolvedParams.id, resolvedParams.locale);
 
     if (!publication) {

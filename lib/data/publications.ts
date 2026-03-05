@@ -29,7 +29,7 @@ export async function getPublications(lang: string = 'pt'): Promise<Publication[
         }
       }`;
 
-    const items = await sanityQuery<Publication[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
+    const items = await sanityQuery<Publication[]>(query, { lang }, { tags: [TAG] });
     console.log('[Sanity] Fetched Publications:', items.length);
     return items.length ? items : localPublications;
   } catch (err) {
@@ -67,7 +67,7 @@ export async function getPublicationsByProject(projectSlug: string, lang: string
                 code
             }
         }`;
-    return await sanityQuery<Publication[]>(query, { projectSlug, lang }, { tags: [TAG], revalidate: 30 });
+    return await sanityQuery<Publication[]>(query, { projectSlug, lang }, { tags: [TAG] });
   } catch (err) {
     console.error('[Sanity] getPublicationsByProject failed', err);
     return [];
@@ -98,7 +98,7 @@ export async function getPublicationBySlug(slug: string, lang: string = 'pt'): P
       "tags": coalesce(tags[]->{"t": coalesce(title[$lang], title.pt, title, "")}.t, [])
     }`;
 
-    const item = await sanityQuery<Publication | null>(query, { slug, lang }, { tags: [TAG], revalidate: 30 });
+    const item = await sanityQuery<Publication | null>(query, { slug, lang }, { tags: [TAG] });
     return item || (localPublications.find((p) => p.slug === slug) ?? null);
   } catch (err) {
     console.error('[Sanity] getPublicationBySlug failed, falling back to local content', err);

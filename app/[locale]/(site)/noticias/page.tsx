@@ -1,7 +1,7 @@
 import { Suspense } from 'react';
 import NewsClient from '@/app/[locale]/(site)/noticias/NewsClient';
 import { getAllNews } from "@/lib/data/news";
-import { getTranslations } from 'next-intl/server';
+import { getTranslations , setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 
 export async function generateMetadata({
@@ -10,6 +10,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>
 }): Promise<Metadata> {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'MetadataNews' });
 
     return {
@@ -20,6 +21,7 @@ export async function generateMetadata({
 
 export default async function NoticiasPage({ params }: { params: Promise<{ locale: string }> }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const news = await getAllNews(locale);
     return (
         <Suspense>

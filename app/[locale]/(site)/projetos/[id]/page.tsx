@@ -4,7 +4,7 @@ import { ArrowLeft, CheckCircle2, Users, ExternalLink } from 'lucide-react';
 import { CopyEmailCTA } from '@/components/ui/CopyEmailCTA';
 import { Link } from '@/i18n/routing';
 import { BackLink } from '@/components/ui/BackLink';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { getAssetPath } from '@/lib/utils';
 import { getProjectBySlug, getProjectSlugs } from '@/lib/data/projects';
 import { getPublicationsByProject } from '@/lib/data/publications';
@@ -19,6 +19,7 @@ export async function generateStaticParams() {
 
 export default async function ProjectDetailsPage({ params }: { params: Promise<{ id: string, locale: string }> }) {
     const resolvedParams = await params;
+    setRequestLocale(resolvedParams.locale);
     const project = await getProjectBySlug(resolvedParams.id, resolvedParams.locale);
     const relatedPublications = project ? await getPublicationsByProject(project.slug, resolvedParams.locale) : [];
 

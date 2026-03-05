@@ -47,7 +47,7 @@ export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
         }
       }`;
 
-    const items = await sanityQuery<Project[]>(query, { lang }, { tags: [TAG], revalidate: 30 });
+    const items = await sanityQuery<Project[]>(query, { lang }, { tags: [TAG] });
     console.log('[Sanity] Fetched Projects:', items.length);
 
     const mappedItems = items.map(item => ({
@@ -100,7 +100,7 @@ export async function getProjectBySlug(slug: string, lang: string = 'pt'): Promi
       }
     }`;
 
-    const item = await sanityQuery<Project | null>(query, { slug, lang }, { tags: [TAG], revalidate: 30 });
+    const item = await sanityQuery<Project | null>(query, { slug, lang }, { tags: [TAG] });
 
     if (item && Array.isArray(item.features)) {
       item.features = item.features.map((f: any) => typeof f === 'string' ? f : (f[lang] || f.pt || ''));

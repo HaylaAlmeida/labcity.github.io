@@ -4,7 +4,7 @@ import { ArrowLeft } from 'lucide-react';
 import { ResearchDetailed } from "@/components/sections/ResearchDetailed";
 import { getResearchAreas } from "@/lib/data/research";
 import { getProjects } from "@/lib/data/projects";
-import { getTranslations } from "next-intl/server";
+import { getTranslations , setRequestLocale } from "next-intl/server";
 import { Metadata } from 'next';
 
 export async function generateMetadata({
@@ -13,6 +13,7 @@ export async function generateMetadata({
     params: Promise<{ locale: string }>
 }): Promise<Metadata> {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'MetadataResearch' });
 
     return {
@@ -27,6 +28,7 @@ export default async function LinhasDePesquisaPage({
     params: Promise<{ locale: string }>
 }) {
     const { locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'ResearchLinesPage' });
     const researchAreas = await getResearchAreas(locale);
     const projects = await getProjects(locale);

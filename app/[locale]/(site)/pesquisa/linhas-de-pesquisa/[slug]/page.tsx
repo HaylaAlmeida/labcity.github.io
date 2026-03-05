@@ -10,7 +10,7 @@ import * as LucideIcons from 'lucide-react';
 import { getAssetPath } from '@/lib/utils';
 import { cn } from '@/lib/utils';
 import { SectionAccordion } from '@/components/ui/SectionAccordion';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations, setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 
 export async function generateStaticParams() {
@@ -22,6 +22,7 @@ export async function generateStaticParams() {
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string, locale: string }> }): Promise<Metadata> {
     const { slug, locale } = await params;
+    setRequestLocale(locale);
     const area = await getResearchAreaBySlug(slug, locale);
     if (!area) return {};
     return { title: `${area.title} | LabCity UFPA`, description: area.description };
@@ -29,6 +30,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
 
 export default async function ResearchLinePage({ params }: { params: Promise<{ slug: string, locale: string }> }) {
     const { slug, locale } = await params;
+    setRequestLocale(locale);
     const t = await getTranslations({ locale, namespace: 'ResearchLineSlugPage' });
     const area = await getResearchAreaBySlug(slug, locale);
     if (!area) return notFound();

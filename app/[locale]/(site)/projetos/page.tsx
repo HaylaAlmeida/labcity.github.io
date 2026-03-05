@@ -1,6 +1,6 @@
 import ProjectsClient from '@/app/[locale]/(site)/projetos/ProjectsClient';
 import { getProjects } from '@/lib/data/projects';
-import { getTranslations } from 'next-intl/server';
+import { getTranslations , setRequestLocale } from 'next-intl/server';
 import { Metadata } from 'next';
 
 export async function generateMetadata({
@@ -9,6 +9,7 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params;
+    setRequestLocale(locale);
   const t = await getTranslations({ locale, namespace: 'MetadataProjects' });
 
   return {
@@ -19,6 +20,7 @@ export async function generateMetadata({
 
 export default async function ProjectsPage({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
+    setRequestLocale(locale);
   const projects = await getProjects(locale);
   return <ProjectsClient projects={projects} />;
 }
