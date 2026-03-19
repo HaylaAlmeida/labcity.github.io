@@ -48,7 +48,7 @@ export const sanityQuery = cache(async <T>(
   const isDraftMode = options.tags?.includes('preview') || false; // exemplo simples
   const baseUrl = isDraftMode
     ? `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`
-    : `https://${projectId}.apicdn.sanity.io/v${apiVersion}/data/query/${dataset}`;
+    : `https://${projectId}.api.sanity.io/v${apiVersion}/data/query/${dataset}`; // Usar Live API para garantir frescor pós-webhook
 
   const url = new URL(baseUrl);
   url.searchParams.set('query', query);
