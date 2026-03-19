@@ -2,8 +2,17 @@ import { revalidateTag } from 'next/cache';
 import { type NextRequest, NextResponse } from 'next/server';
 import { parseBody } from 'next-sanity/webhook';
 
-// Revalidation secret set in Sanity webhook settings
-const secret = process.env.SANITY_REVALIDATE_SECRET?.trim().replace(/^["'](.+)["']$/, '$1');
+export const runtime = 'nodejs';
+export const dynamic = 'force-dynamic';
+
+function getRevalidateSecret() {
+  // Read env at request time to avoid stale values after config changes.
+  return (process.env.SANITY_REVALIDATE_SECRET
+    || process.env.REVALIDATE_SECRET
+    || process.env.NEXT_PUBLIC_SANITY_REVALIDATE_SECRET)
+    ?.trim()
+    .replace(/^["'](.+)["']$/, '$1');
+}
 
 export async function POST(req: NextRequest) {
   return handleRevalidation(req);
@@ -15,6 +24,7 @@ export async function GET(req: NextRequest) {
 
 async function handleRevalidation(req: NextRequest) {
   try {
+    const secret = getRevalidateSecret();
     const { searchParams } = new URL(req.url);
     const manualSecret = searchParams.get('secret');
 
@@ -42,7 +52,7 @@ async function handleRevalidation(req: NextRequest) {
     }
 
     if (!secret) {
-      console.error('[Webhook] SANITY_REVALIDATE_SECRET is NOT SET in environment variables');
+      console.error('[Webhook] SANITY_REVALIDATE_SECRET is NOT SET in runtime environment (check Vercel env scope + redeploy)');
       return new Response('Server configuration error: Missing Secret', { status: 500 });
     }
 
@@ -74,8 +84,9 @@ async function handleRevalidation(req: NextRequest) {
       now: Date.now(),
       body
     });
-  } catch (err: any) {
+  } catch (err: unknown) {
     console.error('[Webhook] Error during revalidation:', err);
-    return new Response(err.message, { status: 500 });
+    const message = err instanceof Error ? err.message : 'Unknown error';
+    return new Response(message, { status: 500 });
   }
 }
