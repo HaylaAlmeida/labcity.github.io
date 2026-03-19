@@ -3,7 +3,7 @@ import { type NextRequest, NextResponse } from 'next/server';
 import { parseBody } from 'next-sanity/webhook';
 
 // Revalidation secret set in Sanity webhook settings
-const secret = process.env.SANITY_REVALIDATE_SECRET;
+const secret = process.env.SANITY_REVALIDATE_SECRET?.trim().replace(/^["'](.+)["']$/, '$1');
 
 export async function POST(req: NextRequest) {
   return handleRevalidation(req);
@@ -18,8 +18,14 @@ async function handleRevalidation(req: NextRequest) {
     const { searchParams } = new URL(req.url);
     const manualSecret = searchParams.get('secret');
 
+    // Log para depuração de env (anonimizado para segurança)
+    console.log(`[Webhook] Server Secret configured? ${Boolean(secret)} (Length: ${secret?.length ?? 0})`);
+    if (manualSecret) {
+      console.log(`[Webhook] manualSecret length: ${manualSecret.length}`);
+    }
+
     // Suporte para revalidação manual via URL (ex: /api/revalidate?secret=...)
-    if (manualSecret && manualSecret === secret) {
+    if (manualSecret && secret && manualSecret === secret) {
       console.log('[Webhook] Manual revalidation triggered via URL');
       revalidateTag('sanity-data', 'default');
       return NextResponse.json({
@@ -32,7 +38,12 @@ async function handleRevalidation(req: NextRequest) {
 
     // Apenas POST pode processar o body do Sanity
     if (req.method !== 'POST') {
-      return new Response('Method Not Allowed', { status: 405 });
+      return new Response('Method Not Allowed (or manual secret mismatch)', { status: 405 });
+    }
+
+    if (!secret) {
+      console.error('[Webhook] SANITY_REVALIDATE_SECRET is NOT SET in environment variables');
+      return new Response('Server configuration error: Missing Secret', { status: 500 });
     }
 
     const { isValidSignature, body } = await parseBody(req, secret);
@@ -41,7 +52,7 @@ async function handleRevalidation(req: NextRequest) {
 
     if (!isValidSignature) {
       console.error('[Webhook] Invalid signature');
-      return new Response('Invalid signature', { status: 401 });
+      return new Response('Invalid signature (check SANITY_REVALIDATE_SECRET in both Vercel and Sanity)', { status: 401 });
     }
 
     if (!body?._type) {
