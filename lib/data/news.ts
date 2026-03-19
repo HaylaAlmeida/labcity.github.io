@@ -36,7 +36,7 @@ export interface NewsPost {
     }>;
 }
 
-const TAG = 'sanity:posts';
+const TAG = 'post';
 
 // Fallback data for when Sanity is not connected or empty
 const localNews: NewsPost[] = [

@@ -15,7 +15,7 @@ export type Project = Omit<(typeof localProjects)[number], 'partners'> & {
   relatedProjects?: { title: string; slug: string }[];
 };
 
-const TAG = 'sanity:projects';
+const TAG = 'project';
 
 export async function getProjects(lang: string = 'pt'): Promise<Project[]> {
   if (!isSanityEnabled()) return localProjects;

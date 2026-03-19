@@ -9,7 +9,7 @@ export interface Partner {
     category?: 'support' | 'funding' | 'partner';
 }
 
-const TAG = 'sanity:partners';
+const TAG = 'partner';
 
 // Local fallback data
 const localPartners: Partner[] = [

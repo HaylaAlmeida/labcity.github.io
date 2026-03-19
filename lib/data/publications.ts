@@ -5,7 +5,7 @@ export type Publication = LocalPublication & {
   researchAreas?: { title: string; code: string }[];
 };
 
-const TAG = 'sanity:publications';
+const TAG = 'publication';
 
 export async function getPublications(lang: string = 'pt'): Promise<Publication[]> {
   if (!isSanityEnabled()) return localPublications;

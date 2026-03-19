@@ -60,7 +60,7 @@ export const sanityQuery = cache(async <T>(
     headers: (token && isDraftMode) ? { Authorization: `Bearer ${token}` } : undefined,
     next: {
       revalidate: options.revalidate ?? false, // Mudar default para false (cache infinito) em vez de 3600
-      tags: options.tags ?? ['sanity-data'], // Adicionar tag default para revalidação via webhook
+      tags: ['sanity-data', ...(options.tags ?? [])], // Garantir tag default e mesclar com as fornecidas
     },
   });
 

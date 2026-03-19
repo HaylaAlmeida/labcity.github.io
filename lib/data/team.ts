@@ -30,7 +30,7 @@ export type TeamData = {
   members: TeamMember[];
 };
 
-const TAG = 'sanity:team';
+const TAG = 'person';
 
 // Priority order for sorting members by level
 const levelPriority: Record<string, number> = {

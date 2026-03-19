@@ -10,7 +10,7 @@ export type ResearchArea = {
     order?: number;
 };
 
-const TAG = 'sanity:research';
+const TAG = 'researchArea';
 
 export async function getResearchAreas(lang: string = 'pt'): Promise<ResearchArea[]> {
     if (!isSanityEnabled()) return localAreas;
